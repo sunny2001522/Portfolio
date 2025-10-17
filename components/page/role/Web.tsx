@@ -14,7 +14,7 @@ const Web = ({ role, isActive }: WebProps) => {
   const t = useTranslations();
 
   const staticImageMap: Record<Role, string> = {
-    ui: "/web/metro-app.jpg",
+    ui: "/web/metro-app.webp",
     pm: "/web/gamified-weight-loss.webp",
     fe: "/web/hotel-website.webp",
     design: "/design/iceverseProduct.webp",

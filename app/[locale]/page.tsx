@@ -14,7 +14,7 @@ export default async function HomePage({
       <h2 className="absolute z-0 text-[96px] left-2 ">Buy a</h2>
       <h2 className="absolute z-0 text-[96px] right-2 "> Sonia?</h2>
       <div className=" w-full relative z-0 pt-[64px]">
-        <RoleSelect role={t("role.fe")} />
+        <RoleSelect role="fe" />
       </div>
     </div>
   );

@@ -261,33 +261,22 @@ const Gallery = ({ role }: { role: string }) => {
       </div> */}
 
       {/* 中間角色圖 */}
-      {isCurrentPageRole ? (
+
+      <Link href={`/${locale}/${slideData[currentDataIndex].title}`}>
         <img
           ref={characterRef}
           src={slideData[currentDataIndex].character}
           alt={slideData[currentDataIndex].title}
-          className="w-56 object-cover rounded-2xl absolute left-1/2 bottom-10 -translate-x-1/2 z-20 max-md:w-40 max-md:bottom-32"
+          className="w-56 object-cover rounded-2xl absolute left-1/2  bottom-10 -translate-x-1/2 z-20 max-md:w-40 max-md:bottom-32 hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] "
           draggable="false"
         />
-      ) : (
-        <>
-          <Link href={`/${locale}/${slideData[currentDataIndex].title}`}>
-            <img
-              ref={characterRef}
-              src={slideData[currentDataIndex].character}
-              alt={slideData[currentDataIndex].title}
-              className="w-56 object-cover rounded-2xl absolute left-1/2  bottom-10 -translate-x-1/2 z-20 max-md:w-40 max-md:bottom-32 hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] "
-              draggable="false"
-            />
-          </Link>
-          <Link
-            href={`/${locale}/${slideData[currentDataIndex].title}`}
-            className="z-40"
-          >
-            <Button>選擇角色</Button>
-          </Link>
-        </>
-      )}
+      </Link>
+      <Link
+        href={`/${locale}/${slideData[currentDataIndex].title}`}
+        className="z-40"
+      >
+        <Button>選擇角色</Button>
+      </Link>
     </div>
   );
 };

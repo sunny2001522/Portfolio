@@ -98,7 +98,7 @@ const RolePageClient: React.FC<RolePageClientProps> = ({ data, role }) => {
 
         <div
           id="section2"
-          className="scroll-section  flex flex-col items-center justify-center relative h-[calc(100vh-64px)]"
+          className="scroll-section  flex flex-col items-center justify-center relative md:h-[calc(100vh-64px)]"
         >
           <Project projects={data.projects} skills={data.skills} role={role} />
         </div>
