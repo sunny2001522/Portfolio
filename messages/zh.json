@@ -9,7 +9,7 @@
   },
   "projects": {
     "gamified-weight-loss": {
-      "title": "遊戲化減重平台（協作開發）",
+      "title": "遊戲化減重平台",
       "overview": {
         "title": "專案介紹",
         "goal": "將減重過程設計成遊戲，透過挑戰、社交與獎勵，讓使用者建立健康習慣。",
@@ -30,7 +30,7 @@
       },
       "fe": {
         "implementation": {
-          "title": "前端實作（為何這樣選）",
+          "title": "前端實作",
           "stack": [
             "React 19 + TypeScript → 建立型別安全、可維護的大型 SPA",
             "React Router DOM 7 → 清晰管理複雜路由",
@@ -172,7 +172,7 @@
       }
     },
     "hotel-website": {
-      "title": "飯店品牌形象官網（獨立開發）",
+      "title": "飯店訂房網",
       "overview": {
         "title": "專案介紹",
         "goal": "建立一個結合品牌形象與實際訂房功能的響應式官網，提升飯店的數位行銷力。",
@@ -193,7 +193,7 @@
       },
       "fe": {
         "implementation": {
-          "title": "前端實作（為何這樣選）",
+          "title": "前端實作",
           "stack": [
             "React + TypeScript → 確保程式碼可維護性與型別安全",
             "Tailwind → 快速打造符合品牌設計的 UI",
@@ -267,10 +267,10 @@
       }
     },
     "portfolio": {
-      "title": "個人作品集網站（互動式沉浸體驗）",
+      "title": "作品集網站",
       "overview": {
         "title": "專案介紹",
-        "goal": "打造能展現技術力與設計感的個人作品集，將我的多樣才能包裝成盲盒玩偶概念，透過敘事性的視覺讓招募方在瀏覽過程中留下深刻印象。",
+        "goal": "打造能展現技術力與設計感的作品集，將我的多樣才能包裝成盲盒玩偶概念，透過敘事性的視覺讓招募方在瀏覽過程中留下深刻印象。",
         "users_title": "使用者",
         "users": [
           "前端或軟體開發職缺的招募人員",
@@ -288,7 +288,7 @@
       },
       "fe": {
         "implementation": {
-          "title": "前端實作（為何這樣選）",
+          "title": "前端實作",
           "stack": [
             "Next.js 14 → 支援 SSG/SSR，兼顧效能與 SEO",
             "Tailwind + shadcn/ui → 快速開發 UI 並維持一致性",

@@ -1,93 +1,11 @@
-
-// PM 專案僅顯示 gamified-weight-loss
-export const pmProjects: Project[] = [
-  {
-    id: "gamified-weight-loss",
-    year: "2025",
-    thumbnail: "/web/gamified-weight-loss.webp",
-    links: [
-      { type: "GitHub", url: "https://github.com/TooruTW/GoBetGoal" },
-      { type: "Vercel", url: "https://gobetgoal.vercel.app/" },
-    ],
-    skills: ["Jira", "Notion", "Swimlane", "Confluence", "Figma"], // 僅技能不同
-  },
-];
-
-export const pmSkills: Skills = {
-  "Project Management": [
-    { name: "Jira", icon: "/skills/jira.webp" },
-    { name: "Notion", icon: "/skills/notion.webp" },
-    { name: "Swimlane", icon: "/skills/kanban.webp" },
-    { name: "Confluence", icon: "/skills/confluence.webp" },
-    { name: "Figma", icon: "/skills/figma.webp" },
-  ],
-};
-
-
-// UI 專案有 FE 全部 + metro app
-export const uiProjects: Project[] = [
-  {
-    id: "gamified-weight-loss",
-    year: "2025",
-    thumbnail: "/web/gamified-weight-loss.webp",
-    links: [
-      { type: "GitHub", url: "https://github.com/TooruTW/GoBetGoal" },
-      { type: "Vercel", url: "https://gobetgoal.vercel.app/" },
-    ],
-    skills: ["Figma", "Photoshop", "Illustrator", "UI/UX"],
-  },
-  {
-    id: "hotel-website",
-    year: "2025",
-    thumbnail: "/web/hotel-website.webp",
-    links: [
-    ],
-    skills: ["Figma", "Photoshop", "Illustrator", "UI/UX"],
-  },
-  {
-    id: "portfolio",
-    year: "2025",
-    thumbnail: "/web/portfolio.webp",
-    links: [
-      { type: "GitHub", url: "https://github.com/sunny2001522/portfolio" },
-      { type: "Vercel", url: "exuan-website-dev.vercel.app" },
-    ],
-    skills: ["Figma", "Photoshop", "Illustrator", "UI/UX"],
-  },
-  {
-    id: "metro-app",
-    year: "2025",
-    thumbnail: "/web/metro-app.webp",
-    links: [
-
-    ],
-    skills: ["Figma", "Photoshop", "Illustrator", "UI/UX"],
-  },
-];
-
-export const uiSkills: Skills = {
-  "Design": [
-    { name: "Figma", icon: "/skills/figma.webp" },
-    { name: "Photoshop", icon: "/skills/ps.webp" },
-    { name: "Illustrator", icon: "/skills/ai.webp" },
-  ],
-};
-import {
-  Project,
-  Skills,
-  Contact,
-  Resume,
-  RoleData,
-  Role,
-} from "./types";
-
+import { Project, Skills, Contact, Resume, RoleData, Role } from "./types";
 
 export const roles: Role[] = [
   {
     key: "fe",
     labelKey: "fe.title",
     color: "bg-blue-200",
-    img: "/character/frontend.webp",
+    img: "/character/fe.webp",
   },
   {
     key: "ui",
@@ -103,71 +21,14 @@ export const roles: Role[] = [
   },
 ];
 
-// 新的 Project 物件結構，包含 zh/en/role-specific descriptions
-export const feProjects: Project[] = [
-  {
-    id: "gamified-weight-loss",
-    year: "2025",
-    thumbnail: "/web/gamified-weight-loss.webp",
-    links: [
-      { type: "GitHub", url: "https://github.com/TooruTW/GoBetGoal" },
-      { type: "Vercel", url: "https://gobetgoal.vercel.app/" },
-    ],
-    skills: [
-      "React",
-      "Redux",
-      "TanStack Query",
-      "Shadcn",
-      "GSAP",
-      "Lottie",
-      "Swiper",
-      "TailwindCSS",
-      "Figma",
-      "Playwright",
-      "Supabase",
-      "UI/UX",
-      "Git",
-    ],
-  },
-  {
-    id: "hotel-website",
-    year: "2025",
-    thumbnail: "/web/web1.webp",
-    links: [
-      { type: "GitHub", url: "https://github.com" },
-      { type: "Vercel", url: "https://vercel.com" },
-    ],
-    skills: ["React", "TailwindCSS", "MongoDB", "Restful API", "Figma", "Git"],
-  },
-  {
-    id: "portfolio",
-    year: "2025",
-    thumbnail: "/web/web3.png",
-    links: [
-      { type: "GitHub", url: "https://github.com/sunny2001522/portfolio" },
-      { type: "Vercel", url: "exuan-website-dev.vercel.app" },
-    ],
-    skills: [
-      "Next.js",
-      "TailwindCSS",
-      "GSAP",
-      "i18n",
-      "Git",
-      "Figma",
-      "Swiper",
-      "Spline",
-    ],
-  },
-];
-
-export const feSkills: Skills = {
+export const skills: Skills = {
   "Front-end": [
     { name: "React", icon: "/skills/react.webp" },
     { name: "Next.js", icon: "/skills/next.webp" },
     { name: "TailwindCSS", icon: "/skills/tail.webp" },
     { name: "Shadcn", icon: "/skills/shadcn.webp" },
     { name: "Redux", icon: "/skills/redux.webp" },
-    { name: "TanStack Query", icon: "/skills/tanstack.webp" },
+    { name: "TanStack", icon: "/skills/tanstack.webp" },
     { name: "i18n", icon: "/skills/intl.webp" },
     { name: "Git", icon: "/skills/git.webp" },
     { name: "Swiper", icon: "/skills/swiper.webp" },
@@ -183,56 +44,138 @@ export const feSkills: Skills = {
     { name: "Restful API", icon: "/skills/api.webp" },
   ],
   Testing: [{ name: "Playwright", icon: "/skills/playwright.webp" }],
-  "UI/UX": [{ name: "Figma", icon: "/skills/figma.webp" }],
+  UI: [
+    { name: "Figma", icon: "/skills/figma.webp" },
+    { name: "Photoshop", icon: "/skills/ps.webp" },
+    { name: "Illustrator", icon: "/skills/ai.webp" },
+  ],
+  UX: [
+    { name: "使用者故事", icon: "/shape/shape6.webp" },
+    { name: "易用性測試", icon: "/shape/shape9.webp" },
+  ],
+  "Project Management": [
+    { name: "泳道圖", icon: "/shape/shape2.webp" },
+    { name: "流程圖", icon: "/shape/shape5.webp" },
+  ],
+  Tool: [
+    { name: "Jira", icon: "/skills/jira.webp" },
+    { name: "Notion", icon: "/skills/notion.webp" },
+  ],
   AI: [
-    { name: "Gemini Assist", icon: "/skills/gemini.webp" },
+    { name: "Gemini", icon: "/skills/gemini.webp" },
     { name: "Cursor", icon: "/skills/cursor.webp" },
   ],
 };
 
-export const feContact: Contact[] = [];
+export const projects: Project[] = [
+  {
+    id: "gamified-weight-loss",
+    year: "2025",
+    video: "/web/gobetgoal.webm",
+    thumbnail: "/web/gamified-weight-loss.webp",
+    category: "",
+    links: [
+      { type: "GitHub", url: "https://github.com/TooruTW/GoBetGoal" },
+      { type: "Vercel", url: "https://gobetgoal.vercel.app/" },
+    ],
+    skills: [
+      "React",
+      "Redux",
+      "TanStack",
+      "Shadcn",
+      "GSAP",
+      "Lottie",
+      "Swiper",
+      "TailwindCSS",
+      "Figma",
+      "Playwright",
+      "Supabase",
+      "UI/UX",
+      "Git",
+      "Jira",
+      "Notion",
+      "Swimlane",
+      "Confluence",
+      "Photoshop",
+      "Illustrator",
+      "使用者故事",
+      "易用性測試",
+      "Gemini",
+      "Cursor",
+    ],
+  },
+  {
+    id: "hotel-website",
+    year: "2025",
+    video: "/web/hotelbooking.webm",
+    thumbnail: "/web/hotel-website.webp",
+    category: "",
+    links: [
+      { type: "GitHub", url: "https://github.com/sunny2001522/Hotel-booking" },
+      { type: "Vercel", url: "https://iceverse-hotel-booking.vercel.app/" },
+    
+    ],
+    skills: ["React", "TailwindCSS", "MongoDB", "Restful API", "Figma", "Git", "Photoshop", "Illustrator", "UI/UX"],
+  },
+  {
+    id: "portfolio",
+    year: "2025",
+    thumbnail: "/web/portfolio.webp",
+    video: "/web/portfolio.webm",
+    category: "",
+    links: [
+      { type: "GitHub", url: "https://github.com/sunny2001522/Portfolio" },
+      { type: "Vercel", url: "https://exuan-website-dev.vercel.app/zh" },
+    ],
+    skills: ["Next.js", "TailwindCSS", "GSAP", "i18n", "Git", "Figma", "Swiper", "Spline", "Photoshop", "Illustrator", "UI/UX"],
+  },
+  {
+    id: "metro-app",
+    year: "2025",
+    thumbnail: "/web/metro-app.webp",
+    category: "web",
+    links: [],
+    skills: ["Figma", "Photoshop", "Illustrator", "UI/UX"],
+  },
+];
 
-export const feResume: Resume = {
+export const contact: Contact[] = [];
+
+export const resume: Resume = {
   en: "SoniaResumeFeEn.pdf",
   zh: "SoniaResumeFeZh.pdf",
 };
 
-const feData: RoleData = {
-  projects: feProjects,
-  skills: feSkills,
-  contact: feContact,
-  resume: feResume,
-};
-
-
 // 動態路由頁面名稱清單
 export const rolePages: { fe: string[]; pm: string[]; ui: string[] } = {
-    fe: ['introduction', 'contact', 'project'],
-    pm: ['introduction', 'contact', 'project'],
-    ui: ['introduction', 'contact', 'project'],
-};
-
-
-
-const pmData: RoleData = {
-  projects: pmProjects,
-  skills: pmSkills,
-  contact: feContact, // 可自訂
-  resume: feResume,   // 可自訂
-};
-const uiData: RoleData = {
-  projects: uiProjects,
-  skills: uiSkills,
-  contact: feContact, // 可自訂
-  resume: feResume,   // 可自訂
-};
-
-const roleDataMap: Record<string, RoleData> = {
-  fe: feData,
-  pm: pmData,
-  ui: uiData,
+  fe: ["introduction", "contact", "project"],
+  pm: ["introduction", "contact", "project"],
+  ui: ["introduction", "contact", "project"],
 };
 
 export const getRoleData = (role: string): RoleData | undefined => {
-  return roleDataMap[role];
+  const roleKey = role as Role["key"];
+  const filteredProjects = projects.filter((p) => {
+    // 根據角色篩選技能
+    if (!p.skills) return false;
+    // 技能陣列中有該角色相關技能就顯示
+    return p.skills.some((skill) => {
+      if (roleKey === "fe") {
+        return ["React", "Next.js", "Redux", "TanStack", "Shadcn", "GSAP", "Lottie", "Swiper", "TailwindCSS", "i18n", "Git", "MongoDB", "Restful API", "Supabase", "Playwright"].includes(skill);
+      }
+      if (roleKey === "ui") {
+        return ["Figma", "Photoshop", "Illustrator", "UI/UX", "GSAP", "Lottie", "Spline", "Swiper"].includes(skill);
+      }
+      if (roleKey === "pm") {
+        return ["Jira", "Notion", "Swimlane", "Confluence"].includes(skill);
+      }
+      return false;
+    });
+  });
+  return {
+    projects: filteredProjects,
+    skills: skills,
+    contact: contact,
+    resume: resume,
+  };
 };

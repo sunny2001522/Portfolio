@@ -7,8 +7,10 @@ export interface Project {
   id: string;
   year: string;
   thumbnail: string;
+  video?: string;
+  category: string;
   links: ProjectLink[];
-  skills: string[];
+  skills?: string[] | undefined;
   description?: {
     zh?: {
       fe?: string;
