@@ -1,22 +1,16 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
+import { PiStarFourFill } from "react-icons/pi";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
-// 型別定義
-type ProjectLink = {
-  type: string;
-  url: string;
-};
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import type { Project as GlobalProject } from "@/lib/types";
-import { FaRightLeft } from "react-icons/fa6";
-import { BiLeftArrowAlt, BiRightArrow, BiRightArrowAlt } from "react-icons/bi";
 type Project = GlobalProject;
 
 type Skill = {
@@ -32,275 +26,303 @@ interface ProjectProps {
   role: string;
 }
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Project({
   projects,
   skills: categorizedSkills,
   role,
 }: ProjectProps) {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const activeProject = projects[activeIndex];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const currentIndexRef = useRef(0);
+  const prevIndexRef = useRef(0);
   const t = useTranslations("projects");
-  // get current locale from t (next-intl)
-  // @ts-ignore
-  const locale: "zh" | "en" = t.locale === "en" ? "en" : "zh";
+
+  const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const descriptionRef = useRef<HTMLDivElement>(null);
+
+  const activeProject = projects[activeIndex];
+
+  // 技能分類篩選邏輯
+  const filteredCategories = Object.entries(categorizedSkills).filter(
+    ([category]) => {
+      if (role === "fe") {
+        return !["UI", "UX", "Project Management"].includes(category);
+      }
+      return true;
+    },
+  );
+
+  // 安全取得翻譯陣列的方法，避免因為 key 不存在導致 next-intl 拋出錯誤造成白畫面
+  const getOutcomes = (projectId: string, currentRole: string) => {
+    try {
+      const items = t.raw(`${projectId}.${currentRole}.outcomes.items`);
+      return Array.isArray(items) ? items : [];
+    } catch (error) {
+      return [];
+    }
+  };
+
+  useGSAP(
+    () => {
+      if (!containerRef.current) return;
+
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          pin: true,
+          start: "top top",
+          end: () => `+=${projects.length * 100}%`,
+          scrub: 0.5,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            const newIndex = Math.min(
+              Math.floor(progress * projects.length),
+              projects.length - 1,
+            );
+            if (newIndex !== currentIndexRef.current) {
+              currentIndexRef.current = newIndex;
+              setActiveIndex(newIndex);
+            }
+          },
+        });
+
+        // 背景文字視差
+        gsap.to(".bg-text", {
+          y: -100,
+          opacity: 0.2,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: () => `+=${projects.length * 100}%`,
+            scrub: true,
+          },
+        });
+      });
+
+      return () => mm.revert();
+    },
+    { scope: containerRef, dependencies: [projects] },
+  );
+
+  // 內容切換動畫
+  useGSAP(
+    () => {
+      // 初始載入動畫
+      if (prevIndexRef.current === activeIndex && activeIndex === 0) {
+        gsap.from([contentRef.current, descriptionRef.current], {
+          opacity: 0,
+          y: 20,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        return;
+      }
+
+      const direction = activeIndex > prevIndexRef.current ? 1 : -1;
+      const tl = gsap.timeline();
+
+      // 直接進場動畫，減少空白時間
+      tl.fromTo(
+        [contentRef.current, descriptionRef.current],
+        { opacity: 0, y: 15 * direction },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          clearProps: "all",
+        },
+      );
+
+      prevIndexRef.current = activeIndex;
+    },
+    { dependencies: [activeIndex], scope: containerRef },
+  );
 
   if (!activeProject) return null;
 
   return (
-    <div className="w-full h-full  my-4  md:grid md:grid-cols-12 gap-8 p-8 text-black">
-      <h2 className="text-[60px] md:text-[96px] absolute z-0 top-0 ">
-        Projects
-      </h2>
-      {/* 左側縮圖列表 */}
-      <div className="md:col-span-1 flex my-6 md:mt-0 md:flex-col  gap-4 justify-center">
-        {projects.map((project: Project, index: number) => (
-          <button
-            key={project.id}
-            onClick={() => setActiveIndex(index)}
-            className={`relative w-30  aspect-video rounded-lg overflow-hidden transition-all duration-300 transform-gpu ${
-              activeIndex === index
-                ? "scale-80 ring-4 ring-gray-500 shadow-2xl"
-                : "scale-100 opacity-60 hover:opacity-100 hover:scale-105"
-            }`}
-          >
-            <Image
-              src={project.thumbnail}
-              alt={project.id}
-              fill
-              className="object-cover"
-            />
-          </button>
-        ))}
-        <div className="flex">
-          <BiLeftArrowAlt
-            className="w-8 cursor-pointer"
-            onClick={() => setActiveIndex((prev) => Math.max(prev - 1, 0))}
-          />
-          <BiRightArrowAlt
-            className="w-8 cursor-pointer"
-            onClick={() =>
-              setActiveIndex((prev) => Math.min(prev + 1, projects.length - 1))
-            }
-          />
-        </div>
+    <div
+      ref={containerRef}
+      className="w-full h-screen overflow-hidden bg-transparent relative flex items-center"
+    >
+      {/* 背景裝飾 */}
+      <div className="bg-text absolute top-10 left-10 z-0 opacity-10 pointer-events-none select-none">
+        <h2 className="text-[100px] font-bold leading-none uppercase tracking-tighter">
+          Projects
+        </h2>
       </div>
 
-      <div className="md:col-span-1"></div>
-
-      {/* 中間專案內容 */}
-      <div className="col-span-7 flex flex-col justify-center gap-4 h-full">
-        <div className=" flex flex-col items-center justify-center  bg-white/50 shadow-md  backdrop-blur rounded-lg z-50 border-blue-200 border-2 overflow-hidden">
-          <div className="flex  gap-2 bg-gradient-to-r from-cyan-500 to-violet-200 px-4 py-2  w-full ">
-            <span className="rounded-full bg-white w-3 h-3"></span>
-            <span className="rounded-full bg-white w-3 h-3"></span>
-            <span className="rounded-full bg-white w-3 h-3"></span>
-          </div>
-          {activeProject.video && activeProject.category !== "web" ? (
-            <video
-              src={activeProject.video}
-              width={800}
-              height={450}
-              className="w-full h-auto aspect-video object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-          ) : (
-            <Image
-              src={activeProject.thumbnail}
-              alt={t(`${activeProject.id}.title`)}
-              width={800}
-              height={450}
-              className="w-full h-auto aspect-video object-cover"
-            />
-          )}
-        </div>
-        <div className=" justify-start  rounded-2xl overflow-x-scroll ">
-          <div className="space-y-1 flex md:flex-wrap">
-            {Object.entries(categorizedSkills).map(
-              ([category, skills]: [string, Skill[]]) => (
-                <div className="flex gap-1 items-end" key={category}>
-                  {skills.map((skill: Skill) => {
-                    const isUsed =
-                      Array.isArray(activeProject.skills) &&
-                      activeProject.skills.includes(skill.name);
+      <div className="w-full h-full md:grid md:grid-cols-12 gap-12 p-10 relative z-10 pt-24 md:pt-32">
+        {/* 左側：技能欄位 */}
+        <div className="hidden md:flex md:col-span-4 flex-col gap-4 h-full pr-4 overflow-visible relative z-20">
+         
+          <div className="space-y-4">
+            {filteredCategories.map(([category, skills]) => (
+              <div key={category} className="space-y-2">
+                <div className="text-[9px] font-bold text-blue-500/60 uppercase border-b border-blue-100 pb-1">
+                  {category}
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {skills.map((skill) => {
+                    const isUsed = activeProject.skills?.includes(skill.name);
                     return (
                       <div
                         key={skill.name}
-                        className={`flex flex-col w-20 items-center gap-1 p-1 rounded-lg transition-all duration-300 ${
+                        className={`flex items-center gap-1.5 px-2 py-1 rounded-lg transition-all duration-500 ${
                           isUsed
-                            ? "opacity-100 drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-                            : "opacity-20 grayscale"
+                            ? "opacity-100 bg-white/80 shadow-sm ring-1 ring-blue-200 scale-105"
+                            : "opacity-10 grayscale-[80%]"
                         }`}
-                        title={skill.name}
                       >
-                        <Image
-                          src={skill.icon}
-                          alt={skill.name}
-                          width={32}
-                          height={32}
-                          className="object-contain"
-                        />
-                        <div className=" flex items-center  text-xs">
-                          {skill.name}
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={skill.icon}
+                            alt={skill.name}
+                            width={14}
+                            height={14}
+                            className="object-contain"
+                          />
                         </div>
+                        <span className="text-[8px] font-bold text-gray-600 whitespace-nowrap">
+                          {skill.name}
+                        </span>
                       </div>
                     );
                   })}
                 </div>
-              )
-            )}
-          </div>
-        </div>
-        {/* 右側技能表 */}
-        {/* <div className="hidden md:block    justify-start bg-white/50 backdrop-blur-sm p-4 rounded-2xl shadow-inner border overflow-y-scroll h-70">
-          <div className="space-y-1 flex gap-1">
-            {Object.entries(categorizedSkills).map(
-              ([category, skills]: [string, Skill[]]) => (
-                <div key={category}>
-                  <h5 className="text-sm font-semibold text-gray-600 mb-2 border-b pb-1">
-                    {category}
-                  </h5>
-                  <div className="flex gap-1 flex-wrap items-end">
-                    {skills.map((skill: Skill) => {
-                      const isUsed =
-                        Array.isArray(activeProject.skills) &&
-                        activeProject.skills.includes(skill.name);
-                      return (
-                        <div
-                          key={skill.name}
-                          className={`flex flex-col items-center gap-1 p-1 w-15  transition-all duration-300 ${
-                            isUsed
-                              ? "opacity-100 drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-                              : "opacity-20 grayscale"
-                          }`}
-                          title={skill.name}
-                        >
-                          {skill.icon ? (
-                            <>
-                              <Image
-                                src={skill.icon}
-                                alt={skill.name}
-                                width={32}
-                                height={32}
-                                className="object-contain"
-                              />
-                              <span className="text-xs text-center font-medium text-gray-600">
-                                {skill.name}
-                              </span>
-                            </>
-                          ) : (
-                            <div className=" flex items-center rounded-full justify-center px-2 py-1 border border-gray-500 bg-gray-700 text-white text-sm">
-                              {skill.name}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-        </div> */}
-      </div>
-
-      <div
-        key={activeProject.id}
-        className="bg-white/70 backdrop-blur-md col-span-3 overflow-hidden p-6  rounded-xl shadow-lg border border-gray-200 max-md:h-80 md:h-full"
-      >
-        <div className="max-md:flex lg:flex justify-between items-baseline mb-4 ">
-          <h3 className="text-2xl font-bold text-gray-800">
-            {t(`${activeProject.id}.title`)}
-          </h3>
-          <span className="text-sm font-mono text-gray-500">
-            {activeProject.year}
-          </span>
-          <div className="flex gap-2 ">
-            {activeProject.links?.map((link: ProjectLink) => (
-              <a
-                key={link.type}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xl p-1 bg-gray-800 text-white rounded-full hover:bg-gray-500 transition-colors animate-pulse"
-              >
-                {link.type === "GitHub" && <FaGithub />}
-                {link.type === "Vercel" && <MdOutlineWebAsset />}
-              </a>
+              </div>
             ))}
           </div>
         </div>
-        <div className="text-base text-gray-700 gap-2 h-full pb-12 space-y-4 overflow-y-scroll">
-          <>
-            <div className="">
-              <h4 className="text-sm font-semibold text-gray-600 mb-2 border-b pb-1">
-                {t(`${activeProject.id}.overview.title`)}
-              </h4>
-              <p className="mb-2 text-base">
-                {t(`${activeProject.id}.overview.goal`)}
-              </p>
+
+        {/* 右側：作品展示與說明 (佔滿剩餘寬度) */}
+        <div className="col-span-12 md:col-span-8 flex flex-col gap-6 h-full">
+          {/* 作品媒體視窗 - 16:9 Aspect Ratio */}
+          <div
+            ref={contentRef}
+            className="project-content w-full aspect-video max-h-[55vh] bg-white/40 backdrop-blur-xl rounded-2xl border-2 border-white/50 shadow-2xl overflow-hidden relative group flex-shrink-0"
+          >
+            <div className="absolute top-0 left-0 w-full h-7 bg-white/80 flex items-center px-4 gap-1.5 z-20 border-b border-gray-100">
+              <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
+              <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
+              <div className="w-2 h-2 rounded-full bg-[#27C93F]" />
+              <span className="ml-4 text-[9px] text-gray-400 font-mono tracking-widest uppercase truncate font-bold">
+                {activeProject.id}
+              </span>
             </div>
-            <div>
-              <h5 className=" text-sm font-semibold text-gray-600 mb-2 border-b pb-1 mt-2">
-                {t(`${activeProject.id}.overview.users_title`)}
-              </h5>
-              <ul className="list-disc pl-5 space-y-1">
-                {(t.raw(`${activeProject.id}.overview.users`) as string[]).map(
-                  (item: string, index: number) => (
-                    <li key={index}>{item}</li>
-                  )
-                )}
-              </ul>
+
+            <div className="w-full h-full pt-7">
+              {activeProject.video && activeProject.category !== "web" ? (
+                <video
+                  key={activeProject.id}
+                  src={activeProject.video}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <div className="relative w-full h-full bg-gray-50">
+                  <Image
+                    key={activeProject.id}
+                    src={activeProject.thumbnail}
+                    alt={activeProject.id}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
             </div>
-            <div>
-              <h4 className="text-sm font-semibold text-gray-600 mb-2 border-b pb-1 ">
-                {t(`${activeProject.id}.${role}.implementation.title`)}
-              </h4>
-              <ul className="list-disc pl-5 space-y-1">
-                {(
-                  t.raw(
-                    `${activeProject.id}.${role}.implementation.stack`
-                  ) as string[]
-                ).map((item: string, index: number) => (
-                  <li key={index}>{item}</li>
+          </div>
+
+          {/* 作品說明文字 - 佔滿剩餘高度 */}
+          <div
+            ref={descriptionRef}
+            className="flex-1 flex flex-col gap-4 overflow-hidden"
+          >
+            <div className="flex justify-between items-end">
+              <div>
+                <div className="text-[10px] font-bold text-blue-500 mb-1 uppercase tracking-widest">
+                  {activeProject.year} Project
+                </div>
+                <h3 className="text-4xl font-bold text-gray-800 tracking-tighter">
+                  {t(`${activeProject.id}.title`)}
+                </h3>
+              </div>
+              <div className="flex gap-2">
+                {activeProject.links?.map((link) => (
+                  <a
+                    key={link.type}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full text-[10px] font-bold hover:bg-black transition-all"
+                  >
+                    {link.type === "GitHub" && <FaGithub size={14} />}
+                    {link.type === "Vercel" && <MdOutlineWebAsset size={14} />}
+                    {link.type}
+                  </a>
                 ))}
-              </ul>
+              </div>
             </div>
-            <div>
-              <h4 className="text-sm font-semibold text-gray-600 mb-2 border-b pb-1 ">
-                {t(`${activeProject.id}.${role}.challenges.title`)}
-              </h4>
-              <ul className="list-disc pl-5 space-y-2">
-                {(
-                  t.raw(`${activeProject.id}.${role}.challenges.items`) as {
-                    title: string;
-                    solution: string[];
-                  }[]
-                ).map((item, index: number) => (
-                  <li key={index}>
-                    <strong>{item.title}:</strong> {item.solution.join(" ")}
-                  </li>
-                ))}
-              </ul>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full overflow-y-auto custom-scrollbar pr-4">
+              <div className="space-y-3">
+                <h5 className="text-[9px] font-bold text-gray-400 uppercase tracking-widest border-l-2 border-gray-300 pl-2">
+                  Overview
+                </h5>
+                <p className="text-xs text-gray-600 leading-relaxed font-medium">
+                  {t(`${activeProject.id}.overview.goal`)}
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h5 className="text-[9px] font-bold text-gray-400 uppercase tracking-widest border-l-2 border-gray-300 pl-2">
+                  Key Outcomes
+                </h5>
+                <ul className="space-y-2">
+                  {getOutcomes(activeProject.id, role)
+                    .slice(0, 3)
+                    .map((item, i) => (
+                      <li
+                        key={i}
+                        className="text-[11px] text-gray-500 flex items-start gap-2"
+                      >
+                        <PiStarFourFill className="text-gray-400 flex-shrink-0 mt-0.5" size={12} />
+                        {item}
+                      </li>
+                    ))}
+                </ul>
+              </div>
             </div>
-            <div>
-              <h4 className="text-sm font-semibold text-gray-600 mb-2 border-b pb-1 ">
-                {t(`${activeProject.id}.${role}.outcomes.title`)}
-              </h4>
-              <ul className="list-disc pl-5 space-y-1">
-                {(
-                  t.raw(
-                    `${activeProject.id}.${role}.outcomes.items`
-                  ) as string[]
-                ).map((item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </>
+          </div>
+        </div>
+      </div>
+
+      {/* 導覽指示器 */}
+      <div className="absolute bottom-10 right-10 flex items-center gap-6">
+        <div className="flex flex-col items-end">
+          <div className="text-xs font-mono text-gray-400 font-bold mb-1">
+            PAGE_PROGRESS
+          </div>
+          <div className="w-32 h-[2px] bg-gray-100 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-black transition-all duration-300"
+              style={{
+                width: `${((activeIndex + 1) / projects.length) * 100}%`,
+              }}
+            />
+          </div>
+        </div>
+        <div className="text-5xl font-bold tabular-nums text-gray-200">
+          0{activeIndex + 1}
         </div>
       </div>
     </div>

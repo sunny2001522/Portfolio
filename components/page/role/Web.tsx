@@ -1,7 +1,8 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { Autoplay, Pagination } from "swiper/modules";
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import Image from "next/image";
 
 type Role = "fe" | "pm" | "ui" | "design";
 
@@ -12,21 +13,22 @@ interface WebProps {
 
 const Web = ({ role, isActive }: WebProps) => {
   const t = useTranslations();
-
-  const staticImageMap: Record<Role, string> = {
-    ui: "/web/metro-app.webp",
-    pm: "/web/gamified-weight-loss.webp",
-    fe: "/web/hotel-website.webp",
-    design: "/design/iceverseProduct.webp",
-  };
+  const containerRef = useRef<HTMLDivElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
   const projects = t.raw("projects") as Record<string, any>;
+  const defaultImg = "/web/hotel-website.webp";
 
   const imageMap: Record<string, string> = {
     "gamified-weight-loss": "/web/gamified-weight-loss.webp",
     "hotel-website": "/web/hotel-website.webp",
     portfolio: "/web/portfolio.webp",
     "metro-app": "/web/metro-app.webp",
+    "ai-customer-service": "/web/lp.png",
+    "social-media-tool": "/web/post.png",
+    "ai-data-analysis": "/web/data.png",
+    "ai-co-writing": "/web/genink.png",
+    "life-manifestation": "/web/dreamake.png",
     book: "/design/book.webp",
     iceverse: "/design/iceverse.webp",
     iceverseProduct: "/design/iceverseProduct.webp",
@@ -37,49 +39,48 @@ const Web = ({ role, isActive }: WebProps) => {
   const slides = Object.keys(projects)
     .filter((projectId) => projects[projectId][role])
     .map((projectId) => ({
-      img: imageMap[projectId],
+      img: imageMap[projectId] || defaultImg,
       title: projects[projectId].title,
-      description: projects[projectId].overview?.goal,
     }));
 
+  useGSAP(() => {
+    if (!isActive || !marqueeRef.current || !containerRef.current) return;
+
+    const marquee = marqueeRef.current;
+    const container = containerRef.current;
+    // Calculate exact scroll distance so the last item stops exactly at the right edge
+    const totalWidth = marquee.scrollWidth - container.clientWidth;
+
+    gsap.to(marquee, {
+      x: -totalWidth,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#intro-container", 
+        start: "top 64px",
+        end: "+=3000",
+        scrub: 0.5,
+      },
+    });
+  }, { dependencies: [isActive] });
+
   return (
-    <div className="flex flex-col items-center justify-center font-bold bg-white/50 shadow-md backdrop-blur rounded-lg z-50 border-blue-200 border-2 overflow-hidden">
-      <div className="flex gap-2 bg-gradient-to-r from-cyan-500 to-violet-200 px-4 py-2 w-full ">
-        <div className="rounded-full bg-white w-3 h-3"></div>
-        <div className="rounded-full bg-white w-3 h-3"></div>
-        <div className="rounded-full bg-white w-3 h-3"></div>
-      </div>
-      {isActive ? (
-        <Swiper
-          direction={"vertical"}
-          loop={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          modules={[Autoplay, Pagination]}
-          grabCursor={true}
-          className="aspect-video"
-        >
+    <div ref={containerRef} className="w-full overflow-hidden py-4 pl-4 md:pl-8">
+      {isActive && (
+        <div ref={marqueeRef} className="flex whitespace-nowrap gap-4 pr-4 md:pr-8">
           {slides.map((slide, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="flex flex-col shadow-md h-full items-center justify-center overflow-hidden">
-                <img
+            <div key={idx} className="inline-block flex-shrink-0">
+              <div className="relative h-28 md:h-56 w-44 md:w-80 rounded-xl overflow-hidden shadow-xl border-2 border-white/80 transform hover:scale-105 transition-transform">
+                <Image
                   src={slide.img}
                   alt={slide.title}
-                  className="h-full w-full object-cover"
+                  fill
+                  priority={idx < 4}
+                  className="object-cover"
+                  sizes="(max-width: 768px) 176px, 320px"
                 />
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
-      ) : (
-        <div className="aspect-video flex items-center justify-center overflow-hidden">
-          <img
-            src={staticImageMap[role]}
-            alt={role}
-            className="w-full h-30 object-cover aspect-video"
-          />
         </div>
       )}
     </div>

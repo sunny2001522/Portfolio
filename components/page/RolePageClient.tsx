@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { useTranslations } from "next-intl";
 import Introduction from "@/components/page/role/Introduction";
 import Project from "@/components/page/role/Project";
+import ProjectListMobile from "@/components/page/role/ProjectListMobile";
 import { RoleData } from "@/lib/types";
 import RoleSelect from "../ui/RoleSelect";
 
@@ -21,86 +22,187 @@ interface RolePageClientProps {
 const RolePageClient: React.FC<RolePageClientProps> = ({ data, role }) => {
   const t = useTranslations("RolePage");
   const mainRef = useRef<HTMLDivElement>(null);
+  const dollContainerRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLImageElement>(null);
 
-  useGSAP(
-    () => {
-      if (!boxRef.current || !mainRef.current) return;
+  useGSAP(() => {
+    if (!boxRef.current || !mainRef.current || !dollContainerRef.current)
+      return;
 
-      const box = boxRef.current;
+    const group = dollContainerRef.current;
+    const doll = boxRef.current;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: mainRef.current,
-          pin: box,
-          scrub: 1,
-          start: "top top",
-          end: "bottom bottom",
-        },
-      });
+    const mm = gsap.matchMedia();
 
-      tl.to(box, { rotation: 24, duration: 1, ease: "none" });
+    mm.add(
+      {
+        isMobile: "(max-width: 767px)",
+        isDesktop: "(min-width: 768px)",
+      },
+      (context) => {
+        let { isMobile } = context.conditions as {
+          isMobile: boolean;
+          isDesktop: boolean;
+        };
 
-      tl.to(box, {
-        x: "-45vw",
-        y: "-20vh",
-        scale: 0.8,
-        rotation: 0,
-        rotationY: 180,
-        duration: 1,
-        ease: "none",
-      });
+        // 1. Initial State
+        // Both start from the right edge
+        gsap.set(group, {
+          opacity: 1,
+          x: isMobile ? "80vw" : "65vw",
+          y: isMobile ? "30vh" : "25vh",
+          scale: isMobile ? 0.45 : 0.9,
+          rotationY: 0,
+          force3D: true,
+        });
 
-      tl.to(box, {
-        x: "-10vw",
-        y: "0vh",
-        scale: 0.5,
-        rotationY: 360,
-        duration: 1,
-        ease: "none",
-      });
-      tl.to(box, {
-        x: "-10vw",
-        y: "0vh",
-        opacity: 0,
-        scale: 0.5,
-        rotationY: 360,
-        duration: 1,
-        ease: "none",
-      });
-    },
-    { scope: mainRef }
-  );
+        // SECTION 1 TIMELINE (Introduction) - Synced with pinned intro-container
+        const introTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#section1",
+            start: "top 64px",
+            end: "+=3000",
+            scrub: 0.5,
+          },
+        });
+
+        introTl
+          // 2. Scroll: Move into position
+          .to(
+            group,
+            {
+              // Mobile: move to center-right, further bottom. Desktop: center-right
+              x: isMobile ? "5vw" : "20vw",
+              y: isMobile ? "35vh" : "35vh",
+              duration: 2,
+              ease: "none",
+              force3D: true,
+            },
+            0,
+          )
+          // 3. Stay pinned for the rest of the intro text animation
+          .to(group, {
+            x: isMobile ? "5vw" : "20vw",
+            duration: 1,
+          });
+
+        // SECTION 2 TIMELINE (Projects)
+        const projectTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#section2",
+            start: "top 90%", // Trigger slightly before it fully enters
+            end: "bottom bottom",
+            scrub: 0.5,
+          },
+        });
+
+        projectTl
+          // 4. Move to Project Section position (Fast initial transition)
+          .to(group, {
+            x: isMobile ? "-45vw" : "-16vw", // Mobile: move right half a body from extreme left
+            y: isMobile ? "60vh" : "10vh", // Mobile: move further down
+            rotationY: 180,
+            scale: isMobile ? 0.25 : 0.5,
+            duration: 0.1,
+            ease: "power2.inOut",
+            force3D: true,
+          })
+          // 5. Hold position for the rest of the section
+          .to(group, {
+            x: isMobile ? "-45vw" : "-16vw",
+            duration: 0.9,
+          });
+
+        // SECTION 3 TIMELINE (Role Select)
+        const roleSelectTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#section3",
+            start: "top 90%",
+            end: "top top",
+            scrub: 0.5,
+          },
+        });
+
+        roleSelectTl
+          // 6. Move to Center but lower
+          .to(group, {
+            x: "0vw",
+            y: "0vh", // Move down vertically as requested
+            scale: isMobile ? 0.4 : 0.8,
+            rotationY: 0,
+            duration: 1,
+            ease: "power2.inOut",
+            force3D: true,
+          })
+          // 7. Gradually fade out
+          .to(group, {
+            opacity: 0,
+            duration: 0.5,
+          });
+      },
+    );
+
+    // Continuous float animation for the doll itself
+    gsap.to(doll, {
+      y: "+=15",
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      force3D: true,
+    });
+
+    return () => mm.revert(); // Clean up matchMedia
+  });
 
   return (
     <>
-      <div className=" w-[20vw] aspect-[2/3] absolute top-1/3 left-2/3 md:left-1/2">
-        <Image
-          ref={boxRef}
-          src={`/character/${role}.webp`}
-          alt="character"
-          fill
-          className="z-20"
-          style={{ transformStyle: "preserve-3d" }}
-          draggable="false"
-        />
+      <div
+        ref={dollContainerRef}
+        id="doll-container"
+        className="fixed top-0 left-[50%] w-[300px] h-[400px] -translate-x-1/2 z-[60] pointer-events-none opacity-0 will-change-transform"
+      >
+        {/* The Doll */}
+        <div className="absolute inset-0 flex items-center justify-center z-10 will-change-transform">
+          <div className="w-[100%] h-[100%] relative">
+            <Image
+              ref={boxRef}
+              src={`/character/${role}.webp`}
+              alt="character"
+              fill
+              priority
+              className="drop-shadow-2xl will-change-transform"
+              style={{ transformStyle: "preserve-3d", objectFit: "contain" }}
+              draggable="false"
+            />
+          </div>
+        </div>
       </div>
       <section
         ref={mainRef}
-        className="relative scroll-container z-10 text-6xl font-bold pt-[64px]"
+        className="relative scroll-container z-10 text-4xl md:text-6xl font-bold pt-[64px] overflow-x-hidden max-w-[100vw]"
       >
-        <div
-          id="section1"
-          className="scroll-section  flex flex-col items-center justify-center h-[calc(100vh-64px)]"
-        >
+        <div id="section1" className="scroll-section">
           <Introduction role={role} />
         </div>
 
-        <div
-          id="section2"
-          className="scroll-section  flex flex-col items-center justify-center relative md:h-[calc(100vh-64px)]"
-        >
-          <Project projects={data.projects} skills={data.skills} role={role} />
+        <div id="section2" className="scroll-section relative w-full">
+          {/* Desktop Version */}
+          <div className="hidden md:block w-full">
+            <Project
+              projects={data.projects}
+              skills={data.skills}
+              role={role}
+            />
+          </div>
+          {/* Mobile Version */}
+          <div className="block md:hidden w-full">
+            <ProjectListMobile
+              projects={data.projects}
+              skills={data.skills}
+              role={role}
+            />
+          </div>
         </div>
         <div id="section3" className="scroll-section ">
           <RoleSelect role={role} />

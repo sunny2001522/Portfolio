@@ -52,7 +52,7 @@ export interface RoleData {
 }
 
 export interface Role {
-  key: "fe" | "ui" | "pm";
+  key: "fe" | "ui" | "pm" | "design";
   labelKey: string;
   color: string;
   img: string;

@@ -4,78 +4,16 @@
     "about": "This is an amazing platform that helps you achieve your goals.",
     "intro": "Buy",
     "intro2": "a Sonia?",
-
     "learnMore": "Learn More"
   },
   "projects": {
     "gamified-weight-loss": {
       "title": "Gamified Weight-Loss Platform (Team Project)",
       "overview": {
-        "title": "Project Overview",
-        "goal": "Transform the weight loss journey into a game, helping users build healthy habits through challenges, social interaction, and rewards.",
-        "users_title": "Target Users",
-        "users": [
-          "Individuals who want to lose weight but lack motivation",
-          "People who enjoy social interaction and need encouragement from peers",
-          "Users who are fond of gamified challenges"
-        ],
-        "features_title": "Core Features",
-        "features": [
-          "Challenge System (Personal trials, friend challenges, progress tracking, completion rewards)",
-          "Social System (Friends, activity sharing, likes and interactions, real-time notifications)",
-          "Shop System (Virtual currency 'bagel', avatar customization, challenge templates)",
-          "Gamification Elements (Achievement badges, leaderboards, progress bars)",
-          "Data Tracking (GA4, Investor Dashboard, proprietary data system)"
-        ]
+        "goal": "Transform the weight loss journey into a game, helping users build healthy habits through challenges, social interaction, and rewards."
       },
       "fe": {
-        "implementation": {
-          "title": "Frontend Implementation (Why these tools)",
-          "stack": [
-            "React 19 + TypeScript → Scalable SPA with type safety",
-            "React Router DOM 7 → Manage complex navigation cleanly",
-            "Redux Toolkit + React Query → Separation of client state & server state for challenges, social, and purchases",
-            "Tailwind + shadcn/ui + Radix → Efficient UI building with consistency",
-            "GSAP + Lottie → Smooth animations for gamified experience",
-            "Playwright → E2E tests to ensure purchase & challenge stability"
-          ]
-        },
-        "challenges": {
-          "title": "Technical Challenges & Solutions",
-          "items": [
-            {
-              "title": "Backend delays → Self-learned Supabase",
-              "solution": [
-                "Backend engineer was behind schedule → I self-learned Supabase from scratch",
-                "Designed 50+ APIs (users, friends, posts, purchases)",
-                "Implemented Supabase Auth, Realtime, Storage for seamless interactions"
-              ]
-            },
-            {
-              "title": "Safari doesn’t support WebM animation",
-              "solution": [
-                "Original design used WebM sequences, Safari couldn’t render",
-                "Solution: fallback to WebP sequences for cross-browser compatibility"
-              ]
-            },
-            {
-              "title": "Complex state management",
-              "solution": [
-                "Challenges, social posts, and shop transactions required nested props",
-                "Solution: Redux Toolkit for global UI state, React Query for API cache & error handling"
-              ]
-            },
-            {
-              "title": "Animation performance optimization",
-              "solution": [
-                "GSAP animations dropped frames under load",
-                "Solution: optimized with timeline sequencing to minimize parallel execution"
-              ]
-            }
-          ]
-        },
         "outcomes": {
-          "title": "Outcomes",
           "items": [
             "Demo Day: highly positive audience feedback, described as 'as addictive as playing a game'",
             "Showcased problem-solving and adaptability: self-learning backend, handling cross-browser issues, optimizing animations",
@@ -84,40 +22,7 @@
         }
       },
       "pm": {
-        "implementation": {
-          "title": "Project Management & Planning",
-          "stack": [
-            "Authored 20+ user stories to define MVP and feature requirements.",
-            "Prioritized the development roadmap and established a Notion project board to track progress.",
-            "Designed software architecture using wireframes, flowcharts, and swimlane diagrams.",
-            "Coordinated with the frontend team to document JSON data structures for seamless API integration."
-          ]
-        },
-        "challenges": {
-          "title": "Management Challenges & Solutions",
-          "items": [
-            {
-              "title": "Backend Development Delays",
-              "solution": [
-                "Identified backend delay risks mid-project, proactively intervened in Supabase development, and coordinated the frontend team to prevent project stalls."
-              ]
-            },
-            {
-              "title": "Ensuring Product Quality",
-              "solution": [
-                "Orchestrated user testing with 20+ testers, conducting 3 iteration cycles to optimize navigation, animations, and calendar displays based on feedback."
-              ]
-            },
-            {
-              "title": "Scope & Resource Management",
-              "solution": [
-                "Flexibly adjusted project scope based on continuous resource assessment, ensuring 100% on-time delivery of core features."
-              ]
-            }
-          ]
-        },
         "outcomes": {
-          "title": "Project Outcomes",
           "items": [
             "Achieved 100% delivery of the gamified weight-loss platform, with testers rating it as 'exceeding bootcamp standards.'",
             "Received unanimous acclaim at the final product demo for its quality and engaging user experience.",
@@ -127,41 +32,7 @@
         }
       },
       "ui": {
-        "implementation": {
-          "title": "Design & Prototyping",
-          "stack": [
-            "Figma → For creating high-fidelity mockups, interactive prototypes, and a complete design system.",
-            "Lottie & After Effects → For designing and exporting complex animations that render smoothly on the web.",
-            "Spline → For developing 3D interactive elements for the homepage to create an immersive experience.",
-            "Material Design Principles → Applied established design principles to ensure the interface was intuitive and user-friendly.",
-            "User Journey Mapping → To visualize user flows, identify pain points, and optimize the experience."
-          ]
-        },
-        "challenges": {
-          "title": "Design Challenges & Solutions",
-          "items": [
-            {
-              "title": "Translating Gamification Concepts into UI",
-              "solution": [
-                "Designed a system of badges, progress bars, and celebratory animations to visually represent user achievements and maintain motivation."
-              ]
-            },
-            {
-              "title": "Cross-Platform Animation Consistency",
-              "solution": [
-                "Initially used WebM, but discovered it was not supported on Safari. Switched to a WebP sequence as a fallback to ensure a consistent animated experience for all users."
-              ]
-            },
-            {
-              "title": "Maintaining Design System Integrity",
-              "solution": [
-                "Developed a shared Figma library for components, colors, and typography, enabling the frontend team to implement designs with 1:1 accuracy."
-              ]
-            }
-          ]
-        },
         "outcomes": {
-          "title": "Design Outcomes",
           "items": [
             "Created a visually stunning and cohesive UI that was praised as 'addictive' and 'game-like.'",
             "The design system streamlined the development process and ensured a consistent user experience across the platform.",
@@ -169,60 +40,20 @@
             "The final product stands as a testament to design-driven development, where user experience was central to the platform's success."
           ]
         }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
       }
     },
     "hotel-website": {
       "title": "Hotel Branding Website (Independent Project)",
       "overview": {
-        "title": "Project Overview",
-        "goal": "To create a responsive official website that combines brand image with actual booking functionality, enhancing the hotel's digital marketing capabilities.",
-        "users_title": "Users",
-        "users": [
-          "Travelers who need to quickly check hotel information and room types",
-          "Consumers who prefer to complete booking and payment processes online",
-          "Target customers who want a consistent brand style experience"
-        ],
-        "features_title": "Core Features",
-        "features": [
-          "Responsive Design → Consistent experience on mobile, tablet, and desktop",
-          "Membership System (Registration / Login / Profile Management)",
-          "Booking System (Room browsing, date selection, order creation)",
-          "Real-time API Integration → Ensures room availability and price data are up-to-date",
-          "Brand Visual Design → Consistent communication of brand value through images, fonts, and colors"
-        ]
+        "goal": "To create a responsive official website that combines brand image with actual booking functionality, enhancing the hotel's digital marketing capabilities."
       },
       "fe": {
-        "implementation": {
-          "title": "Frontend Implementation (Why this choice)",
-          "stack": [
-            "React + TypeScript → Ensures code maintainability and type safety",
-            "Tailwind → Quickly builds UI that matches the brand design",
-            "Restful API → Connects member, order, and booking data with flexibility",
-            "MongoDB Atlas + dbGate + Postman → Backend data storage and testing",
-            "Vercel → Fast deployment with CI/CD capabilities"
-          ]
-        },
-        "challenges": {
-          "title": "Technical Challenges & Solutions",
-          "items": [
-            {
-              "title": "Complex Booking Process",
-              "solution": [
-                "Initially planned a simple form, but it couldn't handle multiple room types and date conflicts",
-                "Solution: Designed an order model to support multiple room selections and dynamic validation"
-              ]
-            },
-            {
-              "title": "Brand Design Consistency",
-              "solution": [
-                "Different pages developed by different modules could easily lead to UI inconsistencies",
-                "Solution: Created a custom Tailwind theme + component library to ensure design uniformity"
-              ]
-            }
-          ]
-        },
         "outcomes": {
-          "title": "Outcomes",
           "items": [
             "Successfully completed a demo of an official website with full booking functionality",
             "Improved understanding of full-stack development: frontend UI, backend data integration, and database operations",
@@ -231,93 +62,27 @@
         }
       },
       "ui": {
-        "implementation": {
-          "title": "Design & Prototyping",
-          "stack": [
-            "Figma: Designed high-fidelity UI mockups and responsive layouts.",
-            "Design System: Established uniform colors, typography, spacing, and components to ensure brand consistency.",
-            "User Flow Analysis: Mapped the booking process to simplify the user journey."
-          ]
-        },
-        "challenges": {
-          "title": "Design Challenges & Solutions",
-          "items": [
-            {
-              "title": "Maintaining a clean interface during a complex booking process",
-              "solution": [
-                "Broke the process into multiple steps with clear visual guidance."
-              ]
-            },
-            {
-              "title": "Ensuring visual consistency across different devices",
-              "solution": [
-                "Adopted a Mobile-First design strategy and created prototypes for multiple breakpoints in Figma."
-              ]
-            }
-          ]
-        },
         "outcomes": {
-          "title": "Design Outcomes",
           "items": [
             "Designed a brand website that is both aesthetically pleasing and practical, enhancing the hotel's professional image.",
             "The simplified booking flow design lowered the barrier to entry for users, helping to increase conversion rates.",
             "The established design system laid an efficient foundation for future feature expansion."
           ]
         }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
       }
     },
     "portfolio": {
       "title": "Personal Portfolio Website (Interactive Immersive Experience)",
       "overview": {
-        "title": "Project Overview",
-        "goal": "To create a personal portfolio that showcases technical skills and design sense, packaging my diverse talents into a blind box toy concept, and leaving a deep impression on recruiters through narrative visuals during their browsing experience.",
-        "users_title": "Users",
-        "users": [
-          "Recruiters for frontend or software development positions",
-          "Users who expect interactive web pages with a sense of design",
-          "Overseas or international teams that require a multilingual interface"
-        ],
-        "features_title": "Core Features",
-        "features": [
-          "SEO Optimization → Makes the portfolio easily discoverable by search engines",
-          "Interactive Animations (GSAP narrative experience, scroll-triggered)",
-          "Multilingual Support (English / Chinese switching)",
-          "Project Showcase (including technical descriptions and challenge solutions)",
-          "Responsive Design → Smooth experience on mobile devices"
-        ]
+        "goal": "To create a personal portfolio that showcases technical skills and design sense, packaging my diverse talents into a blind box toy concept, and leaving a deep impression on recruiters through narrative visuals during their browsing experience."
       },
       "fe": {
-        "implementation": {
-          "title": "Frontend Implementation",
-          "stack": [
-            "Next.js 14 → Supports SSG/SSR, balancing performance and SEO",
-            "Tailwind + shadcn/ui → Rapidly develops UI while maintaining consistency",
-            "GSAP → Creates smooth scrolling animations and a sense of narrative",
-            "next-intl → Establishes multilingual switching (Chinese/English)",
-            "Vercel → Global deployment, ensuring fast access for visitors"
-          ]
-        },
-        "challenges": {
-          "title": "Technical Challenges & Solutions",
-          "items": [
-            {
-              "title": "Balancing SEO and Animation",
-              "solution": [
-                "Excessive animation can affect SEO and performance",
-                "Solution: SSR for basic page content, with animation used only as an enhancement"
-              ]
-            },
-            {
-              "title": "Multilingual Maintenance",
-              "solution": [
-                "Initial text was hard-coded, making maintenance difficult",
-                "Solution: Introduced i18n json files for management, allowing for quick translation updates"
-              ]
-            }
-          ]
-        },
         "outcomes": {
-          "title": "Outcomes",
           "items": [
             "The portfolio successfully led to interview invitations in the overseas recruitment process",
             "Demonstrated multilingual development, animation performance, and SEO technical skills",
@@ -326,133 +91,164 @@
         }
       },
       "ui": {
-        "implementation": {
-          "title": "Design & Prototyping",
-          "stack": [
-            "Figma: Used for UI design, prototyping, and design system management.",
-            "Spline & Lottie: Created 3D interactions and 2D animations to add playfulness to the page.",
-            "Narrative Design: Packaged the portfolio into a blind box toy concept to guide users through an unboxing exploration."
-          ]
-        },
-        "challenges": {
-          "title": "Design Challenges & Solutions",
-          "items": [
-            {
-              "title": "Presenting diverse projects and skills within limited screen space",
-              "solution": [
-                "Designed switchable roles (Frontend, UI, PM), with each role corresponding to a different display of projects and skills."
-              ]
-            },
-            {
-              "title": "Balancing visual creativity with a smooth user experience",
-              "solution": [
-                "Adopted scroll-triggered animations to let users experience the story naturally while browsing, rather than being interrupted by mandatory animations."
-              ]
-            }
-          ]
-        },
         "outcomes": {
-          "title": "Design Outcomes",
           "items": [
             "Successfully created a personal website with a strong brand identity, effectively communicating my design philosophy and technical abilities.",
             "The unique blind box concept and interactive design received positive feedback during the recruitment process and increased interview opportunities.",
             "Demonstrated the ability to combine user experience, visual design, and frontend technology to create immersive digital products."
           ]
         }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
       }
     },
     "metro-app": {
       "title": "Taipei Metro App Redesign (Hackathon Project)",
       "overview": {
-      "title": "Project Overview",
-      "goal": "Transform Taipei Metro daily commutes into interactive urban adventures and cultural explorations. Through AI-powered companionship, immersive navigation, and collectible card systems, every ride becomes an engaging, explorable, and memorable innovative experience.",
-      "users_title": "Target Users",
-      "users": [
-        "First-time visitors to Taipei who need route navigation and landmark guidance",
-        "Young audiences who love cute IPs, collecting achievements, and nurturing companionship",
-        "Daily commuters seeking efficiency and convenience while adding fun to their routine"
-      ],
-      "features_title": "Core Features",
-      "features": [
-        "Smart Route Recommendation System (AI voice input, optimal route generation, accessibility options, transfer preferences, time-based planning)",
-        "Personalized Companion System (exclusive smart travel buddy, avatar generation, real-time transfer reminders, contextual interactions)",
-        "Immersive Interactive Map (dynamic character movement, station cultural navigation, attraction & food recommendations, platform & exit information)",
-        "Metro Cultural Card Collection System (station-exclusive cards, gacha game mechanics, rarity tiers, card album collection, metro points rewards)",
-        "Trip Records & Ticket Management (automatic trip logging, integrated card top-up, T-Pass purchase, achievement wall & progress charts)"
-      ]
-    },
+        "goal": "Transform Taipei Metro daily commutes into interactive urban adventures and cultural explorations. Through AI-powered companionship, immersive navigation, and collectible card systems, every ride becomes an engaging, explorable, and memorable innovative experience."
+      },
       "ui": {
-        "implementation": {
-          "title": "Design Methods & Tools",
-          "stack": [
-            "User Research: Qualitative interviews, Persona modeling, User Journey Map",
-            "Prototyping Tools: Figma / Sketch",
-            "Design System: Established design specifications including colors, fonts, and components to ensure cross-functional consistency",
-            "Collaboration: Cross-functional teamwork (frontend engineers, product managers, AI illustrators)"
-          ]
-        },
-        "challenges": {
-          "title": "Core Responsibilities & Achievements",
-          "items": [
-            {
-              "title": "User Research & Needs Analysis",
-              "solution": [
-                "Conducted qualitative interviews to identify the pain points of three target groups (tourists, collectors, commuters), discovering that the existing metro app lacked interactivity and cultural connection."
-              ]
-            },
-            {
-              "title": "Experience Design & Information Architecture",
-              "solution": [
-                "Designed a complete user journey with five functional modules: Smart Route Recommendation → Personalized Companion System → Immersive Interactive Map → Cultural Card Collection → Ride History Management, ensuring a smooth experience from inquiry to review."
-              ]
-            },
-            {
-              "title": "AI-Integrated Interface Design",
-              "solution": [
-                "Designed an AI voice input interface and smart recommendation system supporting multi-dimensional route preferences (accessibility, fewest transfers, time selection) to improve usability for disadvantaged groups."
-              ]
-            },
-            {
-              "title": "Gamification Design Strategy",
-              "solution": [
-                "Applied principles of behavioral psychology (completion bias, scarcity effect, social demonstration motivation) to design a station-limited virtual card system, integrating reward mechanisms (metro point redemption, achievement system) to increase user stickiness."
-              ]
-            },
-            {
-              "title": "Visual Design & Brand Shaping",
-              "solution": [
-                "Created a 'Smart Little Companion' character system and designed card visuals that blend personal image with local culture to establish a cute, warm, and intelligent brand identity."
-              ]
-            },
-            {
-              "title": "Interactive Prototype Development",
-              "solution": [
-                "Developed an immersive dynamic map prototype integrating real-time transfer reminders, cultural tour audio, and AR guidance elements to create an RPG-like exploration experience."
-              ]
-            },
-            {
-              "title": "Accessibility Design Implementation",
-              "solution": [
-                "Planned features such as elevator-priority routes, suitable car recommendations, and exit guidance to ensure a friendly experience for users with mobility impairments and those with large luggage."
-              ]
-            },
-            {
-              "title": "Data-Driven Design",
-              "solution": [
-                "Integrated Taipei Metro's open data platform (timetables, crowding levels, exit information) to design data visualizations that support real-time decision-making."
-              ]
-            }
-          ]
-        },
         "outcomes": {
-          "title": "Impact & Business Value",
           "items": [
             "Created a dual user motivation combining utilitarian value (redemption for discounts) and hedonic value (collection fun).",
             "Designed a system with business expansion potential: supporting integration with shopping districts, IP licensing cooperation, and T-Pass promotion.",
             "Enhanced the public transportation experience, promoting cultural tourism and local connection."
           ]
         }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
       }
+    },
+    "book": {
+      "title": "Book Binding Design",
+      "overview": {
+        "goal": "Exploring the tactile and visual layers of the print medium, transforming the soul of text into touchable physical art."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Utilized special paper materials and printing techniques to enhance the collectible value of books.",
+            "Strengthened the reader's immersion through visual metaphors and typographic rhythm.",
+            "Demonstrated mastery of graphic composition, color planning, and material application."
+          ]
+        }
+      }
+    },
+    "iceverseProduct": {
+      "title": "Iceverse Product Design",
+      "overview": {
+        "goal": "Creating a series of peripheral products for the Iceverse brand, integrating the brand spirit into everyday objects."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Developed a product line with high brand recognition, strengthening the brand's extension into lifestyle scenes.",
+            "Balanced practicality with aesthetics to create a product experience with emotional value.",
+            "Implemented the full product design lifecycle from material selection to production processes."
+          ]
+        }
+      }
+    },
+    "iceverse": {
+      "title": "Iceverse Branding",
+      "overview": {
+        "goal": "Establishing a pure, modern, and inclusive brand visual system."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Designed a complete logo system, logotypes, and a brand color palette.",
+            "Developed detailed brand guidelines to ensure consistency across different media.",
+            "Successfully established a market-competitive brand image, increasing brand value."
+          ]
+        }
+      }
+    },
+    "actor": {
+      "title": "Actor Business Card Design",
+      "overview": {
+        "goal": "Tailor-making business cards with a personal style for actors to establish a deep professional impression in a short time."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Highlighted the unique temperament of performers through atypical layout and materials.",
+            "Perfectly combined resume information with visual aesthetics to increase card retention.",
+            "Showcased a minimalist yet powerful design language within a small space."
+          ]
+        }
+      }
+    },
+    "taipei": {
+      "title": "Taipei City Imagery Poster",
+      "overview": {
+        "goal": "Reinterpreting Taipei's urban memory, capturing the street soul of Taipei through contemporary visual language."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Combined photography and vector illustration to create layered urban visuals.",
+            "Won design awards, demonstrating sensitivity to contemporary art styles.",
+            "Sparked public attention and emotional resonance with urban spaces."
+          ]
+        }
+      }
+    },
+    "ai-customer-service": {
+      "title": "AI 客服自動化系統",
+      "overview": {
+        "goal": "為解決社群小編長期重複回覆用戶問題，設計 AI 客服自動化系統，透過語意理解與知識庫回應機制自動處理高頻提問，大幅減少人工複製貼上工作，釋放營運人力並提升回覆效率與服務品質。"
+      },
+      "fe": { "outcomes": { "items": [] } },
+      "pm": { "outcomes": { "items": [] } },
+      "ui": { "outcomes": { "items": [] } },
+      "design": { "outcomes": { "items": [] } }
+    },
+    "social-media-tool": {
+      "title": "多平台社群發文管理工具",
+      "overview": {
+        "goal": "為解決品牌經營多平台社群時需重複發文與管理的問題，打造跨平台發文工具，支援一次內容同步多個渠道，讓品牌能以更低成本擴展社群影響力並提升行銷效率。"
+      },
+      "fe": { "outcomes": { "items": [] } },
+      "pm": { "outcomes": { "items": [] } },
+      "ui": { "outcomes": { "items": [] } },
+      "design": { "outcomes": { "items": [] } }
+    },
+    "ai-data-analysis": {
+      "title": "AI 數據分析決策平台",
+      "overview": {
+        "goal": "為解決營運人員難以從大量數據中快速獲得洞察的問題，打造 AI 數據分析平台，透過自動化分析與視覺化呈現，協助團隊快速理解趨勢並做出更精準的產品決策。"
+      },
+      "fe": { "outcomes": { "items": [] } },
+      "pm": { "outcomes": { "items": [] } },
+      "ui": { "outcomes": { "items": [] } },
+      "design": { "outcomes": { "items": [] } }
+    },
+    "ai-co-writing": {
+      "title": "AI 人類協作寫作平台",
+      "overview": {
+        "goal": "為解決創作者在內容創作過程中靈感不足與效率低落的問題，打造 AI 與人類協作的寫作平台，透過即時 AI 建議與內容生成，幫助創作者更快產出高品質內容。"
+      },
+      "fe": { "outcomes": { "items": [] } },
+      "pm": { "outcomes": { "items": [] } },
+      "ui": { "outcomes": { "items": [] } },
+      "design": { "outcomes": { "items": [] } }
+    },
+    "life-manifestation": {
+      "title": "人生顯化器",
+      "overview": {
+        "goal": "為幫助使用者更清晰規劃人生目標，打造結合 AI 與心理學概念的目標顯化工具，透過目標拆解與行動追蹤機制，協助使用者將抽象願景轉化為可執行的行動計畫。"
+      },
+      "fe": { "outcomes": { "items": [] } },
+      "pm": { "outcomes": { "items": [] } },
+      "ui": { "outcomes": { "items": [] } },
+      "design": { "outcomes": { "items": [] } }
     }
   },
   "Navigation": {
@@ -488,8 +284,14 @@
       "description": "Share 30 days post on iTHome."
     },
     "resume": "SoniaResumeFeZh.pdf",
-    "award": ["2023 Frontend Hackathon Winner", "2022 UI Innovation Award"],
-    "description": ["2025 HexSchool Rocket Team Graduate", "2021 UX Annual Award"]
+    "award": [
+      "2023 Frontend Hackathon Winner",
+      "2022 UI Innovation Award"
+    ],
+    "description": [
+      "2025 HexSchool Rocket Team Graduate",
+      "2021 UX Annual Award"
+    ]
   },
   "Form": {
     "name": "Name",
@@ -566,8 +368,14 @@
       "description": "Sharing 'Design-Driven Web Interaction Experience' at the 2025 Ironman Competition."
     },
     "resume": "SoniaResumeUIZh.pdf",
-    "award": ["2023 Design Rookie Award", "2021 UX Annual Award"],
-    "description": ["Freelance Designer", "Former Designer at Foreign Tech Company"]
+    "award": [
+      "2023 Design Rookie Award",
+      "2021 UX Annual Award"
+    ],
+    "description": [
+      "Freelance Designer",
+      "Former Designer at Foreign Tech Company"
+    ]
   },
   "pm": {
     "title": "PM",
@@ -578,12 +386,31 @@
       "description": "Sharing 'Design-Driven Web Interaction Experience' at the 2025 Ironman Competition."
     },
     "resume": "SoniaResumePMZh.pdf",
-    "award": ["2022 Project Management Award", "2020 Team Leadership Award"],
-    "description": ["Project Management Expert", "Agile Development Practitioner"]
+    "award": [
+      "2022 Project Management Award",
+      "2020 Team Leadership Award"
+    ],
+    "description": [
+      "Project Management Expert",
+      "Agile Development Practitioner"
+    ]
   },
   "design": {
     "title": "Graphic Designer",
-    "award": ["2024 Chinese Design Award Honorable Mention", "2025 Artiver Finalist (USA)"] ,
-    "description": ["Freelance Designer", "Former Designer at Foreign Tech Company"]
+    "me": "Sonia",
+    "about": {
+      "skill": "Senior graphic designer specializing in brand identity, book design, and cross-media visual experiments.",
+      "hobby": "I enjoy researching printing crafts and urban photography.",
+      "description": "Committed to finding the perfect balance between aesthetics and function across digital and physical media."
+    },
+    "resume": "/SoniaResumeUIEn.pdf",
+    "award": [
+      "2024 Chinese Design Award Honorable Mention",
+      "2025 Artiver Finalist (USA)"
+    ],
+    "description": [
+      "Freelance Designer",
+      "Former Designer at Foreign Tech Company"
+    ]
   }
 }

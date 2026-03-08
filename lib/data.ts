@@ -14,6 +14,12 @@ export const roles: Role[] = [
     img: "/character/ui.webp",
   },
   {
+    key: "design",
+    labelKey: "design.title",
+    color: "bg-orange-200",
+    img: "/character/design.webp",
+  },
+  {
     key: "pm",
     labelKey: "pm.title",
     color: "bg-violet-200",
@@ -113,9 +119,18 @@ export const projects: Project[] = [
     links: [
       { type: "GitHub", url: "https://github.com/sunny2001522/Hotel-booking" },
       { type: "Vercel", url: "https://iceverse-hotel-booking.vercel.app/" },
-    
     ],
-    skills: ["React", "TailwindCSS", "MongoDB", "Restful API", "Figma", "Git", "Photoshop", "Illustrator", "UI/UX"],
+    skills: [
+      "React",
+      "TailwindCSS",
+      "MongoDB",
+      "Restful API",
+      "Figma",
+      "Git",
+      "Photoshop",
+      "Illustrator",
+      "UI/UX",
+    ],
   },
   {
     id: "portfolio",
@@ -127,7 +142,19 @@ export const projects: Project[] = [
       { type: "GitHub", url: "https://github.com/sunny2001522/Portfolio" },
       { type: "Vercel", url: "https://exuan-website-dev.vercel.app/zh" },
     ],
-    skills: ["Next.js", "TailwindCSS", "GSAP", "i18n", "Git", "Figma", "Swiper", "Spline", "Photoshop", "Illustrator", "UI/UX"],
+    skills: [
+      "Next.js",
+      "TailwindCSS",
+      "GSAP",
+      "i18n",
+      "Git",
+      "Figma",
+      "Swiper",
+      "Spline",
+      "Photoshop",
+      "Illustrator",
+      "UI/UX",
+    ],
   },
   {
     id: "metro-app",
@@ -136,6 +163,131 @@ export const projects: Project[] = [
     category: "web",
     links: [],
     skills: ["Figma", "Photoshop", "Illustrator", "UI/UX"],
+  },
+  {
+    id: "ai-customer-service",
+    year: "2026",
+    thumbnail: "/web/lp.png",
+    category: "web",
+    links: [],
+    skills: [
+      "React",
+      "Next.js",
+      "TailwindCSS",
+      "Gemini",
+      "Figma",
+      "Jira",
+      "UI/UX",
+      "使用者故事",
+      "流程圖",
+    ],
+  },
+  {
+    id: "social-media-tool",
+    year: "2026",
+    thumbnail: "/web/post.png",
+    category: "web",
+    links: [],
+    skills: [
+      "React",
+      "Redux",
+      "TanStack",
+      "TailwindCSS",
+      "Notion",
+      "Figma",
+      "UI/UX",
+      "使用者故事",
+      "泳道圖",
+    ],
+  },
+  {
+    id: "ai-data-analysis",
+    year: "2025",
+    thumbnail: "/web/data.png",
+    category: "web",
+    links: [],
+    skills: [
+      "React",
+      "Next.js",
+      "TailwindCSS",
+      "Cursor",
+      "Figma",
+      "Jira",
+      "UI/UX",
+      "流程圖",
+    ],
+  },
+  {
+    id: "ai-co-writing",
+    year: "2025",
+    thumbnail: "/web/genink.png",
+    category: "web",
+    links: [],
+    skills: [
+      "React",
+      "TailwindCSS",
+      "Gemini",
+      "Figma",
+      "Notion",
+      "UI/UX",
+      "使用者故事",
+    ],
+  },
+  {
+    id: "ai-video-content-generation",
+    year: "2025",
+    thumbnail: "/web/dreamake.png",
+    category: "web",
+    links: [],
+    skills: [
+      "Next.js",
+      "TailwindCSS",
+      "Figma",
+      "Jira",
+      "UI/UX",
+      "流程圖",
+      "易用性測試",
+    ],
+  },
+  {
+    id: "book",
+    year: "2024",
+    thumbnail: "/design/book.webp",
+    category: "design",
+    links: [],
+    skills: ["Photoshop", "Illustrator", "UI/UX"],
+  },
+  {
+    id: "iceverse",
+    year: "2024",
+    thumbnail: "/design/iceverse.webp",
+    category: "design",
+    links: [],
+    skills: ["Photoshop", "Illustrator", "UI/UX"],
+  },
+  {
+    id: "iceverseProduct",
+    year: "2024",
+    thumbnail: "/design/iceverseProduct.webp",
+    category: "design",
+    links: [],
+    skills: ["Photoshop", "Illustrator", "UI/UX"],
+  },
+  {
+    id: "actor",
+    year: "2024",
+    thumbnail: "/design/actor.webp",
+    category: "design",
+    links: [],
+    skills: ["Photoshop", "Illustrator", "UI/UX"],
+  },
+  {
+    id: "taipei",
+    year: "2024",
+    thumbnail: "/design/taipei.webp",
+    category: "design",
+    links: [],
+    skills: ["Photoshop", "Illustrator", "UI/UX"],
   },
 ];
 
@@ -147,10 +299,16 @@ export const resume: Resume = {
 };
 
 // 動態路由頁面名稱清單
-export const rolePages: { fe: string[]; pm: string[]; ui: string[] } = {
+export const rolePages: {
+  fe: string[];
+  pm: string[];
+  ui: string[];
+  design: string[];
+} = {
   fe: ["introduction", "contact", "project"],
   pm: ["introduction", "contact", "project"],
   ui: ["introduction", "contact", "project"],
+  design: ["introduction", "contact", "project"],
 };
 
 export const getRoleData = (role: string): RoleData | undefined => {
@@ -158,13 +316,47 @@ export const getRoleData = (role: string): RoleData | undefined => {
   const filteredProjects = projects.filter((p) => {
     // 根據角色篩選技能
     if (!p.skills) return false;
+
+    // 平面設計專案特別處理
+    if (roleKey === "design") {
+      return (
+        p.category === "design" ||
+        p.skills.some((skill) => ["Photoshop", "Illustrator"].includes(skill))
+      );
+    }
+
     // 技能陣列中有該角色相關技能就顯示
     return p.skills.some((skill) => {
       if (roleKey === "fe") {
-        return ["React", "Next.js", "Redux", "TanStack", "Shadcn", "GSAP", "Lottie", "Swiper", "TailwindCSS", "i18n", "Git", "MongoDB", "Restful API", "Supabase", "Playwright"].includes(skill);
+        return [
+          "React",
+          "Next.js",
+          "Redux",
+          "TanStack",
+          "Shadcn",
+          "GSAP",
+          "Lottie",
+          "Swiper",
+          "TailwindCSS",
+          "i18n",
+          "Git",
+          "MongoDB",
+          "Restful API",
+          "Supabase",
+          "Playwright",
+        ].includes(skill);
       }
       if (roleKey === "ui") {
-        return ["Figma", "Photoshop", "Illustrator", "UI/UX", "GSAP", "Lottie", "Spline", "Swiper"].includes(skill);
+        return [
+          "Figma",
+          "Photoshop",
+          "Illustrator",
+          "UI/UX",
+          "GSAP",
+          "Lottie",
+          "Spline",
+          "Swiper",
+        ].includes(skill);
       }
       if (roleKey === "pm") {
         return ["Jira", "Notion", "Swimlane", "Confluence"].includes(skill);
