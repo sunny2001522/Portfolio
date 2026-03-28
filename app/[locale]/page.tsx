@@ -11,9 +11,9 @@ export default async function HomePage({
 
   return (
     <div className="flex flex-col items-center gap-6 mt-10">
-      <h2 className="absolute z-0 text-[96px] left-2 ">Buy a</h2>
-      <h2 className="absolute z-0 text-[96px] right-2 "> Sonia?</h2>
-      <div className=" w-full relative z-0 pt-[64px]">
+      <h2 className="absolute z-0 text-[40px] md:text-[96px] left-2 top-20 md:top-auto font-bold text-gray-200">Buy a</h2>
+      <h2 className="absolute z-0 text-[40px] md:text-[96px] right-2 bottom-20 md:bottom-auto md:top-auto font-bold text-gray-200">Sonia?</h2>
+      <div className="w-full relative z-0 pt-[64px]">
         <RoleSelect role="fe" />
       </div>
     </div>

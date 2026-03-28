@@ -201,13 +201,37 @@
       }
     },
     "ai-customer-service": {
-      "title": "AI 客服自動化系統",
+      "title": "Investment KOL Landing Page",
       "overview": {
-        "goal": "為解決社群小編長期重複回覆用戶問題，設計 AI 客服自動化系統，透過語意理解與知識庫回應機制自動處理高頻提問，大幅減少人工複製貼上工作，釋放營運人力並提升回覆效率與服務品質。"
+        "goal": "Build a high-conversion landing page for investment KOL, integrating company SSO, cart optimization, and YouTube live streaming to enable one-stop purchase experience."
       },
-      "fe": { "outcomes": { "items": [] } },
-      "pm": { "outcomes": { "items": [] } },
-      "ui": { "outcomes": { "items": [] } },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Integrated company SSO system to streamline user registration and purchase flow",
+            "Optimized shopping cart experience to reduce friction, boosting conversion rate by 159% (22% → 57%)",
+            "Embedded YouTube live streaming for in-page one-stop course sales"
+          ]
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Led cart optimization strategy, increasing conversion rate from 22% to 57% by reducing purchase friction.",
+            "Planned SEO optimization strategy, successfully ranking core keywords at #1 in search results.",
+            "Integrated YouTube live streaming with purchase flow to create a one-stop sales experience."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Designed high-conversion CTA layouts to guide users through purchase",
+            "Optimized cart interface to reduce drop-off points and improve checkout completion",
+            "Integrated live streaming with purchase interface for immersive sales experience"
+          ]
+        }
+      },
       "design": { "outcomes": { "items": [] } }
     },
     "social-media-tool": {

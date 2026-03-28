@@ -71,6 +71,10 @@ export const skills: Skills = {
     { name: "Gemini", icon: "/skills/gemini.webp" },
     { name: "Cursor", icon: "/skills/cursor.webp" },
   ],
+  Deploy: [
+    { name: "Vercel", icon: "/skills/next.webp" },
+    { name: "Render", icon: "/skills/docker.webp" },
+  ],
 };
 
 export const projects: Project[] = [
@@ -160,7 +164,7 @@ export const projects: Project[] = [
     id: "metro-app",
     year: "2025",
     thumbnail: "/web/metro-app.webp",
-    category: "web",
+    category: "design",
     links: [],
     skills: ["Figma", "Photoshop", "Illustrator", "UI/UX"],
   },
@@ -169,7 +173,9 @@ export const projects: Project[] = [
     year: "2026",
     thumbnail: "/web/lp.png",
     category: "web",
-    links: [],
+    links: [
+      { type: "Vercel", url: "https://imoney889.cmoney.tw/" },
+    ],
     skills: [
       "React",
       "Next.js",
@@ -180,6 +186,7 @@ export const projects: Project[] = [
       "UI/UX",
       "使用者故事",
       "流程圖",
+      "Vercel",
     ],
   },
   {
@@ -238,7 +245,9 @@ export const projects: Project[] = [
     year: "2025",
     thumbnail: "/web/dreamake.png",
     category: "web",
-    links: [],
+    links: [
+      { type: "Vercel", url: "https://www.dreamake.ai/" },
+    ],
     skills: [
       "Next.js",
       "TailwindCSS",
@@ -247,6 +256,7 @@ export const projects: Project[] = [
       "UI/UX",
       "流程圖",
       "易用性測試",
+      "Render",
     ],
   },
   {
@@ -347,6 +357,8 @@ export const getRoleData = (role: string): RoleData | undefined => {
         ].includes(skill);
       }
       if (roleKey === "ui") {
+        // 排除純設計類專案（category === "design"）
+        if (p.category === "design") return false;
         return [
           "Figma",
           "Photoshop",

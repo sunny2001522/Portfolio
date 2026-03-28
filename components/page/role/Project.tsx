@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { FaGithub } from "react-icons/fa";
@@ -35,14 +35,14 @@ export default function Project({
 }: ProjectProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const currentIndexRef = useRef(0);
-  const prevIndexRef = useRef(0);
   const t = useTranslations("projects");
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const descriptionRef = useRef<HTMLDivElement>(null);
 
   const activeProject = projects[activeIndex];
+
+  // 預載下一張圖片，讓切換更順暢
+  const nextProject = projects[activeIndex + 1];
 
   // 技能分類篩選邏輯
   const filteredCategories = Object.entries(categorizedSkills).filter(
@@ -108,48 +108,15 @@ export default function Project({
     { scope: containerRef, dependencies: [projects] },
   );
 
-  // 內容切換動畫
-  useGSAP(
-    () => {
-      // 初始載入動畫
-      if (prevIndexRef.current === activeIndex && activeIndex === 0) {
-        gsap.from([contentRef.current, descriptionRef.current], {
-          opacity: 0,
-          y: 20,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "power2.out",
-        });
-        return;
-      }
-
-      const direction = activeIndex > prevIndexRef.current ? 1 : -1;
-      const tl = gsap.timeline();
-
-      // 直接進場動畫，減少空白時間
-      tl.fromTo(
-        [contentRef.current, descriptionRef.current],
-        { opacity: 0, y: 15 * direction },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power2.out",
-          clearProps: "all",
-        },
-      );
-
-      prevIndexRef.current = activeIndex;
-    },
-    { dependencies: [activeIndex], scope: containerRef },
-  );
+  // 移除切換動畫，避免白畫面問題
+  // 內容直接切換，不做任何動畫
 
   if (!activeProject) return null;
 
   return (
     <div
       ref={containerRef}
-      className="w-full h-screen overflow-hidden bg-transparent relative flex items-center"
+      className="w-full h-screen overflow-hidden bg-white relative flex items-center"
     >
       {/* 背景裝飾 */}
       <div className="bg-text absolute top-10 left-10 z-0 opacity-10 pointer-events-none select-none">
@@ -158,14 +125,13 @@ export default function Project({
         </h2>
       </div>
 
-      <div className="w-full h-full md:grid md:grid-cols-12 gap-12 p-10 relative z-10 pt-24 md:pt-32">
+      <div className="w-full h-full md:grid md:grid-cols-12 gap-12 p-10 relative z-10 pt-16 md:pt-20">
         {/* 左側：技能欄位 */}
-        <div className="hidden md:flex md:col-span-4 flex-col gap-4 h-full pr-4 overflow-visible relative z-20">
-         
+        <div className="hidden md:flex md:col-span-5 flex-col gap-4 h-full pr-4 overflow-visible relative z-20">
           <div className="space-y-4">
             {filteredCategories.map(([category, skills]) => (
               <div key={category} className="space-y-2">
-                <div className="text-[9px] font-bold text-blue-500/60 uppercase border-b border-blue-100 pb-1">
+                <div className="text-[9px] font-bold text-gray-600 uppercase border-b border-gray-200 pb-1">
                   {category}
                 </div>
                 <div className="flex flex-wrap gap-1.5">
@@ -176,8 +142,8 @@ export default function Project({
                         key={skill.name}
                         className={`flex items-center gap-1.5 px-2 py-1 rounded-lg transition-all duration-500 ${
                           isUsed
-                            ? "opacity-100 bg-white/80 shadow-sm ring-1 ring-blue-200 scale-105"
-                            : "opacity-10 grayscale-[80%]"
+                            ? "opacity-100 bg-white/80 shadow-sm ring-1 ring-gray-300 scale-105"
+                            : "opacity-40 grayscale-[50%]"
                         }`}
                       >
                         <div className="flex-shrink-0">
@@ -201,13 +167,10 @@ export default function Project({
           </div>
         </div>
 
-        {/* 右側：作品展示與說明 (佔滿剩餘寬度) */}
-        <div className="col-span-12 md:col-span-8 flex flex-col gap-6 h-full">
+        {/* 右側：作品展示與說明 - 限制最大寬度避免在大螢幕上過寬 */}
+        <div className="col-span-12 md:col-span-7 flex flex-col gap-6 h-full">
           {/* 作品媒體視窗 - 16:9 Aspect Ratio */}
-          <div
-            ref={contentRef}
-            className="project-content w-full aspect-video max-h-[55vh] bg-white/40 backdrop-blur-xl rounded-2xl border-2 border-white/50 shadow-2xl overflow-hidden relative group flex-shrink-0"
-          >
+          <div className="project-content w-full aspect-video max-h-[55vh] bg-white/40 backdrop-blur-xl rounded-2xl border-2 border-white/50 shadow-2xl overflow-hidden relative group flex-shrink-0">
             <div className="absolute top-0 left-0 w-full h-7 bg-white/80 flex items-center px-4 gap-1.5 z-20 border-b border-gray-100">
               <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
               <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
@@ -235,21 +198,29 @@ export default function Project({
                     src={activeProject.thumbnail}
                     alt={activeProject.id}
                     fill
+                    priority
                     className="object-cover"
                   />
+                  {/* 預載下一張圖片 */}
+                  {nextProject && (
+                    <Image
+                      src={nextProject.thumbnail}
+                      alt=""
+                      fill
+                      className="opacity-0 pointer-events-none"
+                      aria-hidden="true"
+                    />
+                  )}
                 </div>
               )}
             </div>
           </div>
 
           {/* 作品說明文字 - 佔滿剩餘高度 */}
-          <div
-            ref={descriptionRef}
-            className="flex-1 flex flex-col gap-4 overflow-hidden"
-          >
+          <div className="flex-1 flex flex-col gap-4 overflow-hidden">
             <div className="flex justify-between items-end">
               <div>
-                <div className="text-[10px] font-bold text-blue-500 mb-1 uppercase tracking-widest">
+                <div className="text-[10px] font-bold text-gray-500 mb-1 uppercase tracking-widest">
                   {activeProject.year} Project
                 </div>
                 <h3 className="text-4xl font-bold text-gray-800 tracking-tighter">
@@ -295,7 +266,10 @@ export default function Project({
                         key={i}
                         className="text-[11px] text-gray-500 flex items-start gap-2"
                       >
-                        <PiStarFourFill className="text-gray-400 flex-shrink-0 mt-0.5" size={12} />
+                        <PiStarFourFill
+                          className="text-gray-400 flex-shrink-0 mt-0.5"
+                          size={12}
+                        />
                         {item}
                       </li>
                     ))}

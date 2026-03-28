@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, Suspense } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -10,7 +11,12 @@ import Introduction from "@/components/page/role/Introduction";
 import Project from "@/components/page/role/Project";
 import ProjectListMobile from "@/components/page/role/ProjectListMobile";
 import { RoleData } from "@/lib/types";
-import RoleSelect from "../ui/RoleSelect";
+
+// 延遲載入 RoleSelect 提升效能
+const RoleSelect = dynamic(() => import("../ui/RoleSelect"), {
+  loading: () => <div className="h-screen flex items-center justify-center text-gray-400">Loading...</div>,
+  ssr: false,
+});
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -180,13 +186,13 @@ const RolePageClient: React.FC<RolePageClientProps> = ({ data, role }) => {
       </div>
       <section
         ref={mainRef}
-        className="relative scroll-container z-10 text-4xl md:text-6xl font-bold pt-[64px] overflow-x-hidden max-w-[100vw]"
+        className="relative scroll-container z-10 text-4xl md:text-6xl font-bold pt-[64px] overflow-x-hidden max-w-[100vw] bg-white"
       >
         <div id="section1" className="scroll-section">
           <Introduction role={role} />
         </div>
 
-        <div id="section2" className="scroll-section relative w-full">
+        <div id="section2" className="scroll-section relative w-full bg-white">
           {/* Desktop Version */}
           <div className="hidden md:block w-full">
             <Project
