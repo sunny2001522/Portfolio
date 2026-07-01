@@ -5,6 +5,7 @@ import WebCarousel from "../page/role/WebCarousel";
 import { Button } from "./button";
 import Link from "next/link";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+import { trackLinkClick } from "@/lib/analytics";
 
 const slideData = [
   {
@@ -219,7 +220,15 @@ const Gallery = ({ role }: { role: string }) => {
 
       {/* 中間主角圖片與按鈕 */}
       <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-4">
-        <Link href={`/${locale}/${slideData[realActiveIndex].title}`}>
+        <Link
+          href={`/${locale}/${slideData[realActiveIndex].title}`}
+          onClick={() =>
+            trackLinkClick({
+              link_type: "role",
+              role: slideData[realActiveIndex].title,
+            })
+          }
+        >
           <img
             key={`img-${realActiveIndex}`}
             src={slideData[realActiveIndex].character}
@@ -228,7 +237,15 @@ const Gallery = ({ role }: { role: string }) => {
             draggable="false"
           />
         </Link>
-        <Link href={`/${locale}/${slideData[realActiveIndex].title}`}>
+        <Link
+          href={`/${locale}/${slideData[realActiveIndex].title}`}
+          onClick={() =>
+            trackLinkClick({
+              link_type: "role",
+              role: slideData[realActiveIndex].title,
+            })
+          }
+        >
           <Button className="shadow-lg hover:scale-105 transition-transform font-bold text-lg px-8 py-6 rounded-full">
             選擇角色
           </Button>

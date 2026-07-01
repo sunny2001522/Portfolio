@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { PiStarFourFill } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
 import { FaFileDownload } from "react-icons/fa";
+import { trackLinkClick } from "@/lib/analytics";
 
 export default function Introduction({ role }: { role: string }) {
   const t = useTranslations(role);
@@ -241,7 +242,13 @@ export default function Introduction({ role }: { role: string }) {
               asChild
               className="bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
             >
-              <Link href={resume} download>
+              <Link
+                href={resume}
+                download
+                onClick={() =>
+                  trackLinkClick({ link_type: "resume", role, url: resume })
+                }
+              >
                 <FaFileDownload className="mr-2" />
                 {tContact("resume")}
               </Link>

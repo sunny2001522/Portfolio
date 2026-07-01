@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { FaGithub, FaApple, FaGooglePlay } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
+import { trackLinkClick } from "@/lib/analytics";
 import type { Project as GlobalProject } from "@/lib/types";
 
 type Project = GlobalProject;
@@ -123,6 +124,14 @@ export default function ProjectListMobile({
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      trackLinkClick({
+                        link_type: link.type,
+                        project_id: project.id,
+                        role,
+                        url: link.url,
+                      })
+                    }
                     className="flex items-center gap-2 text-lg p-2 bg-gray-800 text-white rounded-full hover:bg-gray-500 transition-colors"
                   >
                     {link.type === "GitHub" && <FaGithub />}

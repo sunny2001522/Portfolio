@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { trackLinkClick, trackProjectView, trackProjectDwell } from "@/lib/analytics";
 import { FaGithub, FaApple, FaGooglePlay } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
 import { PiStarFourFill } from "react-icons/pi";
@@ -42,6 +43,33 @@ export default function Project({
   const activeProject = projects[activeIndex];
   // 大螢幕（此元件僅在 md+ 顯示）只要該作品有影片就播放，不再限制 category。
   const activeVideo = activeProject?.video || null;
+
+  // GA：追蹤使用者停在哪個作品（切換時送 view + 上一個作品的停留秒數）
+  const dwellRef = useRef({ index: 0, since: 0 });
+  useEffect(() => {
+    if (dwellRef.current.since === 0) dwellRef.current.since = Date.now();
+    const prev = dwellRef.current;
+    if (prev.index !== activeIndex) {
+      const prevProject = projects[prev.index];
+      if (prevProject) {
+        trackProjectDwell({
+          project_id: prevProject.id,
+          role,
+          seconds: Math.round((Date.now() - prev.since) / 1000),
+        });
+      }
+      dwellRef.current = { index: activeIndex, since: Date.now() };
+    }
+    const cur = projects[activeIndex];
+    if (cur) {
+      trackProjectView({
+        project_id: cur.id,
+        project_title: t(`${cur.id}.title`),
+        role,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIndex]);
 
   // 技能分類篩選邏輯
   const filteredCategories = Object.entries(categorizedSkills).filter(
@@ -292,6 +320,14 @@ export default function Project({
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      trackLinkClick({
+                        link_type: link.type,
+                        project_id: activeProject.id,
+                        role,
+                        url: link.url,
+                      })
+                    }
                     className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full text-[10px] font-bold hover:bg-black transition-all"
                   >
                     {link.type === "GitHub" && <FaGithub size={14} />}
