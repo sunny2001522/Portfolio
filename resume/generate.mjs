@@ -30,10 +30,43 @@ const T = {
   en: { summary: "Summary", skills: "Skills", experience: "Experience", projects: "Selected Projects", education: "Education", links: "Links" },
 };
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const t = (v, l) => (v && typeof v === "object" ? v[l] : v);
+const t = (v, l) => (v && typeof v === "object" && !Array.isArray(v) ? v[l] : v);
+const sep = (l) => (l === "en" ? ": " : "：");
+const validUrl = (u) => u && !String(u).startsWith("TODO");
 
 const PORTFOLIO_URL = "https://exuan-dev.vercel.app";
 const QR = await QRCode.toDataURL(PORTFOLIO_URL, { margin: 1, width: 240, errorCorrectionLevel: "M" });
+
+// ---------- bullet helpers (support nested sub + per-item clickable name) ----------
+function bulletLi(b, l, online) {
+  const nm = b.name ? esc(t(b.name, l)) : "";
+  const lead = nm ? (online && validUrl(b.url) ? `<a href="${esc(b.url)}"><b>${nm}</b></a>` : `<b>${nm}</b>`) : "";
+  const text = b.zh || b.en ? esc(t(b, l) || "") : "";
+  const body = lead && text ? `${lead}${sep(l)}${text}` : lead || text;
+  const subs = b.sub ? `<ul>${b.sub.map((s) => bulletLi(s, l, online)).join("")}</ul>` : "";
+  return `<li>${body}${subs}</li>`;
+}
+function mdBullets(bullets, l, indent) {
+  const lines = [];
+  for (const b of bullets) {
+    const nm = b.name ? t(b.name, l) : "";
+    const lead = nm ? (validUrl(b.url) ? `[**${nm}**](${b.url})` : `**${nm}**`) : "";
+    const text = b.zh || b.en ? t(b, l) || "" : "";
+    lines.push(`${indent}${lead && text ? lead + sep(l) + text : lead || text}`);
+    if (b.sub) lines.push(...mdBullets(b.sub, l, "  " + indent));
+  }
+  return lines;
+}
+function flatBullets(bullets, l) {
+  const out = [];
+  for (const b of bullets) {
+    const nm = b.name ? t(b.name, l) : "";
+    const text = b.zh || b.en ? t(b, l) || "" : "";
+    out.push(nm && text ? `${nm}${sep(l)}${text}` : nm || text);
+    if (b.sub) out.push(...flatBullets(b.sub, l).map((s) => `  - ${s}`));
+  }
+  return out;
+}
 
 // ---------- HTML (ATS-friendly single column; online=clickable, offline=QR) ----------
 function html(l, mode) {
@@ -45,21 +78,23 @@ function html(l, mode) {
   const links = online
     ? linkEntries.map(([k, u]) => `<a href="${esc(u)}">${esc(k)}</a>`).join("  ·  ")
     : linkEntries.map(([k, u]) => `${esc(k)}: ${esc(u)}`).join("  ·  ");
-  const skills = Object.entries(M.skills).map(([cat, v]) =>
-    `<p class="skill"><span class="cat">${esc(cat)}:</span> ${esc((t(v, l) || []).join(", "))}</p>`).join("");
+  const skills = M.skills.map((s) =>
+    `<p class="skill"><span class="cat">${esc(t(s.cat, l))}:</span> ${esc((t(s.items, l) || []).join(", "))}</p>`).join("");
   const exp = M.experience.map((e) => `
     <div class="item">
       <div class="row"><span class="b">${esc(t(e.role, l))} — ${esc(t(e.company, l))}</span><span class="meta">${esc(e.period)}</span></div>
-      <ul>${(t(e.bullets, l) || []).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+      ${e.subtitle ? `<p class="subtitle">${esc(t(e.subtitle, l))}</p>` : ""}
+      <ul>${(e.bullets || []).map((b) => bulletLi(b, l, online)).join("")}</ul>
     </div>`).join("");
   const proj = M.projects.map((pr) => {
-    const first = (pr.links || [])[0];
+    const first = (pr.links || []).find((x) => validUrl(x.url));
     const name = online && first
       ? `<a href="${esc(first.url)}">${esc(t(pr.name, l))}</a>`
       : esc(t(pr.name, l));
+    const shown = (pr.links || []).filter((x) => validUrl(x.url));
     const lk = online
-      ? (pr.links || []).map((x) => `<a href="${esc(x.url)}">${esc(x.label)}</a>`).join("  ·  ")
-      : (pr.links || []).map((x) => `${esc(x.label)}: ${esc(x.url)}`).join("  ·  ");
+      ? shown.map((x) => `<a href="${esc(x.url)}">${esc(x.label)}</a>`).join("  ·  ")
+      : shown.map((x) => `${esc(x.label)}: ${esc(x.url)}`).join("  ·  ");
     return `<div class="item">
       <div class="row"><span class="b">${name}</span><span class="meta">${esc(pr.period)}</span></div>
       <ul>${(t(pr.bullets, l) || []).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
@@ -90,8 +125,10 @@ function html(l, mode) {
   .item { margin-bottom: 9px; }
   .row { display: flex; justify-content: space-between; gap: 12px; }
   .b { font-weight: 600; }
+  .subtitle { color: #555; font-size: 9.5pt; font-style: italic; margin: 1px 0 2px; }
   .meta { color: #555; white-space: nowrap; font-size: 9.5pt; }
   ul { margin: 3px 0 0; padding-left: 18px; }
+  ul ul { margin: 2px 0 2px; }
   li { margin: 2px 0; }
   .skill { margin: 2px 0; } .cat { font-weight: 600; }
   .links { color: #444; font-size: 9pt; margin: 2px 0 0; }
@@ -121,18 +158,19 @@ function md(l) {
   out.push(Object.entries(p.links).filter(([, u]) => u).map(([k, u]) => `${k}: ${u}`).join(" · "), "");
   out.push(`## ${tr.summary}`, t(p.summary, l), "");
   out.push(`## ${tr.skills}`);
-  for (const [cat, v] of Object.entries(M.skills)) out.push(`- **${cat}:** ${(t(v, l) || []).join(", ")}`);
+  for (const s of M.skills) out.push(`- **${t(s.cat, l)}:** ${(t(s.items, l) || []).join(", ")}`);
   out.push("", `## ${tr.experience}`);
   for (const e of M.experience) {
     out.push(`### ${t(e.role, l)} — ${t(e.company, l)} _(${e.period})_`);
-    for (const b of t(e.bullets, l) || []) out.push(`- ${b}`);
+    if (e.subtitle) out.push(`_${t(e.subtitle, l)}_`);
+    out.push(...mdBullets(e.bullets || [], l, "- "));
     out.push("");
   }
   out.push(`## ${tr.projects}`);
   for (const pr of M.projects) {
     out.push(`### ${t(pr.name, l)} _(${pr.period})_`);
     for (const b of t(pr.bullets, l) || []) out.push(`- ${b}`);
-    const lk = (pr.links || []).map((x) => `[${x.label}](${x.url})`).join(" · ");
+    const lk = (pr.links || []).filter((x) => validUrl(x.url)).map((x) => `[${x.label}](${x.url})`).join(" · ");
     if (lk) out.push(lk);
     out.push("");
   }
@@ -146,10 +184,10 @@ function platforms() {
   const p = M.profile;
   const expBlocks = (l, bullet) => M.experience.flatMap((e) => [
     `### ${t(e.company, l)} · ${t(e.role, l)}（${e.period}）`,
-    ...(t(e.bullets, l) || []).map((b) => `${bullet}${b}`), "",
+    ...flatBullets(e.bullets || [], l).map((b) => `${bullet}${b}`), "",
   ]);
   const projLines = (l) => M.projects.map((pr) => {
-    const lk = (pr.links || []).map((x) => x.url).join(", ");
+    const lk = (pr.links || []).filter((x) => validUrl(x.url)).map((x) => x.url).join(", ");
     return `- ${t(pr.name, l)}${lk ? " — " + lk : ""}`;
   });
   const files = {};
@@ -163,7 +201,7 @@ function platforms() {
   files["104.md"] = [
     "# 104", "", "## 求職目標 / 應徵職務", t(p.targetRole, "zh"), "",
     "## 個人簡介（自傳）", t(p.summary, "zh"), "",
-    "## 專長技能", ...Object.entries(M.skills).map(([c, v]) => `${c}：${(t(v, "zh") || []).join("、")}`), "",
+    "## 專長技能", ...M.skills.map((s) => `${t(s.cat, "zh")}：${(t(s.items, "zh") || []).join("、")}`), "",
     "## 工作經歷（每家公司分開填）", ...expBlocks("zh", "・"),
     "## 作品連結", `作品集：${p.links.portfolio}`, `GitHub：${p.links.github}`,
   ].join("\n") + "\n";
@@ -230,15 +268,15 @@ if (chrome) {
   for (const l of LANGS) {
     for (const mode of MODES) {
       const label = mode === "online" ? "Online" : "Offline";
-      const pdf = join(OUT, `SunnyChen_Resume${TAG}_${L[l]}_${label}.pdf`);
+      const pdf = join(OUT, `SoniaChen_Resume${TAG}_${L[l]}_${label}.pdf`);
       try { htmlToPdf(chrome, join(OUT, `resume${TAG}.${l}.${mode}.html`), pdf); pdfs.push(pdf); }
       catch (e) { console.error(`PDF 失敗 (${l}/${mode}):`, e.message); }
     }
   }
   // 網站「下載履歷」用線上版（可點擊）；中英各一份
   if (!TAG) {
-    try { copyFileSync(join(OUT, `SunnyChen_Resume_Zh_Online.pdf`), join(PUB, `SoniaResumeZh.pdf`)); } catch (e) { console.error("copy zh->public 失敗:", e.message); }
-    try { copyFileSync(join(OUT, `SunnyChen_Resume_En_Online.pdf`), join(PUB, `SoniaResumeEn.pdf`)); } catch (e) { console.error("copy en->public 失敗:", e.message); }
+    try { copyFileSync(join(OUT, `SoniaChen_Resume_Zh_Online.pdf`), join(PUB, `SoniaResumeZh.pdf`)); } catch (e) { console.error("copy zh->public 失敗:", e.message); }
+    try { copyFileSync(join(OUT, `SoniaChen_Resume_En_Online.pdf`), join(PUB, `SoniaResumeEn.pdf`)); } catch (e) { console.error("copy en->public 失敗:", e.message); }
   }
 } else {
   console.error("⚠️  找不到 Chrome/Chromium，略過 PDF。已產出 HTML。");
