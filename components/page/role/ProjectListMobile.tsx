@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaApple, FaGooglePlay } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
 import type { Project as GlobalProject } from "@/lib/types";
 
@@ -56,14 +56,41 @@ export default function ProjectListMobile({
           </div>
 
           {/* Media */}
-          {project.video && project.category !== "web" ? (
+          {project.category === "app" ? (
+            <div className="w-full aspect-video flex items-end justify-center gap-2 px-4 pb-2 bg-gradient-to-br from-gray-100 to-gray-200">
+              {(project.images && project.images.length
+                ? project.images
+                : [project.thumbnail]
+              )
+                .slice(0, 3)
+                .map((src, i) => (
+                  <div
+                    key={i}
+                    className={`relative aspect-[9/19] rounded-xl border-4 border-gray-900 bg-gray-900 shadow-xl overflow-hidden ${
+                      i === 1 ? "h-[94%] z-10" : "h-[82%]"
+                    }`}
+                  >
+                    <Image
+                      src={src}
+                      alt={project.id}
+                      fill
+                      sizes="30vw"
+                      quality={75}
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+            </div>
+          ) : project.video && project.category !== "web" ? (
             <video
               src={project.video}
+              poster={project.thumbnail}
               className="w-full h-auto aspect-video object-cover"
               autoPlay
               loop
               muted
               playsInline
+              preload="metadata"
             />
           ) : (
             <Image
@@ -71,6 +98,9 @@ export default function ProjectListMobile({
               alt={project.id}
               width={800}
               height={450}
+              quality={75}
+              sizes="(max-width: 640px) 100vw, 640px"
+              loading="lazy"
               className="w-full h-auto aspect-video object-cover"
             />
           )}
@@ -96,14 +126,16 @@ export default function ProjectListMobile({
                     className="flex items-center gap-2 text-lg p-2 bg-gray-800 text-white rounded-full hover:bg-gray-500 transition-colors"
                   >
                     {link.type === "GitHub" && <FaGithub />}
-                    {link.type === "Vercel" && <MdOutlineWebAsset />}
+                    {link.type === "Web" && <MdOutlineWebAsset />}
+                    {link.type === "App Store" && <FaApple />}
+                    {link.type === "Google Play" && <FaGooglePlay />}
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Skills */}
-            <div className="flex flex-wrap gap-2">
+            {/* Skills（PM 頁不顯示） */}
+            <div className={`flex-wrap gap-2 ${role === "pm" ? "hidden" : "flex"}`}>
               {Object.values(categorizedSkills)
                 .flat()
                 .filter(

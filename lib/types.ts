@@ -1,5 +1,5 @@
 export interface ProjectLink {
-  type: "GitHub" | "Vercel";
+  type: "GitHub" | "Web" | "App Store" | "Google Play";
   url: string;
 }
 
@@ -8,6 +8,8 @@ export interface Project {
   year: string;
   thumbnail: string;
   video?: string;
+  // app 類作品用：三個手機畫面的截圖（依序排列）
+  images?: string[];
   category: string;
   links: ProjectLink[];
   skills?: string[] | undefined;

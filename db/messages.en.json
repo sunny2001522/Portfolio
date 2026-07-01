@@ -7,10 +7,158 @@
     "learnMore": "Learn More"
   },
   "projects": {
+    "birthday-calendar": {
+      "title": "Birthday-Deals Calendar Connector",
+      "overview": {
+        "goal": "Connect a Google Calendar and one-click import the next 14 days of Taipei events plus 214 birthday deals across Taiwan (free eats, BOGO), auto-deduplicated, with reminders on the birthday day / week / month.",
+        "user": "Deal-hunters and students who want birthday perks without checking each brand."
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Integrated Google OAuth and Calendar API to read, merge, dedupe, and write back to the user's calendar.",
+            "Pulled events from Taipei open data and merged with a 214-entry birthday-deals database.",
+            "Built a one-click-deployable MVP with Next.js."
+          ]
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Defined the core flow (connect to fetch to dedupe to write-back to remind) to validate demand fast.",
+            "Built a 214-brand birthday-deals database; verified/updated 126 fields for accuracy.",
+            "Designed day/week/month reminder tiers to maximize usage."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Surfaced deals via calendar and map views to lower the lookup barrier.",
+            "Streamlined the authorize-and-import flow to a few steps.",
+            "Clear reminder-time tiering for at-a-glance understanding."
+          ]
+        }
+      }
+    },
+    "warrant-landing-page": {
+      "title": "Warrant Landing Page",
+      "overview": {
+        "goal": "Independently shipped a warrant product landing page from 0 to 1 in a single day, owning the content and conversion strategy to unblock marketing's long-standing lack of ad creative.",
+        "user": "Retail investors drawn in by a limited-time campaign who want to sign up fast."
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Shipped the landing page from 0 to 1 in a single day, unblocking marketing's long-standing lack of ad creative.",
+            "Owned the content and conversion strategy solo, achieving a 55% conversion rate and driving 2,000 sign-ups.",
+            "Drove targeted keywords to #1 in search via SEO strategy—ranking even above the company's official product page."
+          ]
+        }
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Built and launched a responsive landing page within one day with a consistent desktop/mobile experience.",
+            "Optimized SEO structure and metadata to rank targeted keywords #1, above the company's official site.",
+            "Integrated directly with the company cart to shorten the purchase path, reaching a 55% conversion rate."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "With no design mockups, personally decided the page's information architecture and conversion flow.",
+            "Used strongly-guided CTA layouts to maximize add-to-cart conversion."
+          ]
+        }
+      }
+    },
+    "longterm-treasure-app": {
+      "title": "Longterm Treasure App",
+      "overview": {
+        "goal": "As the sole PM leading a 3-person team, built a long-term investing app from 0 to 1 and launched on iOS and Android; using a spec-driven (SDD) workflow with AI prototyping to go from requirements to engineering hand-off in 2 weeks.",
+        "user": "Long-term investors, often older, who need clear stock-picking signals."
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "As sole PM leading 2 engineers, built and launched on iOS/Android from 0 to 1, generating NT$3M in revenue and 1,000 weekly active users.",
+            "Introduced spec-driven development (SDD)—writing specs that AI turns into prototypes—compressing requirements-to-engineering hand-off to 2 weeks with no UI mockups.",
+            "Codified this AI-driven workflow into a company-wide AI development SOP, improving cross-team delivery speed."
+          ]
+        }
+      }
+    },
+    "longterm-treasure-web": {
+      "title": "Longterm Treasure Web",
+      "overview": {
+        "goal": "Led the migration of the Longterm Treasure PC product to web, re-architecting to reduce error rates and improve load speed, and defining the post-launch success metrics.",
+        "user": "Investors who prefer desktop and want long-term stock screening on the web."
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Led requirement decomposition and scope definition for the PC-to-web migration, re-architecting flows to cut error rates and improve load speed.",
+            "Defined the post-launch north-star metrics and tracking plan (crash rate, LCP, task completion, retention) so the redesign's impact is measurable.",
+            "Coordinated design and engineering across teams to deliver a consistent cross-device experience on schedule."
+          ]
+        }
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Rebuilt the PC product with a responsive architecture, lowering cross-device error rates and improving page load speed.",
+            "Unified cross-device interactions and state management for a consistent, maintainable experience."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Redesigned the information architecture and user flows to significantly lower the operation barrier.",
+            "Established consistent visual and interaction guidelines to improve web usability."
+          ]
+        }
+      }
+    },
+    "simple-futures-web": {
+      "title": "Simple Futures Web",
+      "overview": {
+        "goal": "Led the web version of Lin En-Ru's \"Simple Futures\" TAIEX futures monitoring tool, integrating proprietary signals (Bull/Bear lines, strength spread, momentum, market thermometer) into a screen that reads trend at a glance.",
+        "user": "Futures investors who want to monitor TAIEX futures in the browser and quickly read direction and big-player flow."
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Defined the scope of the futures web tool, integrating Bull/Bear/reversal lines, strength spread, momentum, and the market thermometer into a single-page monitoring experience.",
+            "Planned multi-timeframe candles (6m/60m/daily) and real-time bull/bear light alerts, balancing information density with readability.",
+            "Coordinated design and engineering across teams to ship a consistent mobile and desktop experience on schedule."
+          ]
+        }
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Built a responsive mobile-and-desktop futures monitoring page, wiring real-time quotes with smooth updates.",
+            "Implemented candle rendering and multiple technical indicators with attention to performance and maintainability."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Visualized complex futures indicators as bull/bear lights and a market thermometer to lower the reading barrier.",
+            "Established visual and interaction guidelines for a dark monitoring UI, improving comfort during long sessions."
+          ]
+        }
+      }
+    },
     "gamified-weight-loss": {
       "title": "Gamified Weight-Loss Platform (Team Project)",
       "overview": {
-        "goal": "Transform the weight loss journey into a game, helping users build healthy habits through challenges, social interaction, and rewards."
+        "goal": "Transform the weight loss journey into a game, helping users build healthy habits through challenges, social interaction, and rewards.",
+        "user": "Busy 30-something office workers who need peer pressure and stakes to stay consistent."
       },
       "fe": {
         "outcomes": {
@@ -50,7 +198,8 @@
     "hotel-website": {
       "title": "Hotel Branding Website (Independent Project)",
       "overview": {
-        "goal": "To create a responsive official website that combines brand image with actual booking functionality, enhancing the hotel's digital marketing capabilities."
+        "goal": "To create a responsive official website that combines brand image with actual booking functionality, enhancing the hotel's digital marketing capabilities.",
+        "user": "Independent travelers comparing rooms and booking quickly online."
       },
       "fe": {
         "outcomes": {
@@ -79,7 +228,8 @@
     "portfolio": {
       "title": "Personal Portfolio Website (Interactive Immersive Experience)",
       "overview": {
-        "goal": "To create a personal portfolio that showcases technical skills and design sense, packaging my diverse talents into a blind box toy concept, and leaving a deep impression on recruiters through narrative visuals during their browsing experience."
+        "goal": "To create a personal portfolio that showcases technical skills and design sense, packaging my diverse talents into a blind box toy concept, and leaving a deep impression on recruiters through narrative visuals during their browsing experience.",
+        "user": "Recruiters and collaborators who want to grasp my cross-discipline skills in minutes."
       },
       "fe": {
         "outcomes": {
@@ -108,7 +258,8 @@
     "metro-app": {
       "title": "Taipei Metro App Redesign (Hackathon Project)",
       "overview": {
-        "goal": "Transform Taipei Metro daily commutes into interactive urban adventures and cultural explorations. Through AI-powered companionship, immersive navigation, and collectible card systems, every ride becomes an engaging, explorable, and memorable innovative experience."
+        "goal": "Transform Taipei Metro daily commutes into interactive urban adventures and cultural explorations. Through AI-powered companionship, immersive navigation, and collectible card systems, every ride becomes an engaging, explorable, and memorable innovative experience.",
+        "user": "Commuters who need clear transfers and fares, fast."
       },
       "ui": {
         "outcomes": {
@@ -128,7 +279,8 @@
     "book": {
       "title": "Book Binding Design",
       "overview": {
-        "goal": "Exploring the tactile and visual layers of the print medium, transforming the soul of text into touchable physical art."
+        "goal": "Exploring the tactile and visual layers of the print medium, transforming the soul of text into touchable physical art.",
+        "user": "Readers who love physical books and notice binding and layout."
       },
       "design": {
         "outcomes": {
@@ -143,7 +295,8 @@
     "iceverseProduct": {
       "title": "Iceverse Product Design",
       "overview": {
-        "goal": "Creating a series of peripheral products for the Iceverse brand, integrating the brand spirit into everyday objects."
+        "goal": "Creating a series of peripheral products for the Iceverse brand, integrating the brand spirit into everyday objects.",
+        "user": "Consumers who value product packaging and brand consistency."
       },
       "design": {
         "outcomes": {
@@ -158,7 +311,8 @@
     "iceverse": {
       "title": "Iceverse Branding",
       "overview": {
-        "goal": "Establishing a pure, modern, and inclusive brand visual system."
+        "goal": "Establishing a pure, modern, and inclusive brand visual system.",
+        "user": "Design-minded audiences who care about brand worldview and visual style."
       },
       "design": {
         "outcomes": {
@@ -173,7 +327,8 @@
     "actor": {
       "title": "Actor Business Card Design",
       "overview": {
-        "goal": "Tailor-making business cards with a personal style for actors to establish a deep professional impression in a short time."
+        "goal": "Tailor-making business cards with a personal style for actors to establish a deep professional impression in a short time.",
+        "user": "Performers and talents who need a crafted personal visual identity."
       },
       "design": {
         "outcomes": {
@@ -188,7 +343,8 @@
     "taipei": {
       "title": "Taipei City Imagery Poster",
       "overview": {
-        "goal": "Reinterpreting Taipei's urban memory, capturing the street soul of Taipei through contemporary visual language."
+        "goal": "Reinterpreting Taipei's urban memory, capturing the street soul of Taipei through contemporary visual language.",
+        "user": "Audiences who connect with city themes and local cultural visuals."
       },
       "design": {
         "outcomes": {
@@ -203,7 +359,8 @@
     "ai-customer-service": {
       "title": "Investment KOL Landing Page",
       "overview": {
-        "goal": "Build a high-conversion landing page for investment KOL, integrating company SSO, cart optimization, and YouTube live streaming to enable one-stop purchase experience."
+        "goal": "Build a high-conversion landing page for investment KOL, integrating company SSO, cart optimization, and YouTube live streaming to enable one-stop purchase experience.",
+        "user": "Viewers of investment live-streams who want a one-stop way to buy courses."
       },
       "fe": {
         "outcomes": {
@@ -217,9 +374,9 @@
       "pm": {
         "outcomes": {
           "items": [
-            "Led cart optimization strategy, increasing conversion rate from 22% to 57% by reducing purchase friction.",
-            "Planned SEO optimization strategy, successfully ranking core keywords at #1 in search results.",
-            "Integrated YouTube live streaming with purchase flow to create a one-stop sales experience."
+            "Led the cart optimization strategy, lifting conversion from 22% to 57% (+159%) by removing purchase friction.",
+            "Planned the SEO strategy that ranked core keywords #1, expanding the organic traffic funnel.",
+            "Integrated YouTube live streaming with the purchase flow to create a one-stop sales experience."
           ]
         }
       },
@@ -232,47 +389,118 @@
           ]
         }
       },
-      "design": { "outcomes": { "items": [] } }
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
     },
     "social-media-tool": {
       "title": "多平台社群發文管理工具",
       "overview": {
-        "goal": "為解決品牌經營多平台社群時需重複發文與管理的問題，打造跨平台發文工具，支援一次內容同步多個渠道，讓品牌能以更低成本擴展社群影響力並提升行銷效率。"
+        "goal": "為解決品牌經營多平台社群時需重複發文與管理的問題，打造跨平台發文工具，支援一次內容同步多個渠道，讓品牌能以更低成本擴展社群影響力並提升行銷效率。",
+        "user": "Social managers and marketers running many platforms who want to save posting time."
       },
-      "fe": { "outcomes": { "items": [] } },
-      "pm": { "outcomes": { "items": [] } },
-      "ui": { "outcomes": { "items": [] } },
-      "design": { "outcomes": { "items": [] } }
+      "fe": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
     },
     "ai-data-analysis": {
       "title": "AI 數據分析決策平台",
       "overview": {
-        "goal": "為解決營運人員難以從大量數據中快速獲得洞察的問題，打造 AI 數據分析平台，透過自動化分析與視覺化呈現，協助團隊快速理解趨勢並做出更精準的產品決策。"
+        "goal": "為解決營運人員難以從大量數據中快速獲得洞察的問題，打造 AI 數據分析平台，透過自動化分析與視覺化呈現，協助團隊快速理解趨勢並做出更精準的產品決策。",
+        "user": "PMs and marketers who must read product metrics and find the why every week."
       },
-      "fe": { "outcomes": { "items": [] } },
-      "pm": { "outcomes": { "items": [] } },
-      "ui": { "outcomes": { "items": [] } },
-      "design": { "outcomes": { "items": [] } }
+      "fe": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
     },
     "ai-co-writing": {
       "title": "AI 人類協作寫作平台",
       "overview": {
-        "goal": "為解決創作者在內容創作過程中靈感不足與效率低落的問題，打造 AI 與人類協作的寫作平台，透過即時 AI 建議與內容生成，幫助創作者更快產出高品質內容。"
+        "goal": "為解決創作者在內容創作過程中靈感不足與效率低落的問題，打造 AI 與人類協作的寫作平台，透過即時 AI 建議與內容生成，幫助創作者更快產出高品質內容。",
+        "user": "Writers and creators who get stuck and want AI to brainstorm and tighten drafts."
       },
-      "fe": { "outcomes": { "items": [] } },
-      "pm": { "outcomes": { "items": [] } },
-      "ui": { "outcomes": { "items": [] } },
-      "design": { "outcomes": { "items": [] } }
+      "fe": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
     },
     "life-manifestation": {
       "title": "人生顯化器",
       "overview": {
         "goal": "為幫助使用者更清晰規劃人生目標，打造結合 AI 與心理學概念的目標顯化工具，透過目標拆解與行動追蹤機制，協助使用者將抽象願景轉化為可執行的行動計畫。"
       },
-      "fe": { "outcomes": { "items": [] } },
-      "pm": { "outcomes": { "items": [] } },
-      "ui": { "outcomes": { "items": [] } },
-      "design": { "outcomes": { "items": [] } }
+      "fe": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
     }
   },
   "Navigation": {

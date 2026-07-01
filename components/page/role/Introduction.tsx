@@ -68,6 +68,7 @@ export default function Introduction({ role }: { role: string }) {
         end: "+=3000",
         scrub: 0.5,
         pin: true,
+        invalidateOnRefresh: true,
       }
     });
 
@@ -143,7 +144,7 @@ export default function Introduction({ role }: { role: string }) {
 
       {/* HERO OVERLAY - Black background with cutout text (mix-blend-multiply) */}
       <div ref={heroOverlayRef} className="absolute inset-0 bg-black text-white mix-blend-multiply z-50 flex flex-col items-center justify-center pointer-events-none">
-        <h1 className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-y-0 md:gap-x-6 text-6xl md:text-8xl lg:text-[9rem] font-bold tracking-tighter">
+        <h1 className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-y-2 md:gap-y-4 md:gap-x-6 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-bold tracking-tighter px-4 leading-none">
           <div className="flex">
             <span className="hero-char inline-block uppercase">B</span>
             <span className="hero-char inline-block">u</span>
@@ -171,14 +172,35 @@ export default function Introduction({ role }: { role: string }) {
         </h1>
       </div>
 
-      {/* BUTTON - White */}
-      <div ref={btnRef} className="absolute bottom-[20%] md:bottom-[25%] z-[60]">
-        <Button
-          asChild
-          className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-full px-8 py-6 text-lg shadow-xl font-bold transition-all duration-300 pointer-events-auto"
+      {/* 往下跳動箭頭 - Scroll indicator */}
+      <div
+        ref={btnRef}
+        className="absolute bottom-[14%] md:bottom-[16%] left-1/2 -translate-x-1/2 z-[60] flex flex-col items-center gap-3"
+      >
+        <span className="text-white/75 text-xs md:text-sm font-bold tracking-[0.35em] uppercase">
+          Scroll
+        </span>
+        <button
+          type="button"
+          aria-label="Scroll down"
+          onClick={() =>
+            window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
+          }
+          className="animate-bounce pointer-events-auto cursor-pointer text-white drop-shadow-lg"
         >
-          <a href={resume} download>Get Sonia</a>
-        </Button>
+          <svg
+            width="46"
+            height="46"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
       </div>
 
       {/* 跑馬燈 - Moved to the very bottom */}

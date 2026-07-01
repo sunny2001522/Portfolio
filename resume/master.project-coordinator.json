@@ -1,0 +1,195 @@
+{
+  "_meta": {
+    "comment": "針對『Project Coordinator（遊戲活動網站 / AI / Vibe Coding）』職缺客製的 ATS 履歷。由 master.json 衍生、保留事實、重排關鍵字對齊 JD。產生指令：node resume/generate.mjs master.project-coordinator.json _ProjectCoordinator",
+    "targetJob": "Project Coordinator — game event websites, AI tools, vibe coding"
+  },
+  "profile": {
+    "name": { "zh": "陳羿瑄 Sunny Chen", "en": "Sunny Chen" },
+    "headline": {
+      "zh": "專案協調 ‧ 產品經理｜遊戲活動網站 × AI 工具 × Vibe Coding",
+      "en": "Project Coordinator · Product Manager — Game Event Sites × AI Tools × Vibe Coding"
+    },
+    "targetRole": { "zh": "Project Coordinator 專案協調", "en": "Project Coordinator" },
+    "location": { "zh": "台北, 台灣", "en": "Taipei, Taiwan" },
+    "email": "yishuan522@gmail.com",
+    "phone": "0978-649-787",
+    "links": {
+      "portfolio": "https://exuan-dev.vercel.app/zh/pm",
+      "github": "https://github.com/sunny2001522",
+      "linkedin": "https://www.linkedin.com/in/sunny-chen-07b530253/"
+    },
+    "summary": {
+      "zh": "兼具產品協調與全端實作的專案人才。擅長把模糊需求拆解為清楚的 PRD、流程圖、wireframe 與 API 規格，並協調前端、後端、QA 與營運跨團隊，確保範疇、時程與品質如期到位。重度運用 AI 工具（ChatGPT、Gemini、Claude、Cursor、Figma AI）做需求拆解、文件生成與流程優化，並以 vibe coding 打造輕量自動化小工具、降低對工程師的依賴。上任首 30 天獨立交付 2 個 AI 產品 MVP，以規格驅動開發（SDD）＋AI prototype 將需求到交付壓縮至 2 週、沉澱為公司 AI 開發 SOP。熟悉 HTML/CSS/RESTful API、Figma/Miro、Jira/Notion；熱愛遊戲，習慣以玩家視角思考。",
+      "en": "Project coordinator and hands-on product builder. I translate ambiguous requirements into clear PRDs, process flows, wireframes, and API specs, and coordinate frontend, backend, QA, and operations to keep scope, timeline, and quality on track. Heavy user of AI tools (ChatGPT, Gemini, Claude, Cursor, Figma AI) for requirement breakdown, documentation, and workflow optimization, plus vibe coding to build lightweight automation tools that reduce dependency on engineers. Delivered two AI-product MVPs solo within my first 30 days and used spec-driven development (SDD) with AI prototyping to compress requirements-to-delivery to two weeks, codified as the company's AI development SOP. Comfortable with HTML/CSS/RESTful APIs, Figma/Miro, and Jira/Notion. A passionate gamer who thinks from the player's perspective."
+    }
+  },
+  "skills": {
+    "Project Coordination": {
+      "zh": ["專案規劃、追蹤與推進", "範疇 / 時程 / 資源協調", "跨團隊協作（前端 / 後端 / QA / 營運）", "會議紀錄、時程表與規格維護", "流程改善與效率優化", "高流量活動網站專案", "Ownership / 多任務管理"],
+      "en": ["Project planning, tracking & driving", "Scope / timeline / resource coordination", "Cross-functional collaboration (FE / BE / QA / Ops)", "Meeting notes, timelines & spec upkeep", "Workflow & efficiency improvement", "High-traffic event-site projects", "Ownership / multitasking"]
+    },
+    "Documentation": {
+      "zh": ["PRD", "流程圖 Process Flow", "Wireframe", "API 規格 API Spec", "User Story", "需求拆解與對齊"],
+      "en": ["PRD", "Process flows", "Wireframes", "API specifications", "User stories", "Requirement breakdown & alignment"]
+    },
+    "AI & Vibe Coding": {
+      "zh": ["ChatGPT、Gemini、Claude、Cursor、Figma AI", "Vibe Coding：輕量自動化小工具 / 腳本", "AI 需求拆解與文件生成", "AI 測試案例 / API mock / 規格草稿"],
+      "en": ["ChatGPT, Gemini, Claude, Cursor, Figma AI", "Vibe coding: lightweight automation tools / scripts", "AI-assisted requirement breakdown & docs", "AI test cases / API mocks / spec drafts"]
+    },
+    "Web & API": {
+      "zh": ["HTML, CSS, JavaScript", "React, Next.js", "RESTful API、前後端工作流", "Swagger / OpenAPI（讀 API schema）"],
+      "en": ["HTML, CSS, JavaScript", "React, Next.js", "RESTful APIs, FE/BE workflows", "Swagger / OpenAPI (reading API schemas)"]
+    },
+    "QA & Data": {
+      "zh": ["流程驗證、API 驗證（Postman）", "測試案例設計與測試紀錄", "SQL 與關聯式資料庫（簡易查詢做驗證 / 分析）"],
+      "en": ["Flow validation, API verification (Postman)", "Test case design & test records", "SQL & relational databases (queries for validation / analysis)"]
+    },
+    "Design & Tools": {
+      "zh": ["Figma, Miro（Wireframe / Prototyping / Auto Layout / AI 外掛）", "使用者流程 User Flow、資訊架構 IA、UI/UX", "Jira, Notion, Asana, Confluence"],
+      "en": ["Figma, Miro (wireframing / prototyping / auto layout / AI plugins)", "User flows, information architecture, UI/UX", "Jira, Notion, Asana, Confluence"]
+    }
+  },
+  "experience": [
+    {
+      "company": { "zh": "CMoney（全曜財經資訊）", "en": "CMoney" },
+      "role": { "zh": "Product Builder（產品 / 專案 ‧ RD）", "en": "Product Builder (Product / Project · RD)" },
+      "period": "2025/11 – Present",
+      "location": { "zh": "台北, 台灣", "en": "Taipei, Taiwan" },
+      "bullets": {
+        "zh": [
+          "推動產品與跨職能專案：釐清並轉譯需求、定義範疇與時程，協調前端、後端、QA 與營運如期交付。",
+          "將模糊需求拆解為清楚文件 —— PRD、流程圖、wireframe 與 API 規格，確保跨團隊對齊。",
+          "重度運用 AI 工具（ChatGPT、Gemini、Claude、Cursor、Figma AI）做需求拆解、文件生成與流程優化；以 vibe coding 打造輕量自動化小工具，降低對工程師的依賴。",
+          "上任首 30 天獨立交付 2 個 AI 產品 MVP；以唯一 PM 主導 3 人團隊將投資理財 App 0→1 上架雙平台（300 萬營收、1,000 週活），SDD＋AI prototype 將需求到交付壓縮至 2 週、沉澱為公司 AI 開發 SOP。",
+          "執行基本 QA：流程驗證、以 Postman 驗證 API、撰寫測試紀錄；並用 SQL 撈資料做驗證與分析。",
+          "技術棧 React / Vue、RESTful API、Supabase、HTML/CSS；持續優化專案管理流程，提升團隊效率與交付品質。"
+        ],
+        "en": [
+          "Drove product and cross-functional projects: clarified and translated requirements, defined scope and timelines, and coordinated frontend, backend, QA, and operations for on-time delivery.",
+          "Turned ambiguous requirements into clear documentation — PRDs, process flows, wireframes, and API specs — keeping cross-functional teams aligned.",
+          "Heavy use of AI tools (ChatGPT, Gemini, Claude, Cursor, Figma AI) for requirement breakdown, documentation, and workflow optimization; used vibe coding to build lightweight automation tools that reduced dependency on engineers.",
+          "Shipped two AI-product MVPs solo within the first 30 days; as sole PM leading a 3-person team, took an investment app 0→1 on iOS/Android (NT$3M revenue, 1,000 WAU), using SDD + AI prototyping to compress requirements-to-delivery to two weeks, codified as the company AI development SOP.",
+          "Performed basic QA: flow validation, API verification with Postman, and test-record documentation; ran SQL queries for data validation and analysis.",
+          "Stack: React / Vue, RESTful APIs, Supabase, HTML/CSS; continuously improved project-management workflows to raise team efficiency and delivery quality."
+        ]
+      }
+    },
+    {
+      "company": { "zh": "我們要爆紅國際影業", "en": "WeGoViral Studio" },
+      "role": { "zh": "電影企劃（專案協調）", "en": "Project Planner (Film)" },
+      "period": "2022/10 – Present",
+      "location": { "zh": "台北, 台灣", "en": "Taipei, Taiwan" },
+      "bullets": {
+        "zh": [
+          "主導專案規劃與協調：產出含市場定位、競品分析、時程與預算的提案／規格文件，協調跨職能團隊推進。",
+          "回收 500+ 份問卷建立受眾洞察；提案協助團隊取得文化部劇本首獎（120 萬）等，累計 800 萬以上補助。"
+        ],
+        "en": [
+          "Owned project planning and coordination: produced proposals and specs covering market positioning, competitive analysis, timeline, and budget, and drove cross-functional teams forward.",
+          "Ran 500+ survey responses to build audience insight; pitches won the Ministry of Culture's top screenplay prize (NT$1.2M) and others—over NT$8M in funding."
+        ]
+      }
+    },
+    {
+      "company": { "zh": "大學問 Knowhow College（百大 Podcast）", "en": "Knowhow College (Top-100 Podcast)" },
+      "role": { "zh": "影音總監（團隊與流程協調）", "en": "Head of Video" },
+      "period": "2021/09 – 2022/12",
+      "location": { "zh": "台北, 台灣", "en": "Taipei, Taiwan" },
+      "bullets": {
+        "zh": [
+          "領導 5 人團隊統籌 50+ 部影片專案，跨部門協作（行銷 / 企劃）建立內容產製 SOP 與品質標準，提升交付效率。",
+          "內容累計下載破 100 萬次。"
+        ],
+        "en": [
+          "Led a 5-person team across 50+ video projects; partnered cross-functionally (marketing / planning) to build content-production SOPs and quality standards, raising delivery efficiency.",
+          "Content surpassed 1M downloads."
+        ]
+      }
+    },
+    {
+      "company": { "zh": "BTSE 加密貨幣交易所", "en": "BTSE (Crypto Exchange)" },
+      "role": { "zh": "多媒體動畫設計師", "en": "Multimedia / Motion Designer" },
+      "period": "2024/07 – 2024/10",
+      "location": { "zh": "台北, 台灣", "en": "Taipei, Taiwan" },
+      "bullets": {
+        "zh": [
+          "與產品團隊協作參與功能與宣傳企劃，將產品價值轉化為可被理解的內容。",
+          "主導小紅書、抖音內容策略，以使用者行為數據迭代；單支影片觀看 19.6 萬次，高於頻道平均約 10 萬。"
+        ],
+        "en": [
+          "Partnered with the product team on feature and product-marketing planning, translating product value into accessible content.",
+          "Led content strategy on RED and TikTok, iterating with user-behavior data; a single video reached 196K views, ~100K above the channel average."
+        ]
+      }
+    },
+    {
+      "company": { "zh": "自由接案", "en": "Freelance" },
+      "role": { "zh": "剪輯師 / 影視製作", "en": "Editor / Film Production" },
+      "period": "2019/10 – 2024/10",
+      "location": { "zh": "台灣", "en": "Taiwan" },
+      "bullets": {
+        "zh": [
+          "獨立承接品牌、形象與短片，負責企劃、拍攝到後製全流程；作品多次入圍影展（藝美獎最佳導演／剪輯、世新二三影展最佳紀錄片等）。"
+        ],
+        "en": [
+          "Independently delivered brand, image, and short films end-to-end (planning, shooting, post-production); work shortlisted at multiple festivals (Yimei Awards Best Director / Editing, Shih Hsin Best Documentary)."
+        ]
+      }
+    }
+  ],
+  "projects": [
+    {
+      "id": "gamified-weight-loss",
+      "name": { "zh": "遊戲化減重平台（遊戲化網站）", "en": "Gamified Weight-Loss Platform (game-style web app)" },
+      "period": "2025",
+      "links": [
+        { "label": "Web", "url": "https://gobetgoal.vercel.app/" },
+        { "label": "GitHub", "url": "https://github.com/TooruTW/GoBetGoal" }
+      ],
+      "bullets": {
+        "zh": ["以玩家視角設計：帶 4 人團隊 2 個月從概念到上線，定義遊戲化留存指標，協調前後端與 QA；Demo Day 獲『像玩遊戲一樣上癮』一致好評。"],
+        "en": ["Designed from a player's perspective: led a 4-person team from concept to launch in 2 months, defined gamification retention metrics, coordinated FE/BE and QA; praised as 'addictive like a game' at Demo Day."]
+      }
+    },
+    {
+      "id": "ai-video-content-generation",
+      "name": { "zh": "AI 影音內容生成工具（Vibe Coding / 自動化）", "en": "AI Video & Content Generation (vibe coding / automation)" },
+      "period": "2025",
+      "links": [],
+      "bullets": {
+        "zh": ["設計端到端自動化流程（人格模型 → 腳本 → 字幕 → 短影音），串接 LLM / TTS / FFmpeg，將單支成本降約 90%、產製週期由數天縮為數分鐘。"],
+        "en": ["Built an end-to-end pipeline (persona → script → subtitles → short video) integrating LLM / TTS / FFmpeg; cut per-video cost ~90% and shortened the cycle from days to minutes."]
+      }
+    },
+    {
+      "id": "ai-data-analysis",
+      "name": { "zh": "AI 數據分析決策工具（SQL × NLP）", "en": "AI Data-Analytics Decision Tool (SQL × NLP)" },
+      "period": "2025",
+      "links": [],
+      "bullets": {
+        "zh": ["將 SQL 查詢產品化為自然語言介面，AI 自動摘要把決策路徑縮短 60%，降低非技術人員的使用門檻。"],
+        "en": ["Productized SQL queries into an NLP interface; AI auto-summaries cut the decision path by 60%, lowering the barrier for non-technical users."]
+      }
+    },
+    {
+      "id": "longterm-treasure-app",
+      "name": { "zh": "投資理財 App（雙平台 0→1）", "en": "Investment App (0→1, iOS/Android)" },
+      "period": "2026",
+      "links": [],
+      "bullets": {
+        "zh": ["唯一 PM 主導 3 人團隊 0→1 上架雙平台，300 萬營收、1,000 週活；SDD + AI prototype 2 週交付，沉澱為公司 AI 開發 SOP。"],
+        "en": ["Sole PM, 3-person team, 0→1 on iOS/Android; NT$3M revenue, 1,000 WAU; SDD + AI prototyping for 2-week delivery, codified as company AI SOP."]
+      }
+    }
+  ],
+  "education": [
+    {
+      "school": { "zh": "國立臺灣藝術大學", "en": "National Taiwan University of Arts" },
+      "degree": {
+        "zh": "電影學系 學士｜全系排名第 1（162 學分）；修習 UI/UX 與前端開發課程；多益金色證書（860）",
+        "en": "B.A. in Film | Ranked #1 in department (162 credits); UI/UX & front-end coursework; TOEIC Gold (860)"
+      },
+      "period": "2019 – 2023"
+    }
+  ]
+}

@@ -170,7 +170,7 @@ const Gallery = ({ role }: { role: string }) => {
           return (
             <div
               key={index}
-              className="absolute w-[80vw] md:w-[350px] h-[45vh] md:h-[450px] flex flex-col items-center justify-end bg-gradient-to-b from-gray-200 to-gray-300 rounded-t-full shadow-inner select-none transition-all duration-500 ease-out cursor-pointer outline-none focus:outline-none"
+              className="absolute w-[80vw] md:w-[350px] h-[45vh] md:h-[min(450px,52vh)] flex flex-col items-center justify-end bg-gradient-to-b from-gray-200 to-gray-300 rounded-t-full shadow-inner select-none transition-all duration-500 ease-out cursor-pointer outline-none focus:outline-none"
               style={{
                 transform,
                 opacity,
@@ -224,7 +224,7 @@ const Gallery = ({ role }: { role: string }) => {
             key={`img-${realActiveIndex}`}
             src={slideData[realActiveIndex].character}
             alt={slideData[realActiveIndex].title}
-            className="w-[35vw] md:w-[220px] object-cover rounded-2xl hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-500 animate-in fade-in slide-in-from-bottom-4"
+            className="h-[38vh] md:h-[46vh] max-h-[400px] w-auto max-w-[38vw] md:max-w-[240px] object-contain rounded-2xl hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-500 animate-in fade-in slide-in-from-bottom-4"
             draggable="false"
           />
         </Link>

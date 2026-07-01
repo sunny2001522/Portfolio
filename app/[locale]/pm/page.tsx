@@ -1,15 +1,7 @@
-'use client';
-import { getRoleData } from '@/lib/data';
 import RolePage from '@/components/page/RolePage';
+import { getRoleData } from '@/lib/getRoleData';
 
-export default function PMPage() {
-  const data = getRoleData('pm');
-  if (!data) {
-    return <div>Role not found</div>;
-  }
-  return (
-    <>
-      <RolePage role="pm" data={data} />
-    </>
-  );
+export default async function PMPage() {
+  const data = await getRoleData('pm');
+  return <RolePage role="pm" data={data} />;
 }

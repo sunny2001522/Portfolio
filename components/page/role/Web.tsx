@@ -24,11 +24,11 @@ const Web = ({ role, isActive }: WebProps) => {
     "hotel-website": "/web/hotel-website.webp",
     portfolio: "/web/portfolio.webp",
     "metro-app": "/web/metro-app.webp",
-    "ai-customer-service": "/web/lp.png",
-    "social-media-tool": "/web/post.png",
-    "ai-data-analysis": "/web/data.png",
-    "ai-co-writing": "/web/genink.png",
-    "life-manifestation": "/web/dreamake.png",
+    "ai-customer-service": "/web/lp.webp",
+    "social-media-tool": "/web/post.webp",
+    "ai-data-analysis": "/web/data.webp",
+    "ai-co-writing": "/web/genink.webp",
+    "life-manifestation": "/web/dreamake.webp",
     book: "/design/book.webp",
     iceverse: "/design/iceverse.webp",
     iceverseProduct: "/design/iceverseProduct.webp",
@@ -74,7 +74,7 @@ const Web = ({ role, isActive }: WebProps) => {
                   src={slide.img}
                   alt={slide.title}
                   fill
-                  priority={idx < 4}
+                  loading="lazy"
                   className="object-cover"
                   sizes="(max-width: 768px) 176px, 320px"
                 />

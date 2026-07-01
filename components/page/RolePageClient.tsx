@@ -43,11 +43,13 @@ const RolePageClient: React.FC<RolePageClientProps> = ({ data, role }) => {
     mm.add(
       {
         isMobile: "(max-width: 767px)",
-        isDesktop: "(min-width: 768px)",
+        isTablet: "(min-width: 768px) and (max-width: 1023px)",
+        isDesktop: "(min-width: 1024px)",
       },
       (context) => {
-        let { isMobile } = context.conditions as {
+        let { isMobile, isTablet } = context.conditions as {
           isMobile: boolean;
+          isTablet: boolean;
           isDesktop: boolean;
         };
 
@@ -69,6 +71,7 @@ const RolePageClient: React.FC<RolePageClientProps> = ({ data, role }) => {
             start: "top 64px",
             end: "+=3000",
             scrub: 0.5,
+            invalidateOnRefresh: true,
           },
         });
 
@@ -99,23 +102,24 @@ const RolePageClient: React.FC<RolePageClientProps> = ({ data, role }) => {
             start: "top 90%", // Trigger slightly before it fully enters
             end: "bottom bottom",
             scrub: 0.5,
+            invalidateOnRefresh: true,
           },
         });
 
         projectTl
           // 4. Move to Project Section position (Fast initial transition)
           .to(group, {
-            x: isMobile ? "-45vw" : "-16vw", // Mobile: move right half a body from extreme left
-            y: isMobile ? "60vh" : "10vh", // Mobile: move further down
+            x: isMobile ? "-45vw" : isTablet ? "-38vw" : "-43vw", // Mobile: move right half a body from extreme left
+            y: isMobile ? "60vh" : "16vh", // 桌機：往左下角，避免蓋住左側影片
             rotationY: 180,
-            scale: isMobile ? 0.25 : 0.5,
+            scale: isMobile ? 0.25 : 0.42,
             duration: 0.1,
             ease: "power2.inOut",
             force3D: true,
           })
           // 5. Hold position for the rest of the section
           .to(group, {
-            x: isMobile ? "-45vw" : "-16vw",
+            x: isMobile ? "-45vw" : isTablet ? "-38vw" : "-43vw",
             duration: 0.9,
           });
 
@@ -126,6 +130,7 @@ const RolePageClient: React.FC<RolePageClientProps> = ({ data, role }) => {
             start: "top 90%",
             end: "top top",
             scrub: 0.5,
+            invalidateOnRefresh: true,
           },
         });
 
@@ -176,6 +181,7 @@ const RolePageClient: React.FC<RolePageClientProps> = ({ data, role }) => {
               src={`/character/${role}.webp`}
               alt="character"
               fill
+              sizes="300px"
               priority
               className="drop-shadow-2xl will-change-transform"
               style={{ transformStyle: "preserve-3d", objectFit: "contain" }}
