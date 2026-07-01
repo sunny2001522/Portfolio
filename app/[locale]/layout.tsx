@@ -97,7 +97,9 @@ export default async function LocaleLayout({
   // 提供消息給客戶端組件
   const messages = await getMessages();
 
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  // GA4 Measurement ID — public (appears in page HTML), safe to commit.
+  // Env var overrides the baked-in default if set.
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-ZYTWVNMS2Y";
 
   return (
     <html lang={locale}>
