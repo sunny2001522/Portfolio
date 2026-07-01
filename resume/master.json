@@ -28,8 +28,8 @@
       "linkedin": "https://www.linkedin.com/in/sunny-chen-07b530253/"
     },
     "summary": {
-      "zh": "專注於 0→1 產品建構與 AI 應用落地的產品經理，不只專注單一職能，而是針對問題整合 AI 來解決。具備策略思維與技術理解能力，擅長定義核心問題、設計可規模化的產品架構，並以數據與效率為導向推動產品落地。關注 AI 自動化、決策優化與使用者行為設計。",
-      "en": "A product manager focused on 0→1 product building and applied AI—solving problems by integrating AI rather than staying inside a single function. Combining strategic thinking with technical fluency, I define core problems, design scalable product architectures, and drive delivery with a data- and efficiency-first mindset. Focused on AI automation, decision optimization, and user-behavior design."
+      "zh": "專注於 0→1 產品建構與 AI 應用落地的產品經理，針對問題整合 AI 解決、不侷限單一職能。擅長定義核心問題、設計可規模化架構，並以數據與效率為導向推動落地；關注 AI 自動化、決策優化與使用者行為設計。",
+      "en": "A product manager focused on 0→1 product building and applied AI—solving problems by integrating AI rather than staying in one function. I define core problems, design scalable architectures, and drive delivery with a data- and efficiency-first mindset, focused on AI automation, decision optimization, and user-behavior design."
     }
   },
   "skills": [
@@ -78,59 +78,37 @@
       "location": { "zh": "台北, 台灣", "en": "Taipei, Taiwan" },
       "bullets": [
         {
-          "name": { "zh": "以 Vibe Coding 獨立交付高影響力專案", "en": "Shipped high-impact projects solo with Vibe Coding" },
-          "zh": "不佔用工程資源，主動補位、交付團隊長期想做卻始終排不進開發排程的專案；雙作者驗證累計買單 3,100+、開發 940 位全新客，並將流程 SOP 化，已助 4+ 位行銷／PM 於 1 天～1 週自主上線。",
-          "en": "No engineering resources required—proactively delivering initiatives the team long wanted but could never fit into the roadmap; validated across two flagship authors with 3,100+ purchases and 940 net-new customers, then codified into an SOP that lets 4+ marketers/PMs ship independently in 1 day–1 week.",
-          "sub": [
-            {
-              "name": { "zh": "財經 KOL 品牌入口 Landing Page", "en": "Finance-KOL Brand-Entry Landing Page" },
-              "url": "https://warrantlb8888.cmoney.tw/",
-              "zh": "為兩位頭部財經 KOL 打造課程導購頁，造訪約 18 萬 → 買單 3,100+（報名轉換 14–18%），帶動合計約 1.8 億元營收；作者評價「沒有 AI 感」。",
-              "en": "Built brand-entry course landing pages for two top finance KOLs: ~180K visits → 3,100+ purchases (14–18% sign-up conversion), driving ~NT$186M in combined revenue; praised by the authors as having 'no AI feel.'"
-            },
-            {
-              "name": { "zh": "選股產品網頁版", "en": "Stock-Picking Product (Web)" },
-              "url": "https://linenru-future.cmoney.tw/",
-              "zh": "將老舊桌面端選股產品改造為網頁版（期貨 3 週、長線 5 週落地），故障率降低 50%、DAU 成長至 2 倍；並將流程 Skill 化，協助 4 個 PC→Web 專案上線。",
-              "en": "Rebuilt legacy desktop stock-picking products as web apps (futures in 3 weeks, long-term in 5); 50% fewer failures and 2× DAU; skill-ified the process to help 4 more PC→Web projects ship."
-            }
-          ]
+          "name": { "zh": "以 Vibe Coding 獨立交付財經 KOL 品牌入口 LP", "en": "Delivered finance-KOL brand-entry LPs solo (Vibe Coding)" },
+          "url": "https://warrantlb8888.cmoney.tw/",
+          "zh": "不佔工程資源，雙作者驗證累計買單 3,100+、開發 940 位全新客、報名轉換 14–18%、合計約 1.8 億元營收；並將流程 SOP 化，助 4+ 位行銷／PM 於 1 天～1 週自主上線。",
+          "en": "No engineering resources needed—validated across two flagship authors: 3,100+ purchases, 940 net-new customers, 14–18% conversion, ~NT$186M combined revenue; codified into an SOP so 4+ marketers/PMs ship independently in 1 day–1 week."
+        },
+        {
+          "name": { "zh": "選股產品網頁版 0→1（PC→Web）", "en": "Stock-picking product web rebuild (PC→Web)" },
+          "url": "https://linenru-future.cmoney.tw/",
+          "zh": "將老舊桌面端選股產品改造為網頁版（期貨 3 週、長線 5 週落地），故障率降低 50%、DAU 成長至 2 倍；並將流程 Skill 化，協助 4 個 PC→Web 專案上線。",
+          "en": "Rebuilt legacy desktop stock-picking products as web apps (futures in 3 weeks, long-term in 5); 50% fewer failures, 2× DAU; skill-ified the process to help 4 more PC→Web launches."
         },
         {
           "name": { "zh": "投資理財 App 0→1 規劃與交付", "en": "Investment App 0→1 planning & delivery" },
           "url": "https://apps.apple.com/lb/app/%E9%95%B7%E7%B7%9A%E8%81%9A%E5%AF%B6%E7%9B%86plus/id6760089358",
-          "zh": "主導股票 App 0→1 核心功能設計，撰寫完整 Spec 並以 Figma 產出流程圖與高保真原型，以 AI prototype 結合雙 RD 協作快速交付。上線 H1 營收 1,811 萬、月留存 96%（作者 App 前 3）、75% 活躍付費，週活兩個月成長約 3 倍（644→近 2,000）。",
-          "en": "Led 0→1 core feature design for a stock App—full specs plus Figma flows and high-fidelity prototypes, pairing AI prototyping with two RDs for rapid delivery. First-half revenue NT$18.1M, 96% monthly retention (top-3 among author apps), 75% active-paying, and WAU ~3× in two months (644 → ~2,000)."
+          "zh": "主導股票 App 0→1 核心功能設計，撰寫完整 Spec 並以 Figma 產出高保真原型，AI prototype 結合雙 RD 快速交付。H1 營收 1,811 萬、月留存 96%（作者 App 前 3）、75% 活躍付費、週活兩月成長約 3 倍（644→近 2,000）。",
+          "en": "Led 0→1 core feature design—full specs, Figma high-fidelity prototypes, AI prototyping with two RDs. H1 revenue NT$18.1M, 96% monthly retention (top-3 author apps), 75% active-paying, WAU ~3× in two months (644→~2,000)."
         },
         {
           "name": { "zh": "以 AI SaaS 與自動化加速公司工作流程", "en": "Accelerated company workflows with AI SaaS & automation" },
-          "zh": "綜觀公司工作流程、收斂可用 AI 加速之節點，兩個月內為行銷、工程、產品部門自動化 40% 重複性工作、提升效率 85%；並打造社群大師等 Agent，單月為團隊省下 20–50 小時。",
-          "en": "Mapped company workflows to pinpoint AI-accelerable nodes; within two months automated 40% of repetitive work across marketing, engineering, and product (efficiency +85%); built agents such as a community-manager Agent that saves teams 20–50 hours per month.",
+          "zh": "兩個月內為行銷、工程、產品部門自動化 40% 重複性工作、效率 +85%，並打造社群大師等 Agent，單月為團隊省下 20–50 小時。",
+          "en": "Automated 40% of repetitive work across marketing, engineering, and product in two months (efficiency +85%); built agents (e.g., a community-manager Agent) saving teams 20–50 hours/month.",
           "sub": [
-            {
-              "name": { "zh": "數據分析自動化", "en": "Data-analytics automation" },
-              "url": "https://analytics-ai-two.vercel.app/",
-              "zh": "建立跨平台數據整合架構（GA、Mixpanel、App Store 等），自動化產出數據洞察，讓團隊隨時掌握 30+ 產品即時動態。",
-              "en": "Built a cross-platform data-integration layer (GA, Mixpanel, App Store, etc.) that auto-generates insights, keeping the team on top of 30+ products in real time."
-            },
-            {
-              "name": { "zh": "AI 影音與內容生成", "en": "AI video & content generation" },
-              "url": "https://www.dreamake.ai/",
-              "zh": "規劃「人格模型 → 腳本 → 字幕 → 短影音」自動化流程，建立可規模化內容生產機制，大幅降低人工拍攝與剪輯成本。",
-              "en": "Designed an automated pipeline (persona model → script → subtitles → short-form video), a scalable content-production mechanism that sharply cut manual shooting and editing costs."
-            },
-            {
-              "name": { "zh": "自動發文工具 MediaPost", "en": "MediaPost auto-publishing tool" },
-              "url": "https://mediapost-t5gjnmk2qq-de.a.run.app/",
-              "zh": "自動取文 → 生成 3–5 篇貼文 → 一鍵發布，節省行銷約 70% 發文時間，已實際用於作者社群經營。",
-              "en": "Auto-ingest content → generate 3–5 posts → one-click publish, saving marketers ~70% of posting time; already in use for author community operations."
-            }
+            { "name": { "zh": "數據分析自動化", "en": "Data-analytics automation" }, "url": "https://analytics-ai-two.vercel.app/" },
+            { "name": { "zh": "AI 影音與內容生成", "en": "AI video & content generation" }, "url": "https://www.dreamake.ai/" },
+            { "name": { "zh": "MediaPost 自動發文（省 70%）", "en": "MediaPost auto-publishing (−70%)" }, "url": "https://mediapost-t5gjnmk2qq-de.a.run.app/" }
           ]
         },
         {
           "name": { "zh": "引領公司 AI 轉型與知識傳播", "en": "Led company-wide AI transformation & enablement" },
-          "zh": "配合公司全面 Agent 開發政策，建構 10+ 公司服務 skills 並提供 AI 諮詢，幫助 10+ 位無工程背景 PM／行銷落地服務；並將 CM Deploy、部署、資料庫等基礎知識做成 Skill＋文件傳播，讓團隊不只會用、更懂底層架構。",
-          "en": "Under the firm's Agent-development initiative, built 10+ company-service skills and provided AI consulting, enabling 10+ non-engineer PMs/marketers to ship services; packaged fundamentals (CM Deploy, deployment, databases) into skills and docs so teams grasp the underlying architecture, not just the tooling."
+          "zh": "配合公司 Agent 開發政策建構 10+ 公司服務 Skills 並提供 AI 諮詢，助 10+ 位無工程背景 PM／行銷落地服務；並將部署、資料庫等基礎知識做成 Skill＋文件傳播。",
+          "en": "Built 10+ company-service skills and provided AI consulting under the firm's Agent initiative, enabling 10+ non-engineer PMs/marketers; packaged deployment/database fundamentals into skills and docs."
         }
       ]
     }

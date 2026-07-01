@@ -43,7 +43,10 @@ function bulletLi(b, l, online) {
   const lead = nm ? (online && validUrl(b.url) ? `<a href="${esc(b.url)}"><b>${nm}</b></a>` : `<b>${nm}</b>`) : "";
   const text = b.zh || b.en ? esc(t(b, l) || "") : "";
   const body = lead && text ? `${lead}${sep(l)}${text}` : lead || text;
-  const subs = b.sub ? `<ul>${b.sub.map((s) => bulletLi(s, l, online)).join("")}</ul>` : "";
+  const subs = b.sub ? ` <span class="subs">（${b.sub.map((s) => {
+    const snm = esc(t(s.name, l));
+    return online && validUrl(s.url) ? `<a href="${esc(s.url)}">${snm}</a>` : snm;
+  }).join(" · ")}）</span>` : "";
   return `<li>${body}${subs}</li>`;
 }
 function mdBullets(bullets, l, indent) {
@@ -52,8 +55,8 @@ function mdBullets(bullets, l, indent) {
     const nm = b.name ? t(b.name, l) : "";
     const lead = nm ? (validUrl(b.url) ? `[**${nm}**](${b.url})` : `**${nm}**`) : "";
     const text = b.zh || b.en ? t(b, l) || "" : "";
-    lines.push(`${indent}${lead && text ? lead + sep(l) + text : lead || text}`);
-    if (b.sub) lines.push(...mdBullets(b.sub, l, "  " + indent));
+    const subs = b.sub ? " （" + b.sub.map((s) => (validUrl(s.url) ? `[${t(s.name, l)}](${s.url})` : t(s.name, l))).join(" · ") + "）" : "";
+    lines.push(`${indent}${lead && text ? lead + sep(l) + text : lead || text}${subs}`);
   }
   return lines;
 }
@@ -62,8 +65,8 @@ function flatBullets(bullets, l) {
   for (const b of bullets) {
     const nm = b.name ? t(b.name, l) : "";
     const text = b.zh || b.en ? t(b, l) || "" : "";
-    out.push(nm && text ? `${nm}${sep(l)}${text}` : nm || text);
-    if (b.sub) out.push(...flatBullets(b.sub, l).map((s) => `  - ${s}`));
+    const subs = b.sub ? "（" + b.sub.map((s) => t(s.name, l)).join(" · ") + "）" : "";
+    out.push((nm && text ? `${nm}${sep(l)}${text}` : nm || text) + subs);
   }
   return out;
 }
@@ -108,31 +111,31 @@ function html(l, mode) {
     : "";
   return `<!doctype html><html lang="${l}"><head><meta charset="utf-8"><title>${esc(t(p.name, l))}</title>
 <style>
-  @page { size: A4; margin: 14mm 14mm; }
+  @page { size: A4; margin: 10mm 13mm; }
   * { box-sizing: border-box; }
   body { font-family: "PingFang TC","Hiragino Sans GB","Helvetica Neue",Arial,"Microsoft JhengHei",sans-serif;
-         color: #1a1a1a; font-size: 10.5pt; line-height: 1.45; margin: 0; }
+         color: #1a1a1a; font-size: 9.8pt; line-height: 1.3; margin: 0; }
   a { color: #1a56db; text-decoration: none; }
   .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
   .head .left { flex: 1; min-width: 0; }
-  h1 { font-size: 20pt; margin: 0 0 2px; }
-  .headline { font-size: 11pt; color: #444; margin: 0 0 6px; }
-  .contact, .toplinks { font-size: 9.5pt; color: #333; margin: 1px 0; }
-  .qr { flex: 0 0 auto; text-align: center; font-size: 8pt; color: #555; line-height: 1.25; }
-  .qr img { width: 92px; height: 92px; display: block; margin: 0 auto 3px; }
-  h2 { font-size: 11.5pt; text-transform: uppercase; letter-spacing: .5px; border-bottom: 1px solid #999;
-       padding-bottom: 2px; margin: 14px 0 6px; }
-  .item { margin-bottom: 9px; }
+  h1 { font-size: 18pt; margin: 0 0 1px; }
+  .headline { font-size: 10.5pt; color: #444; margin: 0 0 3px; }
+  .contact, .toplinks { font-size: 9pt; color: #333; margin: 1px 0; }
+  .qr { flex: 0 0 auto; text-align: center; font-size: 7.5pt; color: #555; line-height: 1.2; }
+  .qr img { width: 80px; height: 80px; display: block; margin: 0 auto 2px; }
+  h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: .5px; border-bottom: 1px solid #999;
+       padding-bottom: 1px; margin: 7px 0 3px; }
+  .item { margin-bottom: 4px; }
   .row { display: flex; justify-content: space-between; gap: 12px; }
   .b { font-weight: 600; }
-  .subtitle { color: #555; font-size: 9.5pt; font-style: italic; margin: 1px 0 2px; }
-  .meta { color: #555; white-space: nowrap; font-size: 9.5pt; }
-  ul { margin: 3px 0 0; padding-left: 18px; }
-  ul ul { margin: 2px 0 2px; }
-  li { margin: 2px 0; }
-  .skill { margin: 2px 0; } .cat { font-weight: 600; }
-  .links { color: #444; font-size: 9pt; margin: 2px 0 0; }
-  p { margin: 4px 0; }
+  .subtitle { color: #555; font-size: 9pt; font-style: italic; margin: 0 0 1px; }
+  .meta { color: #555; white-space: nowrap; font-size: 9pt; }
+  ul { margin: 2px 0 0; padding-left: 16px; }
+  li { margin: 1.5px 0; }
+  .subs { color: #444; font-size: 9pt; }
+  .skill { margin: 1.5px 0; } .cat { font-weight: 600; }
+  .links { color: #444; font-size: 8.5pt; margin: 1px 0 0; }
+  p { margin: 3px 0; }
 </style></head><body>
   <div class="head">
     <div class="left">
