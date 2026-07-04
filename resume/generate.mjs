@@ -34,7 +34,7 @@ const t = (v, l) => (v && typeof v === "object" && !Array.isArray(v) ? v[l] : v)
 const sep = (l) => (l === "en" ? ": " : "：");
 const validUrl = (u) => u && !String(u).startsWith("TODO");
 
-const PORTFOLIO_URL = "https://exuan-dev.vercel.app";
+const PORTFOLIO_URL = "https://exuan-dev.vercel.app/zh/pm";
 const QR = await QRCode.toDataURL(PORTFOLIO_URL, { margin: 1, width: 240, errorCorrectionLevel: "M" });
 
 // ---------- bullet helpers (support nested sub + per-item clickable name) ----------
@@ -107,7 +107,7 @@ function html(l, mode) {
   const edu = M.education.map((e) =>
     `<div class="row"><span class="b">${esc(t(e.school, l))} — ${esc(t(e.degree, l))}</span><span class="meta">${esc(e.period)}</span></div>`).join("");
   const qr = !online
-    ? `<div class="qr"><img src="${QR}" alt="portfolio QR code"/><span>${l === "en" ? "Scan for full portfolio" : "掃描看完整作品集"}<br/>exuan-dev.vercel.app</span></div>`
+    ? `<div class="qr"><img src="${QR}" alt="portfolio QR code"/><span>${l === "en" ? "Scan for full portfolio" : "掃描看完整作品集"}<br/>exuan-dev.vercel.app/zh/pm</span></div>`
     : "";
   return `<!doctype html><html lang="${l}"><head><meta charset="utf-8"><title>${esc(t(p.name, l))}</title>
 <style>
@@ -125,7 +125,7 @@ function html(l, mode) {
   .qr img { width: 80px; height: 80px; display: block; margin: 0 auto 2px; }
   h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: .5px; border-bottom: 1px solid #999;
        padding-bottom: 1px; margin: 7px 0 3px; }
-  .item { margin-bottom: 4px; }
+  .item { margin-bottom: 2.5px; }
   .row { display: flex; justify-content: space-between; gap: 12px; }
   .b { font-weight: 600; }
   .subtitle { color: #555; font-size: 9pt; font-style: italic; margin: 0 0 1px; }
