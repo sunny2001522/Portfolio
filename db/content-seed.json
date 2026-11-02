@@ -1,0 +1,1042 @@
+{
+  "roles": {
+    "zh": {
+      "fe": {
+        "title": "前端工程師",
+        "me": "陳羿瑄（Sonia Chen）",
+        "about": {
+          "skill": "具 React、Next.js 與 API 串接經驗，能從 Figma 原型延伸到前端實作。",
+          "hobby": "關注互動體驗與產品細節。",
+          "description": "曾在產品工作中親自完成 UI/UX 與前端實作，也持續製作可操作的網頁作品。"
+        },
+        "resume": "/SoniaResumeFeZh.pdf",
+        "description": [
+          "React / Next.js",
+          "UI/UX × 前端實作"
+        ]
+      },
+      "ui": {
+        "title": "UI/UX 設計師",
+        "me": "陳羿瑄（Sonia Chen）",
+        "about": {
+          "skill": "以使用者流程、資訊架構與 Figma 原型整理產品介面，並有親自完成產品 UI/UX 的經驗。",
+          "hobby": "關注介面如何讓複雜流程更容易理解。",
+          "description": "曾參與投資理財 App 與 Web 產品的需求拆解、介面設計及原型製作。"
+        },
+        "resume": "/SoniaResumeZh.pdf",
+        "description": [
+          "Figma 原型與 UI/UX 實作",
+          "金融科技產品經驗"
+        ]
+      },
+      "pm": {
+        "title": "產品經理",
+        "me": "陳羿瑄（Sonia Chen）",
+        "about": {
+          "skill": "專注 0→1 產品建構與 AI 應用落地，擅長把模糊需求拆成可執行規格，並以設計與實作推進交付。",
+          "hobby": "關注 AI 自動化、決策優化與使用者行為。",
+          "description": "能協調設計、工程、QA 與營運，也會親自製作 UI/UX 原型和前端功能。"
+        },
+        "resume": "/SoniaResumeZh.pdf",
+        "description": [
+          "Product Builder — CMoney",
+          "0→1 產品交付 × AI 應用落地"
+        ]
+      },
+      "design": {
+        "title": "平面與動態設計師",
+        "me": "陳羿瑄（Sonia Chen）",
+        "about": {
+          "skill": "曾任 BTSE 平面與動態設計師，參與產品動畫製作；也有影視企劃、拍攝與後製經驗。",
+          "hobby": "持續探索影像、動畫與視覺敘事。",
+          "description": "工作經歷包含加密貨幣交易所、影視製作與影音團隊管理。"
+        },
+        "resume": "/SoniaResumeZh.pdf",
+        "description": [
+          "BTSE 產品動畫",
+          "影視製作與影音企劃"
+        ]
+      }
+    },
+    "en": {
+      "fe": {
+        "title": "Frontend Engineer",
+        "me": "Sonia Chen",
+        "about": {
+          "skill": "Hands-on with React, Next.js, and API integration, from Figma prototypes through frontend implementation.",
+          "hobby": "Interested in interaction design and product details.",
+          "description": "I have built UI/UX and frontend features in product work, alongside interactive web projects."
+        },
+        "resume": "/SoniaResumeFeEn.pdf",
+        "description": [
+          "React / Next.js",
+          "UI/UX and frontend implementation"
+        ]
+      },
+      "ui": {
+        "title": "UI/UX Designer",
+        "me": "Sonia Chen",
+        "about": {
+          "skill": "I shape product interfaces through user flows, information architecture, and Figma prototypes, with hands-on UI/UX delivery experience.",
+          "hobby": "Interested in making complex workflows easier to understand.",
+          "description": "I have worked on requirements, interface design, and prototypes for investment apps and web products."
+        },
+        "resume": "/SoniaResumeEn.pdf",
+        "description": [
+          "Figma prototyping and UI/UX",
+          "Fintech product experience"
+        ]
+      },
+      "pm": {
+        "title": "Product Manager",
+        "me": "Sonia Chen",
+        "about": {
+          "skill": "I build 0-to-1 products and bring AI applications into use, turning ambiguous needs into clear specs and shipped work through design and implementation.",
+          "hobby": "Interested in AI automation, better decisions, and user behavior.",
+          "description": "I coordinate design, engineering, QA, and operations, and can also build UI/UX prototypes and frontend features."
+        },
+        "resume": "/SoniaResumeEn.pdf",
+        "description": [
+          "Product Builder — CMoney",
+          "0-to-1 delivery · Applied AI"
+        ]
+      },
+      "design": {
+        "title": "Graphic & Motion Designer",
+        "me": "Sonia Chen",
+        "about": {
+          "skill": "Former graphic and motion designer at BTSE, contributing to product animation; also experienced in film planning, production, and post-production.",
+          "hobby": "Interested in visual storytelling, motion, and film.",
+          "description": "My experience spans a crypto exchange, film production, and leading a video team."
+        },
+        "resume": "/SoniaResumeEn.pdf",
+        "description": [
+          "Product animation at BTSE",
+          "Film and video production"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "zh": {
+      "birthday-calendar": {
+        "title": "生日優惠行事曆",
+        "overview": {
+          "goal": "整合生日優惠與台北活動，並提供 Google Calendar 匯入的行事曆 MVP。",
+          "user": "想安排生日活動，並把行程匯入個人行事曆的使用者。"
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "串接 Google OAuth 與 Calendar API，處理授權、行事曆存取、去重與活動匯入。",
+              "在 Next.js MVP 中整合台北開放活動資料與 214 筆生日優惠資料。"
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "設計行事曆、地圖檢視與授權匯入流程。"
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "規劃從尋找優惠或活動，到匯入行事曆與提醒的操作流程。"
+            ]
+          }
+        }
+      },
+      "warrant-landing-page": {
+        "title": "權證小哥・品牌入口頁",
+        "overview": {
+          "goal": "整理財經創作者的產品資訊，連結試用與升級操作的品牌入口頁。",
+          "user": "想了解財經創作者課程及投資產品的訪客。"
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "獨立實作與上線入口頁，將產品資訊連到試用與升級入口。"
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "依產品理解、試用與升級決策安排資訊層級。"
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "以 Vibe Coding 獨立製作與交付財經創作者入口頁，不佔工程資源。",
+              "雙作者專案累計紀錄：3,100+ 筆買單、940 位全新客、14–18% 報名轉換，合計約新台幣 1.8 億元營收。",
+              "將流程整理為 SOP，讓 4+ 位行銷與 PM 可在一天至一週內自行上線頁面。"
+            ]
+          }
+        },
+        "note": "數據涵蓋雙作者專案與整體銷售活動，並非此單頁的獨立成效。來源：專案履歷記錄。"
+      },
+      "longterm-treasure-app": {
+        "title": "長線聚寶盆・投資理財 App",
+        "overview": {
+          "goal": "與兩位工程師協作，從產品需求推進至 iOS 與 Android 上線的投資理財 App。",
+          "user": "使用作者選股與投資內容的投資人。"
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "親自設計 App 的 Figma 高保真介面與原型，與兩位工程師討論畫面狀態及資料需求。"
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "把模糊需求整理為規格，親自製作 Figma 高保真 UI/UX 原型，並與兩位工程師對齊前後端資料結構。",
+              "參與 0→1 規劃與交付，產品上架 iOS 及 Android。",
+              "履歷記錄的產品成果：H1 營收 1,811 萬元、月留存 96%、75% 活躍付費，兩個月週活由 644 增至近 2,000。"
+            ]
+          }
+        },
+        "note": "數據為投資產品與團隊成果，未單獨量測介面設計或個人貢獻的影響。來源：專案履歷記錄。"
+      },
+      "longterm-treasure-web": {
+        "title": "長線聚寶盆・PC 轉 Web",
+        "overview": {
+          "goal": "將既有桌面選股產品改造成網頁版。",
+          "user": "從桌面端轉向瀏覽器使用產品的投資人。"
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "參與響應式網頁改造，將桌面產品流程轉成瀏覽器介面。"
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "為桌機與手機的網頁操作重新整理資訊與互動流程。"
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "參與 PC 轉 Web 改造：期貨版三週、長線版五週交付。",
+              "履歷記錄改造後故障率降低 50%、DAU 成為兩倍；流程整理為 Skill，支援另外四個專案上線。"
+            ]
+          }
+        },
+        "note": "交付時程分屬兩個改造專案；故障率與 DAU 為產品紀錄，並非控制實驗結果。"
+      },
+      "simple-futures-web": {
+        "title": "簡單期貨・網頁版",
+        "overview": {
+          "goal": "將市場指標與多週期資訊整理到同一介面的期貨網頁工具。",
+          "user": "透過桌機或手機閱讀期貨市場指標的投資人。"
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "參與響應式市場監控介面與報價、指標資料的呈現。"
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "以多空燈號與市場溫度計整理期貨指標，設計深色監控介面。"
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "參與期貨產品轉網頁版的需求整理與跨團隊交付。"
+            ]
+          }
+        }
+      },
+      "gamified-weight-loss": {
+        "title": "GobetGoal・遊戲化減重平台",
+        "overview": {
+          "goal": "四人團隊專案，以關卡與社群機制回應減重過程難以持續的問題。",
+          "user": "希望透過更有參與感的方式維持減重習慣的使用者。"
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "實作前端互動與應用流程，在團隊開發中處理 API、瀏覽器相容性與動畫問題。"
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "設計關卡式體驗與共用視覺系統，以動態呈現進度與操作回饋。"
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "運用八角框架設計關卡系統，帶領四人團隊在兩個月完成 0→1 開發。",
+              "協調前端、後端與 QA，在 Demo Day 展示產品並蒐集內測回饋。"
+            ]
+          }
+        }
+      },
+      "hotel-website": {
+        "title": "Iceverse 飯店・獨立訂房展示專案",
+        "overview": {
+          "goal": "結合飯店品牌形象、房型瀏覽與預訂流程的獨立展示專案。",
+          "user": "在展示環境中比較房型並體驗預訂流程的旅客。"
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "製作響應式介面與訂房展示流程，串接前端操作、API 及資料庫存取。"
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "以獨立產品練習設計房型資訊、視覺層級與預訂旅程。"
+            ]
+          }
+        },
+        "note": "獨立展示專案，未宣稱實際飯店營運或轉換提升。"
+      },
+      "portfolio": {
+        "title": "Sonia・雙語作品集",
+        "overview": {
+          "goal": "以角色視覺連結產品、工程、設計與創作經歷的雙語作品集。",
+          "user": "需要理解我的實際貢獻、合作適配與作品的招募者及案主。"
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "以 Next.js 製作語系路由、響應式版面與可重用作品元件。"
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "建立角色視覺識別，依招募者與案主需要評估的專長整理作品。"
+            ]
+          }
+        }
+      },
+      "ai-customer-service": {
+        "title": "超簡單美股・課程頁",
+        "overview": {
+          "goal": "呈現講師、課程資訊與體驗課報名入口的課程頁。",
+          "user": "評估美股投資課程與體驗課的訪客。"
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "實作課程資訊頁與體驗課報名入口。"
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "在版面層級中安排講師資訊、課程內容與報名操作。"
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "整理從認識課程到找到體驗課報名的流程。"
+            ]
+          }
+        }
+      },
+      "social-media-tool": {
+        "title": "MediaPost・社群發文自動化",
+        "overview": {
+          "goal": "管理社群內容並自動化跨平台發布的工具。",
+          "user": "需要處理重複社群發布工作的行銷團隊。"
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "在公司 AI SaaS 與自動化工作中，參與 MediaPost 發文流程規劃。",
+              "履歷記錄此發文流程的操作時間約減少 70%。"
+            ]
+          }
+        },
+        "note": "節省時間為履歷所記錄的流程成果，未提供樣本數與控制比較。"
+      },
+      "ai-data-analysis": {
+        "title": "AI 數據分析・自動化展示",
+        "overview": {
+          "goal": "探索如何以 AI 輔助分析、降低資料工作操作門檻的展示工具。",
+          "user": "探索以 AI 協助重複資料分析工作的團隊。"
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "在公司流程改善工作中製作 AI 數據分析自動化展示。"
+            ]
+          }
+        }
+      },
+      "ai-co-writing": {
+        "title": "GenInk・Human–AI 協作創作",
+        "overview": {
+          "goal": "針對長篇角色設定變動後的修稿成本，設計由作者主導的 Human–AI 寫作工具。",
+          "user": "需要管理長篇角色設定與修訂工作的作者。"
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "以編劇經驗定義角色一致性與修稿的核心產品問題。",
+              "圍繞作者主導的 AI 協作開發工具，未宣稱已量測的改寫時間降幅。"
+            ]
+          }
+        }
+      },
+      "ai-video-content-generation": {
+        "title": "Dreamake・AI 影音與內容工具",
+        "overview": {
+          "goal": "公司 AI SaaS 與自動化工作中的 AI 影音及內容生成產品。",
+          "user": "探索 AI 輔助內容製作的創作者與行銷團隊。"
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "在公司 AI 影音、內容與自動化產品工作中參與 Dreamake。"
+            ]
+          }
+        },
+        "note": "截圖與錄影展示產品介面，並非個人署名的獨立藝術作品。"
+      },
+      "metro-app": {
+        "title": "台北捷運・黑客松介面概念",
+        "overview": {
+          "goal": "在捷運旅程中結合城市探索、AI 陪伴與卡片收集的黑客松概念。",
+          "user": "想在搭乘捷運時探索在地文化的乘客。"
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "設計導航、卡片收集與獎勵兌換的介面概念。",
+              "以在地商圈與 IP 合作作為設計情境探索，並非已上線串接。"
+            ]
+          }
+        },
+        "note": "黑客松概念提案，並非台北捷運已發布的服務。"
+      },
+      "book": {
+        "title": "書籍裝幀・編排設計",
+        "overview": {
+          "goal": "探索字體、圖像與裝幀如何共同構成閱讀體驗的書籍設計。",
+          "user": "同時重視文字閱讀與實體書設計的讀者。"
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "探索封面構圖、文字編排節奏與圖文關係。"
+            ]
+          }
+        }
+      },
+      "iceverse": {
+        "title": "Iceverse・品牌識別",
+        "overview": {
+          "goal": "為 Iceverse 探索標誌、字體、色彩及應用的視覺識別。",
+          "user": "在不同視覺接觸點認識品牌的受眾。"
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "設計品牌標誌、字體、色彩與應用示例。"
+            ]
+          }
+        }
+      },
+      "iceverseProduct": {
+        "title": "Iceverse・產品與包裝概念",
+        "overview": {
+          "goal": "將 Iceverse 視覺識別延伸到產品與包裝的概念設計。",
+          "user": "透過產品與包裝概念認識品牌的受眾。"
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "將品牌視覺語言應用於產品與包裝版面。"
+            ]
+          }
+        },
+        "note": "設計概念，未宣稱量產、製造或銷售成果。"
+      },
+      "actor": {
+        "title": "演員・個人名片設計",
+        "overview": {
+          "goal": "為表演者規劃精簡的個人識別與名片。",
+          "user": "需要呈現專業形象與聯絡資訊的表演者。"
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "透過字體、構圖與資訊層級整理表演者的專業資訊。"
+            ]
+          }
+        }
+      },
+      "taipei": {
+        "title": "台北・城市意象海報",
+        "overview": {
+          "goal": "結合攝影與向量插畫的城市主題海報。",
+          "user": "對台北城市意象與視覺文化有興趣的觀眾。"
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "將攝影素材與向量插畫整合為多層次的海報構圖。"
+            ]
+          }
+        }
+      }
+    },
+    "en": {
+      "birthday-calendar": {
+        "title": "Birthday Deals Calendar",
+        "overview": {
+          "goal": "A calendar MVP that combines birthday deals and Taipei events with Google Calendar import.",
+          "user": "People planning birthday activities and saving events to a personal calendar."
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "Integrated Google OAuth and Calendar API for authorization, calendar access, deduplication, and event import.",
+              "Combined Taipei open-data events with a 214-entry birthday-deals dataset in a Next.js MVP."
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Designed calendar and map views and the authorization-and-import flow."
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Defined the journey from finding an offer or event to calendar import and reminders."
+            ]
+          }
+        }
+      },
+      "warrant-landing-page": {
+        "title": "Warrant Little Brother · Creator Landing Page",
+        "overview": {
+          "goal": "A finance-creator landing page connecting product information with trial and upgrade actions.",
+          "user": "Visitors evaluating a finance creator’s courses and investment products."
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "Implemented and launched the landing page independently, connecting product information to trial and upgrade destinations."
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Organized the content hierarchy around product understanding, trial, and upgrade decisions."
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Independently built and delivered finance-creator landing pages using Vibe Coding, without an engineering allocation.",
+              "Across two creator projects, the resume records 3,100+ purchases, 940 new customers, 14–18% signup conversion, and approximately NT$180M in total revenue.",
+              "Documented an SOP used by 4+ marketers and PMs to launch pages in one day to one week."
+            ]
+          }
+        },
+        "note": "Figures cover two creator projects and their wider sales activity; they do not measure the effect of this landing page alone. Source: project resume."
+      },
+      "longterm-treasure-app": {
+        "title": "Longterm Treasure · Investment App",
+        "overview": {
+          "goal": "An investment app taken from product requirements to iOS and Android releases with two engineers.",
+          "user": "Investors using the creator’s stock-picking and investment content."
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Designed the app’s high-fidelity Figma interface and prototypes, discussing screen states and data requirements with two engineers."
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Turned ambiguous requirements into specs, produced high-fidelity Figma UI/UX prototypes, and aligned frontend and backend data structures with two engineers.",
+              "Coordinated 0-to-1 delivery to iOS and Android.",
+              "Product results recorded in the resume: H1 revenue NT$18.11M, 96% monthly retention, 75% active paying users, and WAU rising from 644 to nearly 2,000 in two months."
+            ]
+          }
+        },
+        "note": "Metrics describe the investment product and its team’s results. They do not isolate the impact of UI design or one contributor. Source: project resume."
+      },
+      "longterm-treasure-web": {
+        "title": "Longterm Treasure · PC to Web",
+        "overview": {
+          "goal": "A web rebuild of a legacy desktop stock-picking product.",
+          "user": "Investors moving from the desktop product to browser-based access."
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "Worked on the responsive web rebuild, translating desktop product flows into browser interfaces."
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Reorganized information and interaction flows for web use across desktop and mobile."
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Worked on the PC-to-web rebuilds: the futures product shipped in three weeks and the long-term product in five.",
+              "The resume records 50% fewer failures and twice the DAU after the rebuild; the delivery workflow was packaged as a skill for four additional launches."
+            ]
+          }
+        },
+        "note": "Delivery times refer to two separate rebuilds. The reliability and DAU figures describe the reported product results rather than a controlled experiment."
+      },
+      "simple-futures-web": {
+        "title": "Simple Futures · Web Product",
+        "overview": {
+          "goal": "A browser-based futures tool bringing market indicators and multiple timeframes into one interface.",
+          "user": "Investors reading futures market indicators on desktop or mobile."
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "Worked on responsive market-monitoring interfaces and the presentation of quotes and indicators."
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Organized futures indicators using bull/bear status lights and a market thermometer in a dark interface."
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Worked on requirements and cross-team delivery for the futures product’s move to the web."
+            ]
+          }
+        }
+      },
+      "gamified-weight-loss": {
+        "title": "GobetGoal · Gamified Weight Loss",
+        "overview": {
+          "goal": "A four-person team project applying game levels and social mechanics to the challenge of sustaining a weight-loss routine.",
+          "user": "People seeking a more engaging way to keep up a weight-loss routine."
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "Implemented frontend interactions and application flows, working through API, browser-compatibility, and animation issues during team development."
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Designed the level-based experience and a shared visual system, using motion to communicate progress and interaction feedback."
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Used the Octalysis framework to design the level system and led a four-person team through 0-to-1 development in two months.",
+              "Coordinated frontend, backend, and QA work; presented the product at Demo Day and gathered beta-user feedback."
+            ]
+          }
+        }
+      },
+      "hotel-website": {
+        "title": "Iceverse Hotel · Independent Booking Demo",
+        "overview": {
+          "goal": "An independent hotel-brand and booking demo exploring room browsing and reservation flows.",
+          "user": "Travelers comparing rooms and completing a reservation flow in a demo environment."
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "Built the responsive interface and booking demo, connecting frontend flows with API and database operations."
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Designed room information, visual hierarchy, and the booking journey as an independent product exercise."
+            ]
+          }
+        },
+        "note": "Independent demonstration project. No live hotel operations or conversion uplift is claimed."
+      },
+      "portfolio": {
+        "title": "Sonia · Bilingual Portfolio",
+        "overview": {
+          "goal": "A bilingual portfolio connecting product, engineering, design, and creative work through a recognizable character-based identity.",
+          "user": "Recruiters and clients assessing my contribution, project fit, and working examples."
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "Built the Next.js portfolio with localized routes, responsive layouts, and reusable project components."
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Developed the character-based visual identity and organized projects by the expertise a recruiter or client needs to assess."
+            ]
+          }
+        }
+      },
+      "metro-app": {
+        "title": "Taipei Metro · Hackathon Interface Concept",
+        "overview": {
+          "goal": "A hackathon concept combining urban exploration, AI companionship, and collectible cards with a metro travel experience.",
+          "user": "Metro riders interested in exploring local culture as part of their journey."
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Designed interface concepts for navigation, collectible cards, and reward exchange.",
+              "Explored potential local-business and IP partnerships as design scenarios; these are not launched integrations."
+            ]
+          }
+        },
+        "note": "Hackathon concept, not a released Taipei Metro service."
+      },
+      "book": {
+        "title": "Book Binding · Editorial Design",
+        "overview": {
+          "goal": "A book-design study of how typography, image, and binding shape the reading experience.",
+          "user": "Readers encountering a printed book as both text and designed object."
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "Explored cover composition, typographic rhythm, and the relationship between text and imagery."
+            ]
+          }
+        }
+      },
+      "iceverseProduct": {
+        "title": "Iceverse · Product & Packaging Concepts",
+        "overview": {
+          "goal": "An extension of the Iceverse identity into product and packaging concepts.",
+          "user": "People encountering the brand through physical product and packaging concepts."
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "Applied the brand’s visual language to product and packaging layouts."
+            ]
+          }
+        },
+        "note": "Design concepts; production, manufacturing, and sales outcomes are not claimed."
+      },
+      "iceverse": {
+        "title": "Iceverse · Brand Identity",
+        "overview": {
+          "goal": "A visual identity exploration for the Iceverse brand, extending across logo, type, and color applications.",
+          "user": "Audiences encountering the brand across different visual touchpoints."
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "Designed the logo, typography, color palette, and examples of brand applications."
+            ]
+          }
+        }
+      },
+      "actor": {
+        "title": "Actor · Personal Business Card",
+        "overview": {
+          "goal": "A compact personal identity and business-card design for a performer.",
+          "user": "A performer sharing professional identity and contact details."
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "Organized professional information through typography, composition, and a compact visual hierarchy."
+            ]
+          }
+        }
+      },
+      "taipei": {
+        "title": "Taipei · City Imagery Poster",
+        "overview": {
+          "goal": "A city-themed poster combining photography and vector illustration.",
+          "user": "Viewers interested in Taipei’s urban imagery and visual culture."
+        },
+        "design": {
+          "outcomes": {
+            "items": [
+              "Combined photographic material and vector illustration into a layered poster composition."
+            ]
+          }
+        }
+      },
+      "ai-customer-service": {
+        "title": "Simple Easy U.S. Stocks · Course Page",
+        "overview": {
+          "goal": "A course landing page presenting the instructor, course details, and a trial-class registration path.",
+          "user": "Visitors evaluating a U.S. stock-investing course and its trial class."
+        },
+        "fe": {
+          "outcomes": {
+            "items": [
+              "Built the course information page and trial-class registration entry points."
+            ]
+          }
+        },
+        "ui": {
+          "outcomes": {
+            "items": [
+              "Organized instructor information, course content, and registration actions in the page hierarchy."
+            ]
+          }
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Structured the journey from understanding the course to finding the trial-class signup."
+            ]
+          }
+        }
+      },
+      "social-media-tool": {
+        "title": "MediaPost · Social Publishing Automation",
+        "overview": {
+          "goal": "A tool for managing social content and automating publishing across platforms.",
+          "user": "Marketing teams managing repeatable social-publishing tasks."
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Helped plan MediaPost’s publishing workflow as part of the company’s AI SaaS and automation work.",
+              "The resume records approximately 70% less operating time for the publishing workflow."
+            ]
+          }
+        },
+        "note": "Time savings refer to the workflow reported in the resume; no sample size or controlled comparison is provided."
+      },
+      "ai-data-analysis": {
+        "title": "AI Data Analysis · Automation Demo",
+        "overview": {
+          "goal": "An AI-assisted analysis demo exploring how to make data-analysis workflows easier to access.",
+          "user": "Teams exploring AI support for recurring data-analysis work."
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Built an AI data-analysis automation demo as part of the company’s workflow-improvement work."
+            ]
+          }
+        }
+      },
+      "ai-co-writing": {
+        "title": "GenInk · Human–AI Writing",
+        "overview": {
+          "goal": "A human–AI writing tool addressing the cost of revising long-form work when character details change.",
+          "user": "Writers managing characters and revisions across long-form stories."
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Used my screenwriting experience to frame character consistency and revision as the core product problem.",
+              "Developed the tool around author-led collaboration with AI; no measured reduction in rewriting time is claimed."
+            ]
+          }
+        }
+      },
+      "ai-video-content-generation": {
+        "title": "Dreamake · AI Video & Content",
+        "overview": {
+          "goal": "An AI video and content-generation product developed within the company’s AI SaaS and automation work.",
+          "user": "Creators and marketing teams exploring AI-assisted content production."
+        },
+        "pm": {
+          "outcomes": {
+            "items": [
+              "Worked on Dreamake as part of the company’s AI video, content, and automation product work."
+            ]
+          }
+        },
+        "note": "The screenshot and walkthrough show the product interface, not a standalone artwork authored by me."
+      }
+    }
+  },
+  "skills": {
+    "Front-end": [
+      {
+        "name": "React",
+        "icon": "/skills/react.webp"
+      },
+      {
+        "name": "Next.js",
+        "icon": "/skills/next.webp"
+      },
+      {
+        "name": "TailwindCSS",
+        "icon": "/skills/tail.webp"
+      },
+      {
+        "name": "Shadcn",
+        "icon": "/skills/shadcn.webp"
+      },
+      {
+        "name": "Redux",
+        "icon": "/skills/redux.webp"
+      },
+      {
+        "name": "TanStack",
+        "icon": "/skills/tanstack.webp"
+      },
+      {
+        "name": "i18n",
+        "icon": "/skills/intl.webp"
+      },
+      {
+        "name": "Git",
+        "icon": "/skills/git.webp"
+      },
+      {
+        "name": "Swiper",
+        "icon": "/skills/swiper.webp"
+      }
+    ],
+    "Animation": [
+      {
+        "name": "GSAP",
+        "icon": "/skills/gsap.webp"
+      },
+      {
+        "name": "Lottie",
+        "icon": "/skills/lottie.webp"
+      },
+      {
+        "name": "Spline",
+        "icon": "/skills/spline.webp"
+      }
+    ],
+    "Database": [
+      {
+        "name": "Supabase",
+        "icon": "/skills/supabase.webp"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "/skills/mongodb.webp"
+      },
+      {
+        "name": "Restful API",
+        "icon": "/skills/api.webp"
+      }
+    ],
+    "Testing": [
+      {
+        "name": "Playwright",
+        "icon": "/skills/playwright.webp"
+      }
+    ],
+    "UI": [
+      {
+        "name": "Figma",
+        "icon": "/skills/figma.webp"
+      },
+      {
+        "name": "Photoshop",
+        "icon": "/skills/ps.webp"
+      },
+      {
+        "name": "Illustrator",
+        "icon": "/skills/ai.webp"
+      }
+    ],
+    "UX": [
+      {
+        "name": "使用者故事",
+        "icon": "/shape/shape6.webp"
+      },
+      {
+        "name": "易用性測試",
+        "icon": "/shape/shape9.webp"
+      }
+    ],
+    "Project Management": [
+      {
+        "name": "泳道圖",
+        "icon": "/shape/shape2.webp"
+      },
+      {
+        "name": "流程圖",
+        "icon": "/shape/shape5.webp"
+      }
+    ],
+    "Tool": [
+      {
+        "name": "Jira",
+        "icon": "/skills/jira.webp"
+      },
+      {
+        "name": "Notion",
+        "icon": "/skills/notion.webp"
+      }
+    ],
+    "AI": [
+      {
+        "name": "Gemini",
+        "icon": "/skills/gemini.webp"
+      },
+      {
+        "name": "Cursor",
+        "icon": "/skills/cursor.webp"
+      }
+    ],
+    "Deploy": [
+      {
+        "name": "Web",
+        "icon": "/skills/next.webp"
+      },
+      {
+        "name": "Render",
+        "icon": "/skills/docker.webp"
+      }
+    ]
+  }
+}

@@ -1,7 +1,16 @@
-import RolePage from '@/components/page/RolePage';
-import { getRoleData } from '@/lib/getRoleData';
+import RolePage from "@/components/page/RolePage";
+import { getRoleData } from "@/lib/getRoleData";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { pageMetadata } from "@/lib/portfolio";
 
-export default async function PMPage() {
-  const data = await getRoleData('pm');
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Portfolio" });
+  return pageMetadata(locale, "pm", t("pages.pm.title"), t("pages.pm.bio"));
+}
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const data = await getRoleData("pm");
   return <RolePage role="pm" data={data} />;
 }

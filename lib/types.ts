@@ -54,7 +54,7 @@ export interface RoleData {
 }
 
 export interface Role {
-  key: "fe" | "ui" | "pm" | "design";
+  key: "fe" | "ui" | "pm" | "design" | "builder";
   labelKey: string;
   color: string;
   img: string;
@@ -79,3 +79,23 @@ export interface GallerySlide {
 }
 
 export type GallerySlides = GallerySlide[];
+
+// Literature / Film pages
+export interface Award {
+  id: number;
+  page: "literature" | "film" | Role["key"];
+  creditId?: string;
+  year: string;
+  name: string;
+  result: string;
+  work: string;
+}
+
+export interface FilmCredit {
+  id: string;
+  year: string;
+  title: string;
+  format: string;
+  role: string;
+  awards: Award[];
+}

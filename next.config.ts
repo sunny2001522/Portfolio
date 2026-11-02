@@ -4,6 +4,7 @@ import type { NextConfig } from 'next';
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  turbopack: { root: import.meta.dirname },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 828, 1080, 1280, 1920],

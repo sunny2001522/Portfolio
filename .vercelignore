@@ -1,0 +1,11 @@
+.git
+.vercel
+.env*
+.claude
+config
+skill
+doc
+resume
+outputs
+CLAUDE-FABLE-5.md
+*.tsbuildinfo

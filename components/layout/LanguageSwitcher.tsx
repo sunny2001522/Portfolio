@@ -1,51 +1,14 @@
-// components/LanguageSwitcher.tsx
 "use client";
 
-import { useRouter, usePathname } from "@/i18n/routing";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useParams } from "next/navigation";
-
-const languages = [
-  { value: "en", label: "Eng" },
-  { value: "zh", label: "中" },
-];
+import { Link, usePathname } from "@/i18n/routing";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function LanguageSwitcher() {
-  const router = useRouter();
+  const locale = useLocale();
   const pathname = usePathname();
-  const params = useParams();
-  const currentLocale = params.locale as string;
-
-  const handleLanguageChange = (newLocale: string) => {
-    router.replace(pathname, { locale: newLocale });
-  };
-
-  const currentLanguage = languages.find(
-    (lang) => lang.value === currentLocale
-  );
-
-  return (
-    <Select value={currentLocale} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-[140px]">
-        <SelectValue>
-          <span className="flex items-center gap-2">
-            {currentLanguage?.label}
-          </span>
-        </SelectValue>
-      </SelectTrigger>
-      <SelectContent>
-        {languages.map((language) => (
-          <SelectItem key={language.value} value={language.value}>
-            <span className="flex items-center gap-2">{language.label}</span>
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
-  );
+  const t = useTranslations("Portfolio");
+  const otherLocale = locale === "en" ? "zh" : "en";
+  return <Link className="language-switch" href={pathname} locale={otherLocale} aria-label={t("language")} hrefLang={otherLocale}>
+    <span className="language-current">{locale.toUpperCase()}</span><span aria-hidden="true"> / </span>{otherLocale.toUpperCase()}
+  </Link>;
 }

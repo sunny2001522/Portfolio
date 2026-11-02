@@ -168,7 +168,7 @@ export const projects: Project[] = [
     category: "",
     links: [
       { type: "GitHub", url: "https://github.com/sunny2001522/Portfolio" },
-      { type: "Web", url: "https://exuan-website-dev.vercel.app/zh" },
+      { type: "Web", url: "https://exuan-dev.vercel.app/zh" },
     ],
     skills: [
       "Next.js",
@@ -240,7 +240,7 @@ export const projects: Project[] = [
     thumbnail: "/web/data.webp",
     video: "/web/analytics.webm",
     category: "web",
-    links: [],
+    links: [{ type: "Web", url: "https://analytics-ai-two.vercel.app/" }],
     skills: [
       "React",
       "Next.js",
@@ -254,7 +254,7 @@ export const projects: Project[] = [
   },
   {
     id: "ai-co-writing",
-    year: "2025",
+    year: "2026",
     thumbnail: "/web/genink.webp",
     video: "/web/genink.webm",
     category: "web",

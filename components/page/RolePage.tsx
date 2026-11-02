@@ -1,20 +1,16 @@
-"use client";
+import PageIntro from "./PageIntro";
+import Project from "./role/Project";
+import RoleSelect from "../ui/RoleSelect";
+import HirePanel from "./HirePanel";
+import { getTranslations } from "next-intl/server";
+import type { Role, RoleData } from "@/lib/types";
 
-import { useTranslations } from "next-intl";
-import RolePageClient from "./RolePageClient";
-import { RoleData } from "@/lib/types";
-
-interface Props {
-  role: string;
-  data: RoleData;
-}
-
-export default function RolePage({ role, data }: Props) {
-  const t = useTranslations("RolePage");
-
-  if (!data) {
-    return <div>{t("roleNotFound")}</div>;
-  }
-
-  return <RolePageClient data={data} role={role} />;
+export default async function RolePage({ role, data }: { role: Role["key"]; data: RoleData }) {
+  const t = await getTranslations("Portfolio");
+  return <>
+    <PageIntro pageKey={role} />
+    <Project projects={data.projects} skills={data.skills} role={role} />
+    <section className="page-shell related-disciplines"><h2 className="section-title">{t("allWork")}</h2><RoleSelect role={role} /></section>
+    <HirePanel />
+  </>;
 }
