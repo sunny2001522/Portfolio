@@ -1,16 +1,773 @@
 {
   "HomePage": {
     "title": "Sonia",
-    "about": "I build 0-to-1 products and bring AI applications into use, turning ambiguous needs into clear specs and shipped work through design and implementation.",
-    "intro": "Build ideas",
-    "intro2": "into products",
-    "selectRole": "Explore this role",
-    "learnMore": "Learn More",
-    "nav": {
-      "literature": "Literature",
-      "film": "Film"
+    "about": "This is an amazing platform that helps you achieve your goals.",
+    "intro": "Buy",
+    "intro2": "a Sonia?",
+    "learnMore": "Learn More"
+  },
+  "projects": {
+    "birthday-calendar": {
+      "title": "Birthday-Deals Calendar Connector",
+      "overview": {
+        "goal": "Connect a Google Calendar and one-click import the next 14 days of Taipei events plus 214 birthday deals across Taiwan (free eats, BOGO), auto-deduplicated, with reminders on the birthday day / week / month.",
+        "user": "Deal-hunters and students who want birthday perks without checking each brand."
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Integrated Google OAuth and Calendar API to read, merge, dedupe, and write back to the user's calendar.",
+            "Pulled events from Taipei open data and merged with a 214-entry birthday-deals database.",
+            "Built a one-click-deployable MVP with Next.js."
+          ]
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Defined the core flow (connect to fetch to dedupe to write-back to remind) to validate demand fast.",
+            "Built a 214-brand birthday-deals database; verified/updated 126 fields for accuracy.",
+            "Designed day/week/month reminder tiers to maximize usage."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Surfaced deals via calendar and map views to lower the lookup barrier.",
+            "Streamlined the authorize-and-import flow to a few steps.",
+            "Clear reminder-time tiering for at-a-glance understanding."
+          ]
+        }
+      },
+      "product-builder": {
+        "outcomes": {
+          "items": [
+            "Product / PM: Defined the core birthday-deals-to-calendar use case, organized 214 deal records and reminder rules, and scoped it into a fast MVP.",
+            "UI / Frontend: Designed a short authorize, import, dedupe, and reminder flow, then built a deployable responsive interface with Next.js.",
+            "Backend / Integration: Connected Google OAuth, Calendar API, Taipei open data, and the deals database to merge, dedupe, and write events back."
+          ]
+        }
+      }
+    },
+    "warrant-landing-page": {
+      "title": "Warrant Landing Page",
+      "overview": {
+        "goal": "Independently shipped a warrant product landing page from 0 to 1 in a single day, owning the content and conversion strategy to unblock marketing's long-standing lack of ad creative.",
+        "user": "Retail investors drawn in by a limited-time campaign who want to sign up fast."
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Shipped the landing page from 0 to 1 in a single day, unblocking marketing's long-standing lack of ad creative.",
+            "Owned the content and conversion strategy solo, achieving a 55% conversion rate and driving 2,000 sign-ups.",
+            "Drove targeted keywords to #1 in search via SEO strategy—ranking even above the company's official product page."
+          ]
+        }
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Built and launched a responsive landing page within one day with a consistent desktop/mobile experience.",
+            "Optimized SEO structure and metadata to rank targeted keywords #1, above the company's official site.",
+            "Integrated directly with the company cart to shorten the purchase path, reaching a 55% conversion rate."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "With no design mockups, personally decided the page's information architecture and conversion flow.",
+            "Used strongly-guided CTA layouts to maximize add-to-cart conversion."
+          ]
+        }
+      }
+    },
+    "longterm-treasure-app": {
+      "title": "Longterm Treasure App",
+      "overview": {
+        "goal": "As the sole PM leading a 3-person team, built a long-term investing app from 0 to 1 and launched on iOS and Android; using a spec-driven (SDD) workflow with AI prototyping to go from requirements to engineering hand-off in 2 weeks.",
+        "user": "Long-term investors, often older, who need clear stock-picking signals."
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "As sole PM leading 2 engineers, built and launched on iOS/Android from 0 to 1, generating NT$3M in revenue and 1,000 weekly active users.",
+            "Introduced spec-driven development (SDD)—writing specs that AI turns into prototypes—compressing requirements-to-engineering hand-off to 2 weeks with no UI mockups.",
+            "Codified this AI-driven workflow into a company-wide AI development SOP, improving cross-team delivery speed."
+          ]
+        }
+      }
+    },
+    "longterm-treasure-web": {
+      "title": "Longterm Treasure Web",
+      "overview": {
+        "goal": "Led the migration of the Longterm Treasure PC product to web, re-architecting to reduce error rates and improve load speed, and defining the post-launch success metrics.",
+        "user": "Investors who prefer desktop and want long-term stock screening on the web."
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Led requirement decomposition and scope definition for the PC-to-web migration, re-architecting flows to cut error rates and improve load speed.",
+            "Defined the post-launch north-star metrics and tracking plan (crash rate, LCP, task completion, retention) so the redesign's impact is measurable.",
+            "Coordinated design and engineering across teams to deliver a consistent cross-device experience on schedule."
+          ]
+        }
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Rebuilt the PC product with a responsive architecture, lowering cross-device error rates and improving page load speed.",
+            "Unified cross-device interactions and state management for a consistent, maintainable experience."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Redesigned the information architecture and user flows to significantly lower the operation barrier.",
+            "Established consistent visual and interaction guidelines to improve web usability."
+          ]
+        }
+      }
+    },
+    "simple-futures-web": {
+      "title": "Simple Futures Web",
+      "overview": {
+        "goal": "Led the web version of Lin En-Ru's \"Simple Futures\" TAIEX futures monitoring tool, integrating proprietary signals (Bull/Bear lines, strength spread, momentum, market thermometer) into a screen that reads trend at a glance.",
+        "user": "Futures investors who want to monitor TAIEX futures in the browser and quickly read direction and big-player flow."
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Defined the scope of the futures web tool, integrating Bull/Bear/reversal lines, strength spread, momentum, and the market thermometer into a single-page monitoring experience.",
+            "Planned multi-timeframe candles (6m/60m/daily) and real-time bull/bear light alerts, balancing information density with readability.",
+            "Coordinated design and engineering across teams to ship a consistent mobile and desktop experience on schedule."
+          ]
+        }
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Built a responsive mobile-and-desktop futures monitoring page, wiring real-time quotes with smooth updates.",
+            "Implemented candle rendering and multiple technical indicators with attention to performance and maintainability."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Visualized complex futures indicators as bull/bear lights and a market thermometer to lower the reading barrier.",
+            "Established visual and interaction guidelines for a dark monitoring UI, improving comfort during long sessions."
+          ]
+        }
+      }
+    },
+    "gamified-weight-loss": {
+      "title": "Gamified Weight-Loss Platform (Team Project)",
+      "overview": {
+        "goal": "Transform the weight loss journey into a game, helping users build healthy habits through challenges, social interaction, and rewards.",
+        "user": "Busy 30-something office workers who need peer pressure and stakes to stay consistent."
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Demo Day: highly positive audience feedback, described as 'as addictive as playing a game'",
+            "Showcased problem-solving and adaptability: self-learning backend, handling cross-browser issues, optimizing animations",
+            "Proved ability to contribute as more than a UI implementer → capable of driving a full project to completion"
+          ]
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Achieved 100% delivery of the gamified weight-loss platform, with testers rating it as 'exceeding bootcamp standards.'",
+            "Received unanimous acclaim at the final product demo for its quality and engaging user experience.",
+            "Successfully prevented project delays through proactive risk management and cross-functional coordination.",
+            "Demonstrated leadership in product strategy, project planning, and quality assurance."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Created a visually stunning and cohesive UI that was praised as 'addictive' and 'game-like.'",
+            "The design system streamlined the development process and ensured a consistent user experience across the platform.",
+            "Successfully integrated motion design to enhance user engagement and provide clear feedback.",
+            "The final product stands as a testament to design-driven development, where user experience was central to the platform's success."
+          ]
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "product-builder": {
+        "outcomes": {
+          "items": [
+            "Product / PM: Turned weight loss into challenges, stakes, rewards, and peer accountability, scoping a two-month team delivery plan.",
+            "UI / Frontend: Designed game-like screens, feedback states, and motion, then handled browser and performance issues to make the product feel playable.",
+            "Backend / Quality: Helped connect Supabase data flows, testing, and risk control so Demo Day could show a stable end-to-end loop."
+          ]
+        }
+      }
+    },
+    "hotel-website": {
+      "title": "Hotel Branding Website (Independent Project)",
+      "overview": {
+        "goal": "To create a responsive official website that combines brand image with actual booking functionality, enhancing the hotel's digital marketing capabilities.",
+        "user": "Independent travelers comparing rooms and booking quickly online."
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Successfully completed a demo of an official website with full booking functionality",
+            "Improved understanding of full-stack development: frontend UI, backend data integration, and database operations",
+            "Demonstrated independent development capabilities, able to build brand image and business logic from scratch"
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Designed a brand website that is both aesthetically pleasing and practical, enhancing the hotel's professional image.",
+            "The simplified booking flow design lowered the barrier to entry for users, helping to increase conversion rates.",
+            "The established design system laid an efficient foundation for future feature expansion."
+          ]
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "product-builder": {
+        "outcomes": {
+          "items": [
+            "Product / UI: Planned a hotel brand site around room browsing, booking, and brand storytelling so the site could both present and convert.",
+            "Frontend: Built responsive pages, room cards, and the booking flow so users could move from browsing to reservation.",
+            "Backend / Data: Connected REST APIs with MongoDB for room, booking, and data-state handling, creating a complete full-stack demo."
+          ]
+        }
+      }
+    },
+    "portfolio": {
+      "title": "Personal Portfolio Website (Interactive Immersive Experience)",
+      "overview": {
+        "goal": "To create a personal portfolio that showcases technical skills and design sense, packaging my diverse talents into a blind box toy concept, and leaving a deep impression on recruiters through narrative visuals during their browsing experience.",
+        "user": "Recruiters and collaborators who want to grasp my cross-discipline skills in minutes."
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "The portfolio successfully led to interview invitations in the overseas recruitment process",
+            "Demonstrated multilingual development, animation performance, and SEO technical skills",
+            "Proved the ability to combine technology, design, and narrative to create memorable products"
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Successfully created a personal website with a strong brand identity, effectively communicating my design philosophy and technical abilities.",
+            "The unique blind box concept and interactive design received positive feedback during the recruitment process and increased interview opportunities.",
+            "Demonstrated the ability to combine user experience, visual design, and frontend technology to create immersive digital products."
+          ]
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
+    },
+    "metro-app": {
+      "title": "Taipei Metro App Redesign (Hackathon Project)",
+      "overview": {
+        "goal": "Transform Taipei Metro daily commutes into interactive urban adventures and cultural explorations. Through AI-powered companionship, immersive navigation, and collectible card systems, every ride becomes an engaging, explorable, and memorable innovative experience.",
+        "user": "Commuters who need clear transfers and fares, fast."
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Created a dual user motivation combining utilitarian value (redemption for discounts) and hedonic value (collection fun).",
+            "Designed a system with business expansion potential: supporting integration with shopping districts, IP licensing cooperation, and T-Pass promotion.",
+            "Enhanced the public transportation experience, promoting cultural tourism and local connection."
+          ]
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
+    },
+    "book": {
+      "title": "Book Binding Design",
+      "overview": {
+        "goal": "Exploring the tactile and visual layers of the print medium, transforming the soul of text into touchable physical art.",
+        "user": "Readers who love physical books and notice binding and layout."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Utilized special paper materials and printing techniques to enhance the collectible value of books.",
+            "Strengthened the reader's immersion through visual metaphors and typographic rhythm.",
+            "Demonstrated mastery of graphic composition, color planning, and material application."
+          ]
+        }
+      }
+    },
+    "iceverseProduct": {
+      "title": "Iceverse Product Design",
+      "overview": {
+        "goal": "Creating a series of peripheral products for the Iceverse brand, integrating the brand spirit into everyday objects.",
+        "user": "Consumers who value product packaging and brand consistency."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Developed a product line with high brand recognition, strengthening the brand's extension into lifestyle scenes.",
+            "Balanced practicality with aesthetics to create a product experience with emotional value.",
+            "Implemented the full product design lifecycle from material selection to production processes."
+          ]
+        }
+      }
+    },
+    "iceverse": {
+      "title": "Iceverse Branding",
+      "overview": {
+        "goal": "Establishing a pure, modern, and inclusive brand visual system.",
+        "user": "Design-minded audiences who care about brand worldview and visual style."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Designed a complete logo system, logotypes, and a brand color palette.",
+            "Developed detailed brand guidelines to ensure consistency across different media.",
+            "Successfully established a market-competitive brand image, increasing brand value."
+          ]
+        }
+      }
+    },
+    "actor": {
+      "title": "Actor Business Card Design",
+      "overview": {
+        "goal": "Tailor-making business cards with a personal style for actors to establish a deep professional impression in a short time.",
+        "user": "Performers and talents who need a crafted personal visual identity."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Highlighted the unique temperament of performers through atypical layout and materials.",
+            "Perfectly combined resume information with visual aesthetics to increase card retention.",
+            "Showcased a minimalist yet powerful design language within a small space."
+          ]
+        }
+      }
+    },
+    "taipei": {
+      "title": "Taipei City Imagery Poster",
+      "overview": {
+        "goal": "Reinterpreting Taipei's urban memory, capturing the street soul of Taipei through contemporary visual language.",
+        "user": "Audiences who connect with city themes and local cultural visuals."
+      },
+      "design": {
+        "outcomes": {
+          "items": [
+            "Combined photography and vector illustration to create layered urban visuals.",
+            "Won design awards, demonstrating sensitivity to contemporary art styles.",
+            "Sparked public attention and emotional resonance with urban spaces."
+          ]
+        }
+      }
+    },
+    "ai-customer-service": {
+      "title": "Investment KOL Landing Page",
+      "overview": {
+        "goal": "Build a high-conversion landing page for investment KOL, integrating company SSO, cart optimization, and YouTube live streaming to enable one-stop purchase experience.",
+        "user": "Viewers of investment live-streams who want a one-stop way to buy courses."
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Integrated company SSO system to streamline user registration and purchase flow",
+            "Optimized shopping cart experience to reduce friction, boosting conversion rate by 159% (22% → 57%)",
+            "Embedded YouTube live streaming for in-page one-stop course sales"
+          ]
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Led the cart optimization strategy, lifting conversion from 22% to 57% (+159%) by removing purchase friction.",
+            "Planned the SEO strategy that ranked core keywords #1, expanding the organic traffic funnel.",
+            "Integrated YouTube live streaming with the purchase flow to create a one-stop sales experience."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Designed high-conversion CTA layouts to guide users through purchase",
+            "Optimized cart interface to reduce drop-off points and improve checkout completion",
+            "Integrated live streaming with purchase interface for immersive sales experience"
+          ]
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
+    },
+    "social-media-tool": {
+      "title": "多平台社群發文管理工具",
+      "overview": {
+        "goal": "為解決品牌經營多平台社群時需重複發文與管理的問題，打造跨平台發文工具，支援一次內容同步多個渠道，讓品牌能以更低成本擴展社群影響力並提升行銷效率。",
+        "user": "Social managers and marketers running many platforms who want to save posting time."
+      },
+      "fe": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "product-builder": {
+        "outcomes": {
+          "items": [
+            "Product / PM: Mapped the one-post-to-many-platform workflow and scoped synchronized publishing, previews, scheduling, and performance tracking.",
+            "UI / Frontend: Designed the content editor, platform previews, and publishing management interface to reduce platform-switching cost.",
+            "Backend / Architecture: Planned extensible publishing modules and cloud deployment so channels can be added into one management tool over time."
+          ]
+        }
+      }
+    },
+    "ai-data-analysis": {
+      "title": "AI 數據分析決策平台",
+      "overview": {
+        "goal": "為解決營運人員難以從大量數據中快速獲得洞察的問題，打造 AI 數據分析平台，透過自動化分析與視覺化呈現，協助團隊快速理解趨勢並做出更精準的產品決策。",
+        "user": "PMs and marketers who must read product metrics and find the why every week."
+      },
+      "fe": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
+    },
+    "ai-co-writing": {
+      "title": "AI 人類協作寫作平台",
+      "overview": {
+        "goal": "為解決創作者在內容創作過程中靈感不足與效率低落的問題，打造 AI 與人類協作的寫作平台，透過即時 AI 建議與內容生成，幫助創作者更快產出高品質內容。",
+        "user": "Writers and creators who get stuck and want AI to brainstorm and tighten drafts."
+      },
+      "fe": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "product-builder": {
+        "outcomes": {
+          "items": [
+            "Product / PM: Broke the creator workflow into outline, character, scene, and draft revision moments where AI can genuinely help.",
+            "UI / Frontend: Built a real-time AI co-writing interface that lets users adjust outlines, characters, scenes, and prose without rewriting everything.",
+            "Backend / AI: Connected Gemini and prompt context for generation, editing suggestions, and writing-progress data so AI support becomes productized."
+          ]
+        }
+      }
+    },
+    "life-manifestation": {
+      "title": "人生顯化器",
+      "overview": {
+        "goal": "為幫助使用者更清晰規劃人生目標，打造結合 AI 與心理學概念的目標顯化工具，透過目標拆解與行動追蹤機制，協助使用者將抽象願景轉化為可執行的行動計畫。"
+      },
+      "fe": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": []
+        }
+      },
+      "design": {
+        "outcomes": {
+          "items": []
+        }
+      }
+    },
+    "ai-video-content-generation": {
+      "title": "AI Video and Content Generation System",
+      "overview": {
+        "goal": "Planned an automated pipeline from persona modeling to script generation, subtitles, and short-form video output for scalable content production.",
+        "user": "Personal brands and creators who want to produce short videos at scale without appearing on camera."
+      },
+      "fe": {
+        "outcomes": {
+          "items": [
+            "Built a workflow monitoring interface for automated video generation stages.",
+            "Optimized large-media preview and streaming for script/subtitle review.",
+            "Created modular persona controls for tone and style adjustments."
+          ]
+        }
+      },
+      "pm": {
+        "outcomes": {
+          "items": [
+            "Planned an end-to-end AI video production flow to reduce production cost and cycle time.",
+            "Defined content consistency as a success metric through persona models.",
+            "Coordinated LLM scripting, TTS, and editing APIs into one tool chain."
+          ]
+        }
+      },
+      "ui": {
+        "outcomes": {
+          "items": [
+            "Designed a clear automation board for complex generation steps.",
+            "Improved script and subtitle editing hierarchy for efficient review.",
+            "Used a dark creator-tool interface to support focused media work."
+          ]
+        }
+      },
+      "product-builder": {
+        "outcomes": {
+          "items": [
+            "Product / PM: Planned the full pipeline from persona model to script, subtitles, and short-video output, reducing production cycles from days to minutes.",
+            "UI / Frontend: Built workflow boards, script editing, subtitle adjustment, and media preview surfaces so each generation stage is understandable.",
+            "Backend / Integration: Connected LLM, TTS, video-editing APIs, and Render deployment into one usable system instead of scattered tools."
+          ]
+        }
+      }
+    },
+    "ai-pastiche": {
+      "title": "Pastiche AI Image Series",
+      "overview": {
+        "goal": "Rebuilt classic visual languages with AI generation and post-production, practicing style decomposition, prompt control, and image-series consistency.",
+        "user": "Curators, brands, and collaborators who want to quickly understand my AI visual direction and prompt-control ability."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Translated reference styles into reusable composition, lighting, color, and texture prompts.",
+            "Used iterative generation and post-production to keep character proportion and mood consistent.",
+            "Expanded AI image experiments into a display-ready series."
+          ]
+        }
+      }
+    },
+    "ai-short-film-true-self": {
+      "title": "TRUE SELF AI Short Film",
+      "overview": {
+        "goal": "Created a fantasy AI short film about perfection and self-acceptance, building the narrative from script and visual concept to pacing.",
+        "user": "Audiences interested in AI film storytelling, short-film competitions, and character-world creation."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Completed a 3:45 AI short film that visualizes imperfect selves as a fantasy world.",
+            "Integrated script, shots, generated imagery, and pacing so AI visuals serve the story.",
+            "Built an emotional arc through character conflict and visual worldbuilding."
+          ]
+        }
+      }
+    },
+    "ai-dark-circus": {
+      "title": "Dark Circus AI Original Animation",
+      "overview": {
+        "goal": "Created AI-generated illustration and animation visuals for an original Halloween song, shaping the song into a dark circus world.",
+        "user": "Viewers who enjoy original music, AI animation, and character-based worlds."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Produced AI-generated illustrations and animation visuals for the original song.",
+            "Built a consistent language around dark circus stages, masks, performers, and danger.",
+            "Collaborated with the music workflow to complete a 3:21 animated piece."
+          ]
+        }
+      }
+    },
+    "ai-comic": {
+      "title": "AI Comic Creation",
+      "overview": {
+        "goal": "Used AI to support comic character and scene generation, exploring fast visualization of panels, expressions, and story rhythm.",
+        "user": "Creators interested in how AI can support comic ideation and visual iteration."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Turned story concepts into characters, scenes, and comic-like frames quickly.",
+            "Used generated visuals to refine panel rhythm and story development.",
+            "Packaged the results into presentable comic visuals with consistent character tone."
+          ]
+        }
+      }
+    },
+    "ai-product": {
+      "title": "AI Product Visual Concepts",
+      "overview": {
+        "goal": "Generated product and packaging visuals with AI to quickly explore form, material, scene, and brand presentation directions.",
+        "user": "Brand, design, and marketing teams that need early product-concept directions fast."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Generated multiple product visual directions for early concept comparison.",
+            "Controlled material, lighting, and composition to make images closer to pitch-ready scenes.",
+            "Used post-production to improve polish and commercial presentation quality."
+          ]
+        }
+      }
+    },
+    "ai-generative-art": {
+      "title": "Generative AI Art Series",
+      "overview": {
+        "goal": "Created multiple generative AI artworks exploring controlled changes in character, scene, mood, and style.",
+        "user": "Audiences interested in AI-generated art, exhibition submissions, and visual experiments."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Selected for Boomer Gallery exhibition and submitted to AI art competitions.",
+            "Built an iteration workflow combining prompts, references, and post-production.",
+            "Organized AI art experiments into a portfolio-ready visual series."
+          ]
+        }
+      }
+    },
+    "aiart-showreel": {
+      "title": "AI Art Showreel",
+      "overview": {
+        "goal": "A short reel that brings together AI art fragments, linking visual styles, characters, and mood experiments into a quickly viewable portfolio piece.",
+        "user": "Curators, collaborators, and viewers who want a fast introduction to the range, direction, and rhythm of my AI visual work."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Brings generated images and motion fragments together to show the range of AI visual experiments.",
+            "Uses edit rhythm to connect shifts in character, scene, and style into a coherent viewing flow.",
+            "Presents the work as a playable showreel so collaborators can quickly understand the creative language."
+          ]
+        }
+      }
+    },
+    "ai-cocoon-film": {
+      "title": "Cocoon",
+      "overview": {
+        "goal": "Cocoon is a near-future short film about algorithms, echo chambers, and modern loneliness. As A-Zhe is increasingly fed the views he already expects, a comfortable world without disagreement or conflict loses its texture of reality.",
+        "user": "Viewers interested in how social media, recommendation algorithms, and filter bubbles shape everyday relationships and thinking."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Turned the abstract idea of the filter bubble into a closed city wrapped in soft, unsettling white cocoons.",
+            "Used surreal near-future horror imagery to show an algorithm spreading from the screen into streets, neighbours, and family life.",
+            "Follows A-Zhe's discovery to ask whether a world that only confirms us still leaves us free to step outside our own cocoon."
+          ]
+        }
+      }
+    },
+    "ai-gobetgoal-characters": {
+      "title": "GobetGoal AI Character Visuals",
+      "overview": {
+        "goal": "Created a responsive character visual system for the GobetGoal gamified weight-loss platform, giving daily check-ins, exercise, and completed missions clear emotional feedback.",
+        "user": "People who benefit from immediate encouragement and companionship while building sustainable health habits."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Built a consistent 3D character look and material language with AI image generation and post-production.",
+            "Designed everyday, exercise, and celebration character states for different in-product mission moments.",
+            "Made the character part of the product feedback loop, giving the gamified journey more companionship and recognition."
+          ]
+        }
+      }
+    },
+    "ai-suno-songwriting": {
+      "title": "Suno Original Lyric Series",
+      "overview": {
+        "goal": "Combined original lyrics with AI music generation to produce song demos and test the workflow between words, melody, and synthetic vocals.",
+        "user": "Listeners and creators interested in AI music, lyric writing, and rapid song demos."
+      },
+      "ai": {
+        "outcomes": {
+          "items": [
+            "Completed original-lyric demos including “Only Want to Electrify You” and “Heaven and Earth.”",
+            "Used AI music tools to test lyric rhythm, emotional sections, and genre direction.",
+            "Extended text writing into listenable and shareable music works."
+          ]
+        }
+      }
     }
   },
+  "film-actor": {"title":"Narrative Short Film: Actor","overview":{"goal":"Use sound mixing and sound design to express a character's psychological chaos."}},
+  "film-zzz": {"title":"Narrative Short Film: ZZZ","overview":{"goal":"Build an uncanny dream with editing, color grading, and visual effects."}},
+  "film-magic-teacher": {"title":"My Magic Teacher Is My Dad","overview":{"goal":"Complete sound mixing and color grading for the documentary delivery cut."}},
+  "film-hit-watermelon": {"title":"Narrative Short Film: Hit the Watermelon","overview":{"goal":"Reconstruct tension with film-camera production and designed post sound."}},
+  "film-earphone-ad": {"title":"Product Ad: Yinyue Headphones","overview":{"goal":"Create the art direction and styling for a family-to-party commercial story."}},
+  "film-archway": {"title":"The Birth of an Archway","overview":{"goal":"Produce a narrative short film selected by the London International Film Festival."}},
+  "film-dark-circus": {"title":"Dark Circus Animation","overview":{"goal":"Combine AI imagery, animation, and music into an original visual work."}},
+  "film-hr-promo": {"title":"HR PROMO","overview":{"goal":"Deliver a promotional short using motion graphics and editing."}},
+  "film-event-records": {"title":"Event Recordings","overview":{"goal":"Edit brand events, Web3 gatherings, and launch-event footage."}},
+  "design-social": {"title":"Social Visual Design","overview":{"goal":"Create social posts and cross-platform visual assets."}},
+  "design-brand": {"title":"Brand Design","overview":{"goal":"Build a coherent identity through visual language, layouts, and brand systems."}},
+  "design-poster": {"title":"Poster Design","overview":{"goal":"Communicate event themes through composition, type, and color."}},
+  "design-product": {"title":"Product Design","overview":{"goal":"Explore visual proposals for products, packaging, and presentation scenes."}},
+  "photo-events": {"title":"Event Photography","overview":{"goal":"Document events, city light, and audience interaction."}},
+  "photo-portraits": {"title":"Portrait Photography","overview":{"goal":"Build portrait narratives through subject, light, and composition."}},
+  "photo-stills": {"title":"Film Stills","overview":{"goal":"Capture character and scene emotion from moving-image projects."}},
+  "photo-landscape-architecture": {"title":"Landscape and Architecture","overview":{"goal":"Organize a visual series from observations of city, architecture, and space."}},
   "Navigation": {
     "home": "Home",
     "about": "About",
@@ -34,6 +791,24 @@
     "previous": "Previous",
     "next": "Next",
     "close": "Close"
+  },
+  "fe": {
+    "title": "Frontend Engineer",
+    "me": "illumi",
+    "about": {
+      "skill": "Good at interactive web pages.",
+      "hobby": "",
+      "description": "Share 30 days post on iTHome."
+    },
+    "resume": "/SoniaResumeEn.pdf",
+    "award": [
+      "2023 Frontend Hackathon Winner",
+      "2022 UI Innovation Award"
+    ],
+    "description": [
+      "2025 HexSchool Rocket Team Graduate",
+      "2021 UX Annual Award"
+    ]
   },
   "Form": {
     "name": "Name",
@@ -101,305 +876,112 @@
     "skillsTitle": "My Skills",
     "roleNotFound": "Role not found"
   },
-  "Literature": {
-    "title": "Literature",
-    "eyebrow": "Literature",
-    "bio": "Graduate of the Film Department at Taiwan University of the Arts. Her screenplay won First Prize at the Ministry of Culture TV Script Awards, and she co-wrote on a Ministry of Culture-funded feature. Winner of the Global Chinese Student Literary Award and the Unitas Secondary School Literary Award; her poems appear in Wind Ball Poetry Selection, Chien Kun Poetry Quarterly and Ginger Flower Poetry.",
-    "awardsTitle": "Awards",
-    "publicationsTitle": "Published poems",
-    "publications": [
-      "Wind Ball Poetry Selection",
-      "Chien Kun Poetry Quarterly",
-      "Ginger Flower Poetry"
-    ],
-    "workLabel": "Work",
-    "empty": "Nothing here yet"
-  },
-  "Film": {
-    "title": "Film & TV",
-    "eyebrow": "Film & TV",
-    "bio": "I graduated from National Taiwan University of Arts in film and television. My experience includes film development and screenwriting at Viralstorm Studio, leading a video team at Knowhow College, and production and post-production roles across film projects.",
-    "creditsTitle": "Credits",
-    "awardsTitle": "Nominations & awards",
-    "undated": "Undated",
-    "empty": "Nothing here yet"
-  },
-  "Portfolio": {
-    "name": "Sonia Chen",
-    "eyebrow": "PRODUCT × DESIGN × STORYTELLING",
-    "headline": "Ideas,",
-    "headlineAccent": "made real.",
-    "intro": "I am Sonia, a Product Builder at CMoney. I turn ambiguous needs into product specs, interfaces, and working web experiences. My background in film and writing shapes how I make complex ideas clear.",
-    "explore": "Explore my work",
-    "homeWork": "Selected work",
-    "directoryTitle": "One builder. Multiple perspectives.",
-    "directoryIntro": "Choose the expertise your team or project needs. Each page explains my contribution and shows the work behind it.",
-    "experienceTitle": "Experience that connects the dots",
-    "experience": [
-      {
-        "date": "2025–present",
-        "title": "Product Builder · CMoney",
-        "body": "Fintech products, AI applications, landing pages, and automation. Hands-on with requirements, UI/UX, and implementation."
-      },
-      {
-        "date": "2024",
-        "title": "Graphic & Motion Designer · BTSE",
-        "body": "Product animation and visual communication for a crypto exchange, working with product and international teams."
-      },
-      {
-        "date": "2022–2024",
-        "title": "Film Producer / Screenwriter · Viralstorm Studio",
-        "body": "Development proposals, market research, production planning, and screenwriting."
-      },
-      {
-        "date": "2021–2022",
-        "title": "Head of Video · Knowhow College",
-        "body": "Led a five-person video team, coordinating more than 50 productions for a podcast with over one million downloads."
-      }
-    ],
-    "evidence": [
-      {
-        "value": "0 → 1",
-        "label": "Product planning through delivery"
-      },
-      {
-        "value": "4 people",
-        "label": "GobetGoal team led to launch in 2 months"
-      },
-      {
-        "value": "Film + tech",
-        "label": "Narrative craft with hands-on implementation"
-      }
-    ],
-    "navLabel": "Portfolio navigation",
-    "menu": "All disciplines",
-    "closeMenu": "Close menu",
-    "home": "Home",
-    "work": "Work",
-    "contact": "Contact",
-    "skip": "Skip to content",
-    "language": "Switch language",
-    "allWork": "Explore another discipline",
-    "selectedWork": "Selected projects",
-    "projectIntent": "Project & purpose",
-    "myContribution": "My contribution & delivery",
-    "audience": "Designed for",
-    "tools": "Tools used",
-    "projectIndex": "Jump to a project",
-    "viewProject": "Visit project",
-    "playDemo": "Play demo",
-    "demoCaption": "Product walkthrough · video loads when played. Screenshots and recordings may show the original product language.",
-    "visualCaption": "Original project visual. Text within the artwork is preserved.",
-    "translatedTitles": "English work titles and publication names below are descriptive translations. Credits identify my role; a project distinction is not an individual award unless stated.",
-    "awards": "Awards & recognition",
-    "contributions": "What I bring to a project",
-    "contactTitle": "Let’s make something work.",
-    "contactBody": "For a role or a project, tell me the problem, the people it serves, and what you need to deliver. We can discuss where I can contribute.",
-    "email": "Discuss a role or project",
-    "resume": "Download resume",
-    "resumeLabel": "Resume",
-    "rights": "All rights reserved.",
-    "originalMedia": "Original project media",
-    "resultsNote": "Commercial figures below describe product or team results recorded in my resume; they are not attributed to a page or to my work alone.",
-    "concept": "Concept project",
-    "publications": "Poetry publications",
-    "writingBridge": "From stories to creative tools",
-    "writingBridgeBody": "GenInk connects my screenwriting experience with product building: a human–AI writing tool focused on revisions when long-form character settings change.",
-    "writingLink": "Explore GenInk",
-    "credits": "Selected film credits",
-    "related": "Related work",
-    "photographyNote": "The available work shown here is a poster combining photography and illustration. A standalone photography series is not published in this portfolio yet.",
-    "aiNote": "The examples here document AI creative tools and my product work. They are not presented as a standalone collection of AI artworks.",
-    "photoTitle": "Photography in visual storytelling",
-    "photoBody": "My visual work connects image-making, composition, and narrative. The Taipei poster below combines photography with illustration; it is shown as a design application of photography.",
-    "photoCaption": "Taipei City Imagery Poster · photography and illustration composite · 2024",
-    "photoScope": "Contribution: composition and visual design for a city-themed poster.",
-    "aiSection": "Creative tools I have worked on",
-    "pages": {
-      "builder": {
-        "title": "Product Builder",
-        "summary": "From an unclear need to a working product.",
-        "bio": "At CMoney, I connect product planning, UI/UX, and implementation. I have independently delivered finance-creator landing pages and worked with engineers on investment products, then documented repeatable workflows for other PMs and marketers.",
-        "fit": "For teams that need someone to turn an early idea into a testable product and carry it through delivery.",
-        "deliverables": [
-          {
-            "title": "Define the first version",
-            "body": "Clarify users, core journeys, requirements, and the scope of an MVP."
-          },
-          {
-            "title": "Build and connect",
-            "body": "Produce interface prototypes, implement web experiences, and integrate APIs."
-          },
-          {
-            "title": "Make delivery repeatable",
-            "body": "Document deployment and automation workflows so others can reuse them."
-          }
-        ]
-      },
-      "pm": {
-        "title": "Product Management",
-        "summary": "Clear requirements. Coordinated delivery.",
-        "bio": "I translate ambiguous needs into executable specs and coordinate design, engineering, QA, and operations. My hands-on design and frontend experience helps me discuss implementation tradeoffs and test ideas early.",
-        "fit": "For product teams building a first release, improving a fintech workflow, or introducing AI into an existing process.",
-        "deliverables": [
-          {
-            "title": "Frame the problem",
-            "body": "Identify users, product goals, constraints, and the smallest useful scope."
-          },
-          {
-            "title": "Align the team",
-            "body": "Turn requirements into specs, prototypes, and trackable tasks."
-          },
-          {
-            "title": "Follow through",
-            "body": "Coordinate delivery and interpret product results in their business context."
-          }
-        ]
-      },
-      "fe": {
-        "title": "Frontend Engineering",
-        "summary": "Interfaces that connect design to real use.",
-        "bio": "I build web interfaces with React and Next.js, translating Figma designs into responsive pages and connecting APIs and application state. My projects span booking, gamified experiences, calendar integration, and fintech interfaces.",
-        "fit": "For teams needing an implementer who can discuss both the interaction and the product requirement.",
-        "deliverables": [
-          {
-            "title": "Responsive interfaces",
-            "body": "Translate layouts into interfaces that work across mobile and desktop."
-          },
-          {
-            "title": "Application flows",
-            "body": "Connect APIs, authentication, forms, and state to the user journey."
-          },
-          {
-            "title": "Interaction quality",
-            "body": "Consider loading, language, keyboard access, and motion as part of delivery."
-          }
-        ]
-      },
-      "ui": {
-        "title": "UI/UX Design",
-        "summary": "Make complex journeys understandable.",
-        "bio": "I work through user flows, information architecture, and Figma prototypes. In fintech and web products, I have designed interfaces and discussed data structures with engineers, connecting the intended experience to implementation.",
-        "fit": "For apps and web products that need clearer flows, high-fidelity prototypes, and design decisions engineers can use.",
-        "deliverables": [
-          {
-            "title": "Map the journey",
-            "body": "Organize the steps, decisions, and information a user needs."
-          },
-          {
-            "title": "Prototype the interface",
-            "body": "Build Figma layouts and interaction prototypes for review."
-          },
-          {
-            "title": "Design for delivery",
-            "body": "Discuss states and data requirements with engineering before handoff."
-          }
-        ]
-      },
-      "design": {
-        "title": "Graphic & Motion Design",
-        "summary": "A visual idea, carried across formats.",
-        "bio": "Formerly a graphic and motion designer at BTSE, I worked on product animation with product and international teams. My selected design work includes identity, editorial design, packaging concepts, and posters.",
-        "fit": "For brands and products that need visual communication with a clear narrative and consistent composition.",
-        "deliverables": [
-          {
-            "title": "Visual identity",
-            "body": "Develop visual direction, typography, color, and applications."
-          },
-          {
-            "title": "Editorial and print",
-            "body": "Explore layout, binding, packaging, and the relationship between image and text."
-          },
-          {
-            "title": "Motion and narrative",
-            "body": "Bring film and editing experience into product and brand communication."
-          }
-        ]
-      },
-      "ai": {
-        "title": "AI Art & Creative Tools",
-        "summary": "Human direction. AI-assisted creation.",
-        "bio": "I connect a film and writing background with applied AI product work. My relevant projects include Dreamake for AI video and content generation, and GenInk for human–AI long-form writing.",
-        "fit": "For teams exploring AI-assisted creative workflows and tools with an understandable user experience.",
-        "deliverables": [
-          {
-            "title": "Creative workflows",
-            "body": "Start from what the creator needs to make, revise, and review."
-          },
-          {
-            "title": "Product experience",
-            "body": "Turn AI capabilities into usable steps, interfaces, and prototypes."
-          },
-          {
-            "title": "Human authorship",
-            "body": "Keep creative decisions with the author and make the role of AI explicit."
-          }
-        ]
-      },
-      "literature": {
-        "title": "Literature & Screenwriting",
-        "summary": "Stories built with attention to language.",
-        "bio": "My writing spans screenplays and poetry. The screenplay The Last Samozai received First Prize at the Ministry of Culture TV Script Awards in 2023. My literary record also includes the Global Chinese Student Literary Award and the Unitas Secondary School Literary Award.",
-        "fit": "For narrative development, screenwriting, and creative products that need a writer’s understanding of character and revision.",
-        "deliverables": [
-          {
-            "title": "Screenwriting",
-            "body": "Develop narrative premises, character relationships, and story structure."
-          },
-          {
-            "title": "Literary writing",
-            "body": "Work with language, rhythm, and imagery through poetry."
-          },
-          {
-            "title": "Creative product thinking",
-            "body": "Translate firsthand writing problems into tools such as GenInk."
-          }
-        ]
-      },
-      "film": {
-        "title": "Film & Video",
-        "summary": "From the story to the finished sequence.",
-        "bio": "I graduated from National Taiwan University of Arts in film and television. My experience includes film development and screenwriting at Viralstorm Studio, leading a video team at Knowhow College, and production and post-production roles across film projects.",
-        "fit": "For narrative development and video projects requiring planning, coordination, editing, or sound experience.",
-        "deliverables": [
-          {
-            "title": "Development and production",
-            "body": "Prepare proposals, research audiences, and organize production requirements."
-          },
-          {
-            "title": "Editing and sound",
-            "body": "Contribute editing, color work, Foley, or mixing according to the project credit."
-          },
-          {
-            "title": "Team coordination",
-            "body": "Bring experience leading a five-person team and coordinating more than 50 video productions."
-          }
-        ]
-      },
-      "photography": {
-        "title": "Photography",
-        "summary": "Composition with a story to tell.",
-        "bio": "Photography is part of my wider visual practice, alongside film and graphic design. This page currently shows its application in a Taipei-themed poster; it does not claim a separate photography commission or published series.",
-        "fit": "For discussing image direction and how photography can work within a broader visual or narrative project.",
-        "deliverables": [
-          {
-            "title": "Image and composition",
-            "body": "Consider framing, visual hierarchy, and the intended reading of an image."
-          },
-          {
-            "title": "Across media",
-            "body": "Connect photographic material with illustration, typography, and layout."
-          },
-          {
-            "title": "Project fit",
-            "body": "Discuss the brief and required examples before defining a photography assignment."
-          }
-        ]
-      }
+  "ui": {
+    "title": "UI/UX Designer",
+    "me": "Sonia",
+    "about": {
+      "skill": "Background in design and animation, focusing on aesthetics and interaction.",
+      "hobby": "I enjoy design and animation.",
+      "description": "Sharing 'Design-Driven Web Interaction Experience' at the 2025 Ironman Competition."
     },
-    "summaryPreview": "Project summary",
-    "openOriginal": "Open original media",
-    "summaryCaption": "English summary. The original artwork or product recording opens separately and may contain its original language.",
-    "originalVideo": "Open original recording"
-  }
+    "resume": "/SoniaResumeEn.pdf",
+    "award": [
+      "2023 Design Rookie Award",
+      "2021 UX Annual Award"
+    ],
+    "description": [
+      "Freelance Designer",
+      "Former Designer at Foreign Tech Company"
+    ]
+  },
+  "pm": {
+    "title": "PM",
+    "me": "Sonia",
+    "about": {
+      "skill": "Background in design and animation, focusing on aesthetics and interaction.",
+      "hobby": "I enjoy design and animation.",
+      "description": "Sharing 'Design-Driven Web Interaction Experience' at the 2025 Ironman Competition."
+    },
+    "resume": "/SoniaResumeEn.pdf",
+    "award": [
+      "2022 Project Management Award",
+      "2020 Team Leadership Award"
+    ],
+    "description": [
+      "Project Management Expert",
+      "Agile Development Practitioner"
+    ]
+  },
+  "design": {
+    "title": "Graphic Designer",
+    "me": "Sonia",
+    "about": {
+      "skill": "Senior graphic designer specializing in brand identity, book design, and cross-media visual experiments.",
+      "hobby": "I enjoy researching printing crafts and urban photography.",
+      "description": "Committed to finding the perfect balance between aesthetics and function across digital and physical media."
+    },
+    "resume": "/SoniaResumeEn.pdf",
+    "award": [
+      "2024 Chinese Design Award Honorable Mention",
+      "2025 Artiver Finalist (USA)"
+    ],
+    "description": [
+      "Freelance Designer",
+      "Former Designer at Foreign Tech Company"
+    ]
+  },
+  "ai": {
+    "title": "AI Creator",
+    "me": "Sonia",
+    "about": {
+      "skill": "First Prize, Ministry of Culture Television Screenplay Award; combining AI image generation, short films, animation, songs, and product visuals into complete creative works.",
+      "hobby": "I enjoy turning abstract emotion and story worlds into things people can watch and hear.",
+      "description": "My AI moving-image, generative-art, and short-film works have been exhibited or selected by First-Filmaking, Boomer Gallery, Artriver, and multiple AI competitions."
+    },
+    "resume": "/SoniaResumeEn.pdf",
+    "award": [
+      "AI video exhibited at First-Filmaking Festival",
+      "Bird Nest Cup AI Art Contest 5th Place",
+      "VS AI Competition Finalist",
+      "AI artwork selected for Boomer Gallery Exhibition",
+      "arttechtalks inaugural AI generative art competition, No One Can Stop Me from Going to Work",
+      "GMI＊Wan AI Film and Media Creator Competition, First Prize",
+      "Artriver, Top 4 Selected"
+    ],
+    "experience": [
+      "AI Instructor: teaches AI image and video creation"
+    ],
+    "contact": {
+      "label": "Contact",
+      "email": "yishiuan522@gmail.com",
+      "instagram": "@exuan_design.ai",
+      "instagramUrl": "https://www.instagram.com/exuan_design.ai/",
+      "qrAlt": "Instagram QR code for @exuan_design.ai"
+    },
+    "description": [
+      "AI short film and animation",
+      "AI music and generative art experiments"
+    ]
+  },
+  "product-builder": {
+    "title": "Product Builder",
+    "me": "Sonia",
+    "about": {
+      "skill": "I package product strategy, UI design, frontend implementation, and backend integration into shippable 0-to-1 products.",
+      "hobby": "I enjoy turning fuzzy ideas into flows, interfaces, data models, and MVPs that can be tested quickly.",
+      "description": "I use AI and engineering tools to speed up validation, covering requirements, interaction design, frontend development, APIs, and database integration."
+    },
+    "resume": "/SoniaResumeEn.pdf",
+    "award": [
+      "0-to-1 product building",
+      "Full-stack MVP delivery"
+    ],
+    "description": [
+      "Frontend / UI / PM / backend integration",
+      "AI-assisted product development workflow"
+    ]
+  },
+  "film": {"title":"Film & Motion","me":"Sonia","about":{"skill":"Film, motion, and sound-post creator.","hobby":"I like telling stories through image, sound, and rhythm.","description":"My work spans motion graphics, advertising, event films, narrative shorts, and sound post-production."},"resume":"/SoniaResumeEn.pdf","award":["Ministry of Culture Screenplay Award","London Film Festival selection"],"experience":["Screenwriting, editing, sound mixing, and motion production"],"description":["Screenwriting and short-film production","Editing, mixing, and motion"]},
+  "photo": {"title":"Photography","me":"Sonia","about":{"skill":"Event, film-still, portrait, and city photographer.","hobby":"I enjoy observing light, people, and urban space.","description":"My photography spans events, film stills, portraits, landscapes, and architecture, including award-winning work."},"resume":"/SoniaResumeEn.pdf","award":["Children's Eyes on Earth Photography Contest","Photography competition gold award"],"experience":["Event, portrait, film-still, and landscape photography"],"description":["Event documentation","Portrait and landscape photography"]},
+  "role": {"film":{"title":"Film & Motion","award":["Ministry of Culture Screenplay Award","London Film Festival selection"],"description":["Screenwriting and short-film production","Editing, mixing, and motion"]},"photo":{"title":"Photography","award":["Photography competition gold award","Children's Eyes on Earth"],"description":["Event documentation","Portrait and landscape photography"]}}
 }

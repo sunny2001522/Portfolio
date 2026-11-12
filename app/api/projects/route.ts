@@ -7,7 +7,10 @@ const VALID_ROLES: ReadonlySet<Role["key"]> = new Set([
   "ui",
   "pm",
   "design",
-  "builder",
+  "ai",
+  "product-builder",
+  "film",
+  "photo",
 ]);
 
 export const dynamic = "force-dynamic";

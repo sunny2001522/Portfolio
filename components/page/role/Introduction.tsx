@@ -1,5 +1,388 @@
-import PageIntro from "../PageIntro";
-import type { PortfolioKey } from "@/lib/portfolio";
-export default function Introduction({ role }: { role: PortfolioKey }) {
-  return <PageIntro pageKey={role} />;
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import Web from "./Web";
+import { useTranslations } from "next-intl";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { PiStarFourFill } from "react-icons/pi";
+import { Button } from "@/components/ui/button";
+import { FaEnvelope, FaFileDownload, FaInstagram } from "react-icons/fa";
+import { trackLinkClick } from "@/lib/analytics";
+
+export default function Introduction({ role }: { role: string }) {
+  const t = useTranslations(role);
+  const tContact = useTranslations("Contact");
+  const resume = t("resume");
+  const showDescription = role !== "ai";
+  const awards = (() => {
+    try {
+      const items = t.raw("award");
+      return Array.isArray(items)
+        ? items.filter((item): item is string => typeof item === "string")
+        : [];
+    } catch {
+      return [];
+    }
+  })();
+  const experience = (() => {
+    try {
+      const items = t.raw("experience");
+      return Array.isArray(items)
+        ? items.filter((item): item is string => typeof item === "string")
+        : [];
+    } catch {
+      return [];
+    }
+  })();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const introCardRef = useRef<HTMLDivElement>(null);
+  const heroOverlayRef = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // --- Hero Text Animation (On Load) ---
+    const heroChars = gsap.utils.toArray(".hero-char");
+
+    // Animate each character differently
+    heroChars.forEach((char: any, i) => {
+      const animType = i % 4;
+      let vars = {};
+
+      if (animType === 0) vars = { rotation: 180, scale: 0, opacity: 0 };
+      else if (animType === 1) vars = { y: -150, opacity: 0 };
+      else if (animType === 2) vars = { x: -150, opacity: 0 };
+      else if (animType === 3) vars = { scale: 0, opacity: 0 };
+
+      gsap.fromTo(char,
+        vars,
+        {
+          opacity: 1,
+          y: 0,
+          x: 0,
+          rotation: 0,
+          scale: 1,
+          duration: 1.5,
+          ease: "elastic.out(1, 0.4)",
+          delay: i * 0.1
+        }
+      );
+    });
+
+    // Custom Dot Animation
+    const dotTl = gsap.timeline({ repeat: -1, delay: 1 });
+    dotTl.to(".dot-shape", { rotation: "+=720", duration: 0.6, ease: "power2.inOut" })
+         .to({}, { duration: 0.8 })
+         .to(".dot-shape", { rotation: "+=360", duration: 1, ease: "linear" })
+         .to({}, { duration: 0.5 });
+
+    // Button reveal
+    gsap.fromTo(btnRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1, delay: 1.2, ease: "power2.out" }
+    );
+
+    // --- Scroll Animation ---
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 64px",
+        end: "+=3000",
+        scrub: 0.5,
+        pin: true,
+        invalidateOnRefresh: true,
+      }
+    });
+
+    // 1. Initial scroll: Fade out black overlay & button FASTER
+    tl.fromTo([heroOverlayRef.current, btnRef.current],
+      { opacity: 1 },
+      {
+        opacity: 0,
+        duration: 0.2,
+      }, 0
+    );
+
+    // 2. Decorations start slightly spread near center to fill cutouts, then move out FASTER
+    tl.from(".decoration", {
+      left: "50%",
+      top: "50%",
+      xPercent: (i) => -50 + (i % 3 - 1) * 30, // Slight random spread around center
+      yPercent: (i) => -50 + (i % 2 === 0 ? -20 : 20),
+      scale: 1, 
+      duration: 0.5, // Shortened from 1
+      ease: "power2.out",
+    }, 0);
+
+    // 3. Reveal Intro Card
+    tl.fromTo(introCardRef.current, {
+      opacity: 0,
+      y: 30,
+      scale: 0.98,
+    }, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.3,
+    }, 0.2); // Adjusted start time
+
+    // 4. Reveal Text inside Intro Card sequentially
+    const cardTexts = introCardRef.current?.querySelectorAll(".intro-text") || [];
+    tl.fromTo(cardTexts, {
+      opacity: 0,
+      x: -20,
+    }, {
+      opacity: 1,
+      x: 0,
+      stagger: 0.1,
+      duration: 0.4,
+      ease: "power2.out",
+    }, 0.3);
+
+    // Star icon sparkle
+    gsap.to(".star-icon", {
+      rotate: 360,
+      scale: 1.1,
+      repeat: -1,
+      duration: 5,
+      ease: "none",
+    });
+
+  }, { scope: containerRef });
+
+  return (
+    <div id="intro-container" ref={containerRef} className="intro-section relative w-full h-[calc(100vh-64px)] flex flex-col items-center justify-center overflow-hidden bg-white">
+      
+      {/* Decorations - lazy loaded for better performance */}
+      <Image src="/shape/shape10.webp" alt="" loading="lazy" className="decoration absolute right-[10%] top-[5%] z-0" width={160} height={160} />
+      <Image src="/shape/shape16.webp" alt="" loading="lazy" className="decoration absolute bottom-[20%] z-0 -left-[10%] translate-y-1/2" width={700} height={700} />
+      <Image src="/shape/shape13.webp" alt="" loading="lazy" className="decoration absolute left-[5%] top-[10%] z-0" width={120} height={120} />
+      <Image src="/shape/shape4.webp" alt="" loading="lazy" className="decoration absolute right-[5%] top-1/3 z-0 hidden md:block" width={160} height={160} />
+      <Image src="/shape/shape14.webp" alt="" loading="lazy" className="decoration absolute top-0 -left-[20%] md:-left-[10%] z-0" width={300} height={300} />
+      <Image src="/shape/shape17.webp" alt="" loading="lazy" className="decoration absolute -right-[40%] md:-right-[20%] scale-50 md:scale-100 lg:right-0 top-0 z-0" width={600} height={2400} />
+      <Image src="/shape/shape12.webp" alt="" loading="lazy" className="decoration absolute left-[75%] top-[15%] z-0 hidden md:block" width={160} height={160} />
+      <Image src="/shape/shape18.webp" alt="" loading="lazy" className="decoration absolute left-[5%] bottom-[15%] z-0 hidden md:block" width={200} height={200} />
+      <Image src="/shape/shape11.webp" alt="" loading="lazy" className="decoration absolute left-[15%] bottom-[5%] z-10" width={160} height={160} />
+
+      {/* HERO OVERLAY - Black background with cutout text (mix-blend-multiply) */}
+      <div ref={heroOverlayRef} className="absolute inset-0 bg-black text-white mix-blend-multiply z-50 flex flex-col items-center justify-center pointer-events-none">
+        <h1 className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-y-2 md:gap-y-4 md:gap-x-6 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-bold tracking-tighter px-4 leading-none">
+          <div className="flex">
+            <span className="hero-char inline-block uppercase">B</span>
+            <span className="hero-char inline-block">u</span>
+            <div className="relative inline-flex flex-col items-center justify-end mx-1 md:mx-2">
+              <div className="absolute -top-6 md:-top-10 w-8 h-8 md:w-16 md:h-16 dot-shape z-10">
+                <Image src="/shape/shape10.webp" alt="dot" fill className="object-contain drop-shadow-lg" unoptimized />
+              </div>
+              <span className="hero-char inline-block">i</span>
+            </div>
+            <span className="hero-char inline-block">l</span>
+            <span className="hero-char inline-block">d</span>
+          </div>
+          <div className="flex">
+            <span className="hero-char inline-block uppercase">A</span>
+            <span className="hero-char inline-block">n</span>
+            <span className="hero-char inline-block">y</span>
+          </div>
+          <div className="flex">
+            <span className="hero-char inline-block uppercase">D</span>
+            <span className="hero-char inline-block">r</span>
+            <span className="hero-char inline-block">e</span>
+            <span className="hero-char inline-block">a</span>
+            <span className="hero-char inline-block">m</span>
+          </div>
+        </h1>
+      </div>
+
+      {/* 往下跳動箭頭 - Scroll indicator */}
+      <div
+        ref={btnRef}
+        className="absolute bottom-[14%] md:bottom-[16%] left-1/2 -translate-x-1/2 z-[60] flex flex-col items-center gap-3"
+      >
+        <span className="text-white/75 text-xs md:text-sm font-bold tracking-[0.35em] uppercase">
+          Scroll
+        </span>
+        <button
+          type="button"
+          aria-label="Scroll down"
+          onClick={() =>
+            window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
+          }
+          className="animate-bounce pointer-events-auto cursor-pointer text-white drop-shadow-lg"
+        >
+          <svg
+            width="46"
+            height="46"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+      </div>
+
+      {/* 跑馬燈 - Moved to the very bottom */}
+      <div className="absolute bottom-[5%] md:bottom-[-8%] left-[-5%] w-[110%] z-20 -rotate-2 pointer-events-none">
+        <Web
+          role={
+            role as
+              | "fe"
+              | "pm"
+              | "ui"
+              | "design"
+              | "ai"
+              | "product-builder"
+          }
+          isActive={true}
+        />
+      </div>
+
+      {/* Intro Card - Glassmorphism, Black Text, Silver Stars only on list. Mobile position: Top-Left */}
+      <div ref={introCardRef} className="absolute top-[5%] left-[5%] md:top-[20%] md:left-[10%] z-[70] w-[90%] md:w-1/2 lg:w-2/5 max-h-[82vh] overflow-y-auto p-5 md:p-6 rounded-3xl bg-white/40 backdrop-blur-lg border border-white/60 shadow-xl opacity-0">
+        <div className="space-y-4 text-black">
+          
+          <h2 className="intro-text text-4xl md:text-6xl font-black tracking-tighter italic">
+            {t("title")}
+          </h2>
+          
+          <p className="intro-text text-xl md:text-2xl font-bold leading-tight">
+            {t("me")}
+          </p>
+
+          <div className="space-y-3 pt-3 border-t border-black/10">
+            <div className="intro-text flex items-start gap-3">
+              <PiStarFourFill className="text-gray-400 star-icon flex-shrink-0 mt-1" size={20} />
+              <p className="text-base md:text-xl font-bold">
+                {t("about.skill")}
+              </p>
+            </div>
+            {showDescription ? (
+              <div className="intro-text flex items-start gap-3">
+                <PiStarFourFill className="text-gray-400 star-icon flex-shrink-0 mt-1" size={20} />
+                <p className="text-sm md:text-lg font-medium opacity-80">
+                  {t("about.description")}
+                </p>
+              </div>
+            ) : null}
+          </div>
+
+          {awards.length > 0 && (
+            <div className="intro-text space-y-2 pt-1">
+              <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.25em] text-black/45">
+                Awards · 獎項
+              </p>
+              <ul className="grid gap-x-5 gap-y-1.5 md:grid-cols-2">
+                {awards.map((award) => (
+                  <li
+                    key={award}
+                    className="flex items-start gap-2 text-xs md:text-sm font-bold leading-snug text-black/80"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black/40" />
+                    <span>{award}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {experience.length > 0 && (
+            <div className="intro-text space-y-2 pt-1">
+              <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.25em] text-black/45">
+                Experience · 經歷
+              </p>
+              <ul className="space-y-1">
+                {experience.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 text-xs md:text-sm font-bold leading-snug text-black/80"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black/40" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {role === "ai" && (
+            <div className="intro-text grid grid-cols-[1fr_auto] items-center gap-3 border-t border-black/10 pt-3">
+              <div className="min-w-0 space-y-1.5">
+                <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.25em] text-black/45">
+                  {t("contact.label")}
+                </p>
+                <a
+                  href={`mailto:${t("contact.email")}`}
+                  onClick={() =>
+                    trackLinkClick({
+                      link_type: "email",
+                      role,
+                      url: `mailto:${t("contact.email")}`,
+                    })
+                  }
+                  className="flex items-center gap-2 text-xs md:text-sm font-bold text-black/80 transition-colors hover:text-black"
+                >
+                  <FaEnvelope className="flex-shrink-0" />
+                  <span className="truncate">{t("contact.email")}</span>
+                </a>
+                <a
+                  href={t("contact.instagramUrl")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackLinkClick({
+                      link_type: "instagram",
+                      role,
+                      url: t("contact.instagramUrl"),
+                    })
+                  }
+                  className="flex items-center gap-2 text-xs md:text-sm font-bold text-black/80 transition-colors hover:text-black"
+                >
+                  <FaInstagram className="flex-shrink-0" />
+                  <span>{t("contact.instagram")}</span>
+                </a>
+              </div>
+              <a
+                href={t("contact.instagramUrl")}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("contact.instagram")}
+                className="rounded-md bg-white p-1 shadow-sm transition-transform hover:scale-105"
+              >
+                <Image
+                  src="/ai/exuan-instagram-qr.png"
+                  alt={t("contact.qrAlt")}
+                  width={56}
+                  height={56}
+                  className="h-14 w-14"
+                />
+              </a>
+            </div>
+          )}
+
+          {/* 下載履歷按鈕 */}
+          <div className="intro-text pt-2">
+            <Button
+              asChild
+              className="bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+            >
+              <Link
+                href={resume}
+                download
+                onClick={() =>
+                  trackLinkClick({ link_type: "resume", role, url: resume })
+                }
+              >
+                <FaFileDownload className="mr-2" />
+                {tContact("resume")}
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
 
-type Role = "fe" | "pm" | "ui" | "design";
+type Role = "fe" | "pm" | "ui" | "design" | "ai" | "product-builder" | "film" | "photo";
 
 interface WebProps {
   role: Role;
@@ -20,6 +20,11 @@ const Web = ({ role, isActive }: WebProps) => {
   const defaultImg = "/web/hotel-website.webp";
 
   const imageMap: Record<string, string> = {
+    "birthday-calendar": "/web/birthday.png",
+    "warrant-landing-page": "/web/warrentlp.webp",
+    "longterm-treasure-app": "/web/longterm.webp",
+    "longterm-treasure-web": "/web/longterm.webp",
+    "simple-futures-web": "/web/simple-futures.webp",
     "gamified-weight-loss": "/web/gamified-weight-loss.webp",
     "hotel-website": "/web/hotel-website.webp",
     portfolio: "/web/portfolio.webp",
@@ -28,7 +33,15 @@ const Web = ({ role, isActive }: WebProps) => {
     "social-media-tool": "/web/post.webp",
     "ai-data-analysis": "/web/data.webp",
     "ai-co-writing": "/web/genink.webp",
-    "life-manifestation": "/web/dreamake.webp",
+    "ai-video-content-generation": "/web/dreamake.webp",
+    "ai-pastiche": "/ai/pastiche-01.webp",
+    "ai-short-film-true-self": "/ai/true-self.webp",
+    "ai-dark-circus": "/ai/dark-circus.webp",
+    "ai-comic": "/ai/comic-01.webp",
+    "ai-product": "/ai/product-01.webp",
+    "ai-generative-art": "/ai/generative-01.webp",
+    "ai-gobetgoal-characters": "/ai/gobetgoal-default.webp",
+    "ai-suno-songwriting": "/ai/suno-electric.webp",
     book: "/design/book.webp",
     iceverse: "/design/iceverse.webp",
     iceverseProduct: "/design/iceverseProduct.webp",
